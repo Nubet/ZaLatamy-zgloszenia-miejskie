@@ -6,7 +6,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-    title: "Załatamy · Zgłoszenia miejskie w Łodzi",
+    title: "ZaŁatamy · Zgłoszenia miejskie w Łodzi",
     description: "Zgłoś problem w Łodzi i obserwuj postępy jego rozwiązania.",
 };
 

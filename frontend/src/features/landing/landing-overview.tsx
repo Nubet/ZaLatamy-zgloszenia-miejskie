@@ -21,7 +21,7 @@ export function LandingOverview() {
                     <i />
                 </span>
                 <span>
-                    Załatamy <span className={styles["map-preview__divider"]}>/</span> Mapa zgłoszeń
+                    ZaŁatamy <span className={styles["map-preview__divider"]}>/</span> Mapa zgłoszeń
                 </span>
                 <Link href="/mapa" aria-label="Otwórz pełną mapę zgłoszeń">
                     <ArrowUpRight size={15} aria-hidden="true" />
@@ -30,7 +30,7 @@ export function LandingOverview() {
             <div className={styles["map-preview__body"]}>
                 <aside className={styles["map-preview__sidebar"]} aria-label="Skróty do aplikacji">
                     <span className={styles["map-preview__brand"]}>
-                        <span className={styles["landing__logo"]} aria-hidden="true" /> Załatamy
+                        <span className={styles["landing__logo"]} aria-hidden="true" /> ZaŁatamy
                     </span>
                     <span className={styles["map-preview__sidebar-label"]}>PRZESTRZEŃ MIEJSKA</span>
                     <Link

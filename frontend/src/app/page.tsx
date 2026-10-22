@@ -38,10 +38,10 @@ export default function HomePage() {
                 <Link
                     href="/"
                     className={styles["landing__brand"]}
-                    aria-label="Załatamy — strona główna"
+                    aria-label="ZaŁatamy — strona główna"
                 >
                     <span className={styles["landing__logo"]} aria-hidden="true" />
-                    <strong>Załatamy</strong>
+                    <strong>ZaŁatamy</strong>
                 </Link>
                 <nav className={styles["landing__section-nav"]} aria-label="O aplikacji">
                     <a href="#co-zglosic">Co możesz zgłosić</a>
@@ -432,10 +432,10 @@ export default function HomePage() {
                         <Link
                             href="/"
                             className={styles["landing__brand"]}
-                            aria-label="Załatamy — strona główna"
+                            aria-label="ZaŁatamy — strona główna"
                         >
                             <span className={styles["landing__logo"]} aria-hidden="true" />
-                            <strong>Załatamy</strong>
+                            <strong>ZaŁatamy</strong>
                         </Link>
                         <p>
                             Zgłoszenia miejskie w Łodzi.
@@ -462,7 +462,7 @@ export default function HomePage() {
                     </nav>
                 </div>
                 <div className={styles["landing__footer-bottom"]}>
-                    <span>Załatamy · Łódź</span>
+                    <span>ZaŁatamy · Łódź</span>
                     <a href="#poczatek">
                         Wróć na górę <ArrowUp size={14} aria-hidden="true" />
                     </a>

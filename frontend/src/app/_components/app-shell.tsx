@@ -84,7 +84,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                             <Building2 size={21} strokeWidth={1.6} />
                         </span>
                         <span className="sidebar__label">
-                            <strong>Załatamy</strong>
+                            <strong>ZaŁatamy</strong>
                             <small>Zgłoszenia miejskie</small>
                         </span>
                     </Link>
