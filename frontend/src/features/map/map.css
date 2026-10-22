@@ -182,6 +182,19 @@
     background: var(--public-map-toolbar-background);
     box-shadow: var(--shadow-md);
 }
+.public-map__home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+.public-map__home-link:hover,
+.public-map__home-link:focus-visible {
+    color: var(--text-primary);
+}
 .public-map__title {
     display: flex;
     align-items: center;
@@ -459,7 +472,7 @@
     }
     .public-map .city-map__error,
     .public-map .city-map__loading-indicator {
-        top: 256px;
+        top: 296px;
         left: 10px;
         right: 60px;
     }

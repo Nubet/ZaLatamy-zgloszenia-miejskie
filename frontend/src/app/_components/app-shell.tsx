@@ -6,6 +6,7 @@ import { Suspense, useState } from "react";
 import { useReports } from "@/application/reports/provider";
 import { AdminNavigation } from "@/features/administration/admin-navigation";
 import {
+    ArrowLeft,
     ArrowUpRight,
     Bell,
     Bookmark,
@@ -202,6 +203,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                         <span>{currentPage}</span>
                     </div>
                     <div className="topbar__actions">
+                        <Link href="/" className="topbar__home-link">
+                            <ArrowLeft size={14} aria-hidden="true" />
+                            Strona główna
+                        </Link>
                         <Link
                             href="/powiadomienia"
                             className="icon-button topbar__notifications"

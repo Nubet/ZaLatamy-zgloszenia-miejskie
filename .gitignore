@@ -14,3 +14,4 @@
 frontend/public/maplibre-worker.mjs
 .env*
 !.env.example
+inspo-code

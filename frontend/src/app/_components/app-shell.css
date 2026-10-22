@@ -313,6 +313,18 @@
 .topbar__actions {
     gap: 15px;
 }
+.topbar__home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.topbar__home-link:hover,
+.topbar__home-link:focus-visible {
+    color: var(--text-primary);
+}
 .demo-pill {
     display: flex;
     align-items: center;

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Clock3, MapPin, Plus, Search, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Clock3, MapPin, Plus, Search, X } from "lucide-react";
 import { useReports } from "@/application/reports/provider";
 import { statuses, type Status } from "@/domain/reports/model";
 import { CategoryBadge, StatusBadge } from "@/shared/ui/report-badges";
@@ -85,6 +85,10 @@ export function PublicMap({ initialSelectedId }: { initialSelectedId: string | n
                 publicView
             />
             <section className="public-map__toolbar" aria-label="Wyszukiwanie zgłoszeń">
+                <Link href="/" className="public-map__home-link">
+                    <ArrowLeft size={14} aria-hidden="true" />
+                    Strona główna
+                </Link>
                 <div className="public-map__title">
                     <MapPin size={19} />
                     <div>
