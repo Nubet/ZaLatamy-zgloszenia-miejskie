@@ -13,6 +13,7 @@ import { formatDate } from "@/shared/lib/format";
 import { ErrorState, LoadingState } from "@/shared/ui/feedback";
 import { CityMap } from "./city-map";
 import { ReportHistory } from "@/features/reports/report-history";
+import { SelectControl } from "@/shared/ui/select-control";
 
 function focusCloseButton(node: HTMLButtonElement | null) {
     node?.focus({ preventScroll: true });
@@ -127,24 +128,17 @@ export function PublicMap({ initialSelectedId }: { initialSelectedId: string | n
                     )}
                 </label>
                 <div className="public-map__filters">
-                    <select
+                    <SelectControl
                         aria-label="Status na mapie"
                         value={status}
-                        onChange={(event) =>
-                            setStatus(
-                                event.target.value in statuses
-                                    ? (event.target.value as Status)
-                                    : "",
-                            )
+                        onValueChange={(value) =>
+                            setStatus(value in statuses ? (value as Status) : "")
                         }
-                    >
-                        <option value="">Wszystkie statusy</option>
-                        {Object.entries(statuses).map(([value, label]) => (
-                            <option key={value} value={value}>
-                                {label}
-                            </option>
-                        ))}
-                    </select>
+                        options={[
+                            { value: "", label: "Wszystkie statusy" },
+                            ...Object.entries(statuses).map(([value, label]) => ({ value, label })),
+                        ]}
+                    />
                     <button
                         className="button button--secondary"
                         aria-expanded={listOpen}

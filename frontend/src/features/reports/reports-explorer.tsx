@@ -140,34 +140,26 @@ export function ReportsExplorer() {
                     label="Kategoria"
                     aria-label="Kategoria"
                     value={category}
-                    onChange={(event) => {
-                        const value = event.target.value;
+                    onValueChange={(value) => {
                         setCategory(value in categories ? (value as Category) : "");
                     }}
-                >
-                    <option value="">Wszystkie kategorie</option>
-                    {Object.entries(categories).map(([key, label]) => (
-                        <option key={key} value={key}>
-                            {label}
-                        </option>
-                    ))}
-                </FilterSelect>
+                    options={[
+                        { value: "", label: "Wszystkie kategorie" },
+                        ...Object.entries(categories).map(([value, label]) => ({ value, label })),
+                    ]}
+                />
                 <FilterSelect
                     label="Status"
                     aria-label="Status"
                     value={status}
-                    onChange={(event) => {
-                        const value = event.target.value;
+                    onValueChange={(value) => {
                         setStatus(value in statuses ? (value as Status) : "");
                     }}
-                >
-                    <option value="">Wszystkie statusy</option>
-                    {Object.entries(statuses).map(([key, label]) => (
-                        <option key={key} value={key}>
-                            {label}
-                        </option>
-                    ))}
-                </FilterSelect>
+                    options={[
+                        { value: "", label: "Wszystkie statusy" },
+                        ...Object.entries(statuses).map(([value, label]) => ({ value, label })),
+                    ]}
+                />
                 {(category || status || search) && (
                     <button
                         className="button button--secondary"

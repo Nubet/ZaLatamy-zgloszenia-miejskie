@@ -68,87 +68,82 @@ export function WorkFilterBar({
                                 label="Status"
                                 aria-label="Filtr statusu"
                                 value={filters.status}
-                                onChange={(event) =>
+                                onValueChange={(value) =>
                                     onChange({
                                         ...filters,
-                                        status: event.target.value
-                                            ? statusSchema.parse(event.target.value)
-                                            : "",
+                                        status: value ? statusSchema.parse(value) : "",
                                     })
                                 }
-                            >
-                                <option value="">Wszystkie w tym widoku</option>
-                                {viewStatuses(filters.view).map((status) => (
-                                    <option key={status} value={status}>
-                                        {statuses[status]}
-                                    </option>
-                                ))}
-                            </FilterSelect>
+                                options={[
+                                    { value: "", label: "Wszystkie w tym widoku" },
+                                    ...viewStatuses(filters.view).map((value) => ({
+                                        value,
+                                        label: statuses[value],
+                                    })),
+                                ]}
+                            />
                             <FilterSelect
                                 label="Kategoria"
                                 aria-label="Filtr kategorii"
                                 value={filters.category}
-                                onChange={(event) =>
+                                onValueChange={(value) =>
                                     onChange({
                                         ...filters,
-                                        category: event.target.value
-                                            ? categorySchema.parse(event.target.value)
-                                            : "",
+                                        category: value ? categorySchema.parse(value) : "",
                                     })
                                 }
-                            >
-                                <option value="">Wszystkie kategorie</option>
-                                {Object.entries(categories).map(([value, label]) => (
-                                    <option key={value} value={value}>
-                                        {label}
-                                    </option>
-                                ))}
-                            </FilterSelect>
+                                options={[
+                                    { value: "", label: "Wszystkie kategorie" },
+                                    ...Object.entries(categories).map(([value, label]) => ({
+                                        value,
+                                        label,
+                                    })),
+                                ]}
+                            />
                             <FilterSelect
                                 label="Priorytet"
                                 aria-label="Filtr priorytetu"
                                 value={filters.priority}
-                                onChange={(event) =>
+                                onValueChange={(value) =>
                                     onChange({
                                         ...filters,
-                                        priority: event.target.value
-                                            ? prioritySchema.parse(event.target.value)
-                                            : "",
+                                        priority: value ? prioritySchema.parse(value) : "",
                                     })
                                 }
-                            >
-                                <option value="">Każdy priorytet</option>
-                                {Object.entries(priorities).map(([value, label]) => (
-                                    <option key={value} value={value}>
-                                        {label}
-                                    </option>
-                                ))}
-                            </FilterSelect>
+                                options={[
+                                    { value: "", label: "Każdy priorytet" },
+                                    ...Object.entries(priorities).map(([value, label]) => ({
+                                        value,
+                                        label,
+                                    })),
+                                ]}
+                            />
                         </div>
                     </details>
                     <FilterSelect
                         label="Sortuj według"
                         aria-label="Sortowanie zgłoszeń"
                         value={filters.sort}
-                        onChange={(event) =>
+                        onValueChange={(value) =>
                             onChange({
                                 ...filters,
                                 sort:
-                                    event.target.value === "priority"
+                                    value === "priority"
                                         ? "priority"
-                                        : event.target.value === "confirmations"
+                                        : value === "confirmations"
                                           ? "confirmations"
-                                          : event.target.value === "oldest"
+                                          : value === "oldest"
                                             ? "oldest"
                                             : "newest",
                             })
                         }
-                    >
-                        <option value="priority">Pilne najpierw</option>
-                        <option value="confirmations">Najwięcej potwierdzeń</option>
-                        <option value="oldest">Najstarsze</option>
-                        <option value="newest">Najnowsze</option>
-                    </FilterSelect>
+                        options={[
+                            { value: "priority", label: "Pilne najpierw" },
+                            { value: "confirmations", label: "Najwięcej potwierdzeń" },
+                            { value: "oldest", label: "Najstarsze" },
+                            { value: "newest", label: "Najnowsze" },
+                        ]}
+                    />
                 </div>
             </div>
             <div className="work-queue__scope">

@@ -1,16 +1,11 @@
-import type { ComponentProps } from "react";
-import { ChevronDown, Search, X } from "lucide-react";
+import { Search, X } from "lucide-react";
+import { SelectControl, type SelectControlProps } from "./select-control";
 
-export function FilterSelect({
-    label,
-    children,
-    ...props
-}: ComponentProps<"select"> & { label: string }) {
+export function FilterSelect({ label, ...props }: SelectControlProps & { label: string }) {
     return (
         <label className="filter-select">
             <span>{label}</span>
-            <select {...props}>{children}</select>
-            <ChevronDown size={12} aria-hidden="true" />
+            <SelectControl {...props} />
         </label>
     );
 }

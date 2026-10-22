@@ -706,7 +706,7 @@
         flex: 1;
         min-width: 0;
     }
-    .reports-explorer__toolbar .filter-select select {
+    .reports-explorer__toolbar .filter-select .select-control {
         min-width: 0;
         width: 100%;
     }
@@ -749,7 +749,7 @@
     .section-nav {
         margin-bottom: 13px;
     }
-    .reports-explorer__toolbar select {
+    .reports-explorer__toolbar .select-control {
         font-size: 10px;
         padding-right: 4px;
     }

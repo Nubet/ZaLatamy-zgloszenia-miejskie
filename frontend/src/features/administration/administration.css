@@ -93,7 +93,7 @@
     display: flex;
     margin-bottom: 14px;
 }
-.work-queue__filter-popover .filter-select select {
+.work-queue__filter-popover .filter-select .select-control {
     min-width: 0;
     flex: 1;
 }

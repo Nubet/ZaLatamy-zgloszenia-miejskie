@@ -14,6 +14,7 @@ import {
 } from "@/domain/reports/model";
 import { useReportMutation } from "@/application/reports/provider";
 import { acceptsConfirmations, requiresUpdateComment } from "@/domain/reports/rules";
+import { SelectControl } from "@/shared/ui/select-control";
 
 export function ReportEditor({
     report,
@@ -65,41 +66,39 @@ export function ReportEditor({
                 <div className="field-pair">
                     <label className="field">
                         Status zgłoszenia
-                        <select
+                        <SelectControl
+                            disabled={mutation.isPending}
                             value={status}
-                            onChange={(event) => {
+                            onValueChange={(value) => {
                                 setChanges((current) => ({
                                     ...current,
-                                    status: statusSchema.parse(event.target.value),
+                                    status: statusSchema.parse(value),
                                 }));
                                 mutation.reset();
                             }}
-                        >
-                            {Object.entries(statuses).map(([key, label]) => (
-                                <option key={key} value={key}>
-                                    {label}
-                                </option>
-                            ))}
-                        </select>
+                            options={Object.entries(statuses).map(([value, label]) => ({
+                                value,
+                                label,
+                            }))}
+                        />
                     </label>
                     <label className="field">
                         Priorytet urzędu
-                        <select
+                        <SelectControl
+                            disabled={mutation.isPending}
                             value={priority}
-                            onChange={(event) => {
+                            onValueChange={(value) => {
                                 setChanges((current) => ({
                                     ...current,
-                                    priority: prioritySchema.parse(event.target.value),
+                                    priority: prioritySchema.parse(value),
                                 }));
                                 mutation.reset();
                             }}
-                        >
-                            {Object.entries(priorities).map(([key, label]) => (
-                                <option key={key} value={key}>
-                                    {label}
-                                </option>
-                            ))}
-                        </select>
+                            options={Object.entries(priorities).map(([value, label]) => ({
+                                value,
+                                label,
+                            }))}
+                        />
                     </label>
                 </div>
                 <p className="form-hint">
@@ -108,31 +107,32 @@ export function ReportEditor({
                 {status === "duplicate" && (
                     <label className="field">
                         Połącz z istniejącą sprawą
-                        <select
+                        <SelectControl
+                            disabled={mutation.isPending}
                             required
                             value={duplicateOf}
-                            onChange={(event) => {
+                            onValueChange={(value) => {
                                 setChanges((current) => ({
                                     ...current,
-                                    duplicateOf: event.target.value,
+                                    duplicateOf: value,
                                 }));
                                 mutation.reset();
                             }}
-                        >
-                            <option value="">Wybierz zgłoszenie</option>
-                            {reports
-                                .filter(
-                                    (item) =>
-                                        item.id !== report.id &&
-                                        ((!item.duplicateOf && acceptsConfirmations(item)) ||
-                                            item.id === report.duplicateOf),
-                                )
-                                .map((item) => (
-                                    <option key={item.id} value={item.id}>
-                                        {item.id} — {item.title}
-                                    </option>
-                                ))}
-                        </select>
+                            options={[
+                                { value: "", label: "Wybierz zgłoszenie" },
+                                ...reports
+                                    .filter(
+                                        (item) =>
+                                            item.id !== report.id &&
+                                            ((!item.duplicateOf && acceptsConfirmations(item)) ||
+                                                item.id === report.duplicateOf),
+                                    )
+                                    .map((item) => ({
+                                        value: item.id,
+                                        label: `${item.id} — ${item.title}`,
+                                    })),
+                            ]}
+                        />
                     </label>
                 )}
                 <label className="field">

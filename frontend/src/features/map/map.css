@@ -265,7 +265,7 @@
     gap: 8px;
     margin-top: 10px;
 }
-.public-map__filters select {
+.public-map__filters .select-control {
     min-width: 0;
     flex: 1;
     border: 1px solid var(--city-map-control-border);

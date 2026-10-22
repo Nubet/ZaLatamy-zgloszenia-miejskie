@@ -6,6 +6,7 @@ import { categories, categorySchema } from "@/domain/reports/model";
 import { StatusBadge } from "@/shared/ui/report-badges";
 import { ReportSupport } from "@/shared/ui/report-support";
 import { ReportPhoto } from "@/shared/ui/report-photo";
+import { SelectControl } from "@/shared/ui/select-control";
 import type { useReportForm } from "./use-report-form";
 import { PhotoAttachments } from "./photo-attachments";
 
@@ -38,20 +39,19 @@ export function ReviewStep({ form }: { form: ReturnType<typeof useReportForm> })
                 <div>
                     <label className="field">
                         Kategoria
-                        <select
+                        <SelectControl
+                            disabled={form.saving}
                             value={form.proposal.category}
-                            onChange={(event) =>
+                            onValueChange={(value) =>
                                 form.changeProposal({
-                                    category: categorySchema.parse(event.target.value),
+                                    category: categorySchema.parse(value),
                                 })
                             }
-                        >
-                            {Object.entries(categories).map(([key, label]) => (
-                                <option key={key} value={key}>
-                                    {label}
-                                </option>
-                            ))}
-                        </select>
+                            options={Object.entries(categories).map(([value, label]) => ({
+                                value,
+                                label,
+                            }))}
+                        />
                     </label>
                 </div>
                 <label className="field">
