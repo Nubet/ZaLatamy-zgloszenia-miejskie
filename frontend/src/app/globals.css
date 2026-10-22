@@ -1,0 +1,22 @@
+@import "../shared/styles/base.css";
+@import "../shared/styles/controls.css";
+@import "../shared/ui/report-badges.css";
+@import "../shared/ui/report-gallery.css";
+@import "../shared/ui/report-support.css";
+@import "./_components/app-shell.css";
+@import "../features/map/map.css";
+@import "../features/reports/reports.css";
+@import "../features/reporting/reporting.css";
+@import "../features/administration/administration.css";
+@import "../features/notifications/notifications.css";
+@import "../features/demo/demo.css";
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

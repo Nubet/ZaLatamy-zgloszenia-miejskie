@@ -1,0 +1,114 @@
+.report-gallery__image {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    display: block;
+}
+.report-gallery {
+    min-width: 0;
+}
+.report-gallery__open {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    background: var(--surface-background);
+    touch-action: pan-y;
+}
+.report-gallery__expand {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: grid;
+    place-items: center;
+    padding: 8px;
+    border-radius: 5px;
+    --report-gallery-expand-background: #151519db;
+    background: var(--report-gallery-expand-background);
+    color: var(--text-inverse);
+}
+.report-gallery__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 6px 0;
+    font-size: 12px;
+}
+.report-gallery__navigation .icon-button {
+    width: 40px;
+    height: 40px;
+}
+.report-gallery__thumbnails {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 3px;
+}
+.report-gallery__thumbnails button {
+    flex: 0 0 56px;
+    height: 46px;
+    padding: 2px;
+    overflow: hidden;
+    border: 1px solid var(--border-default);
+    border-radius: 5px;
+    background: var(--surface-background);
+}
+.report-gallery__thumbnails button[aria-pressed="true"] {
+    border-color: var(--focus-ring);
+    box-shadow: 0 0 0 1px var(--focus-ring);
+}
+.report-gallery__thumbnails img,
+.report-gallery__thumbnails .photo-fallback {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+.report-gallery__thumbnails .photo-fallback span {
+    display: none;
+}
+.report-gallery__lightbox {
+    position: fixed;
+    inset: 0;
+    width: min(1100px, 96vw);
+    max-width: 96vw;
+    max-height: 94dvh;
+    margin: auto;
+    padding: 16px;
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+    background: var(--surface-background);
+    color: var(--text-primary);
+}
+.report-gallery__lightbox::backdrop {
+    --report-gallery-backdrop: #08080bea;
+    background: var(--report-gallery-backdrop);
+}
+.report-gallery__lightbox header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 12px;
+}
+.report-gallery__lightbox header span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.report-gallery__full-image {
+    display: block;
+    width: 100%;
+    height: min(70dvh, 800px);
+    object-fit: contain;
+    touch-action: pan-y;
+}
+@media (max-width: 640px) {
+    .report-gallery__image {
+        height: 210px;
+    }
+}

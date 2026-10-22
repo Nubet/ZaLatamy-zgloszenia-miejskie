@@ -1,0 +1,140 @@
+@font-face {
+    font-family: Geist;
+    src: url("../../../node_modules/next/dist/next-devtools/server/font/geist-latin.woff2")
+        format("woff2");
+    font-weight: 100 900;
+    font-display: swap;
+}
+@font-face {
+    font-family: Geist;
+    src: url("../../../node_modules/next/dist/next-devtools/server/font/geist-latin-ext.woff2")
+        format("woff2");
+    font-weight: 100 900;
+    font-display: swap;
+    unicode-range: U+0100-02FF, U+1E00-1EFF, U+2020, U+20A0-20AB;
+}
+* {
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+body {
+    margin: 0;
+    background: var(--page-background);
+    color: var(--text-primary);
+    font: 13px/1.5 var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+button,
+select {
+    cursor: pointer;
+}
+button,
+a,
+input,
+select,
+textarea {
+    -webkit-tap-highlight-color: transparent;
+}
+button {
+    transition:
+        background 150ms,
+        border-color 150ms,
+        color 150ms;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 4px;
+}
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+    margin-top: 0;
+}
+h1 {
+    margin-bottom: 8px;
+    font-size: 25px;
+    line-height: 1.25;
+    letter-spacing: -0.75px;
+    font-weight: 550;
+}
+h2 {
+    margin-bottom: 8px;
+    font-size: 17px;
+    line-height: 1.4;
+    font-weight: 550;
+    letter-spacing: -0.3px;
+}
+h3 {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 550;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+input::placeholder {
+    color: var(--text-subtle);
+}
+input[type="checkbox"] {
+    accent-color: var(--checkbox-accent);
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes slide-in {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@media (max-width: 850px) {
+    h1 {
+        font-size: 22px;
+    }
+}
+@media (max-width: 640px) {
+    h1 {
+        font-size: 24px;
+        line-height: 1.3;
+        letter-spacing: -0.7px;
+    }
+}

@@ -1,0 +1,93 @@
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    height: var(--pill-height);
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 0 var(--pill-padding);
+    --status-badge-border: #363638;
+    border: 1px solid var(--status-badge-border);
+    border-radius: 999px;
+    font-size: var(--pill-font-size);
+    font-weight: 400;
+    white-space: nowrap;
+    line-height: 1;
+}
+.status-badge--new {
+    color: var(--status-new-text);
+    background: var(--status-new-background);
+    border-color: var(--status-new-border);
+}
+.status-badge--accepted {
+    color: var(--status-accepted-text);
+    background: var(--status-accepted-background);
+    border-color: var(--status-accepted-border);
+}
+.status-badge--progress {
+    color: var(--status-progress-text);
+    background: var(--status-progress-background);
+    border-color: var(--status-progress-border);
+}
+.status-badge--resolved {
+    color: var(--status-resolved-text);
+    background: var(--status-resolved-background);
+    border-color: var(--status-resolved-border);
+}
+.status-badge--rejected {
+    color: var(--status-rejected-text);
+    background: var(--status-rejected-background);
+    border-color: var(--status-rejected-border);
+}
+.status-badge--duplicate {
+    color: var(--status-duplicate-text);
+    background: var(--status-duplicate-background);
+    border-color: var(--status-duplicate-border);
+}
+.priority-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+    font-size: 9px;
+    white-space: nowrap;
+}
+.priority-label--high {
+    --priority-label-high-text: #e9a197;
+    color: var(--priority-label-high-text);
+}
+.category-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--pill-height);
+    flex-shrink: 0;
+    white-space: nowrap;
+    border: 1px solid var(--category-other-border);
+    border-radius: 999px;
+    background: var(--category-other-background);
+    color: var(--category-other-text);
+    font-size: var(--pill-font-size);
+    line-height: 1;
+    padding: 0 var(--pill-padding);
+}
+.category-tag--road {
+    background: var(--category-road-background);
+    border-color: var(--category-road-border);
+    color: var(--category-road-text);
+}
+.category-tag--waste {
+    background: var(--category-waste-background);
+    border-color: var(--category-waste-border);
+    color: var(--category-waste-text);
+}
+.category-tag--greenery {
+    background: var(--category-greenery-background);
+    border-color: var(--category-greenery-border);
+    color: var(--category-greenery-text);
+}
+.category-tag--lighting {
+    background: var(--category-lighting-background);
+    border-color: var(--category-lighting-border);
+    color: var(--category-lighting-text);
+}

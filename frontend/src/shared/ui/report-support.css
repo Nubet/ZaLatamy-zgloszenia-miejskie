@@ -1,0 +1,45 @@
+.support-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-muted);
+    font-size: 10px;
+    white-space: nowrap;
+}
+.support-count > svg {
+    flex-shrink: 0;
+}
+.report-support {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-block: 14px;
+    border-block: 1px solid var(--border-default);
+    margin-block: 12px;
+}
+.report-support > .support-count {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+.report-support > .form-hint {
+    margin: 0;
+    font-size: 11px;
+}
+.report-support > .button {
+    min-height: 40px;
+    white-space: normal;
+}
+.linked-reports {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-block: 16px;
+    padding: 16px;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+}
+.linked-reports p {
+    color: var(--text-muted);
+    font-size: 11px;
+}

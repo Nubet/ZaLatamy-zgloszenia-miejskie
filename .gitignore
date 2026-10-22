@@ -1,0 +1,16 @@
+.idea/
+**/*.md
+**/*.txt
+*.log
+*.iml
+**/node_modules/
+**/.next/
+**/.vite/
+**/.vitest/
+**/coverage/
+**/playwright-report/
+**/test-results/
+*.tsbuildinfo
+frontend/public/maplibre-worker.mjs
+.env*
+!.env.example
