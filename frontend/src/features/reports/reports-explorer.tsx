@@ -80,8 +80,8 @@ export function ReportsExplorer() {
                 }
             />
             <div className="stats-strip">
-                <div>
-                    <span className="stats-strip__icon">
+                <div className="stats-strip__card">
+                    <span className="stats-strip__icon" aria-hidden="true">
                         <MapPinned size={17} />
                     </span>
                     <span className="stats-strip__copy">
@@ -92,8 +92,11 @@ export function ReportsExplorer() {
                         </strong>
                     </span>
                 </div>
-                <div>
-                    <span className="stats-strip__icon stats-strip__icon--resolved">
+                <div className="stats-strip__card">
+                    <span
+                        className="stats-strip__icon stats-strip__icon--resolved"
+                        aria-hidden="true"
+                    >
                         <CheckCheck size={17} />
                     </span>
                     <span className="stats-strip__copy">
@@ -104,8 +107,11 @@ export function ReportsExplorer() {
                         </strong>
                     </span>
                 </div>
-                <div>
-                    <span className="stats-strip__icon stats-strip__icon--progress">
+                <div className="stats-strip__card">
+                    <span
+                        className="stats-strip__icon stats-strip__icon--progress"
+                        aria-hidden="true"
+                    >
                         <Activity size={17} />
                     </span>
                     <span className="stats-strip__copy">
