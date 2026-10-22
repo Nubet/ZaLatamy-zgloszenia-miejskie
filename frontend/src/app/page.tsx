@@ -19,6 +19,7 @@ import {
     Trees,
 } from "lucide-react";
 import { LandingOverview } from "@/features/landing/landing-overview";
+import { LandingHeader } from "@/features/landing/landing-header";
 import { StatusBadge } from "@/shared/ui/report-badges";
 import styles from "@/features/landing/landing.module.css";
 
@@ -34,29 +35,7 @@ export default function HomePage() {
             <a className="skip-link" href="#tresc">
                 Przejdź do treści
             </a>
-            <header className={styles["landing__header"]}>
-                <Link
-                    href="/"
-                    className={styles["landing__brand"]}
-                    aria-label="ZaŁatamy — strona główna"
-                >
-                    <span className={styles["landing__logo"]} aria-hidden="true" />
-                    <strong>ZaŁatamy</strong>
-                </Link>
-                <nav className={styles["landing__section-nav"]} aria-label="O aplikacji">
-                    <a href="#co-zglosic">Co możesz zgłosić</a>
-                    <a href="#jak-zglosic">Jak to działa</a>
-                    <a href="#pytania">Pytania</a>
-                </nav>
-                <nav className={styles["landing__navigation"]} aria-label="Główna nawigacja">
-                    <Link href="/mapa" className={styles["landing__map-link"]}>
-                        Mapa <ArrowUpRight size={14} aria-hidden="true" />
-                    </Link>
-                    <Link href="/panel" className="button button--secondary">
-                        Panel mieszkańca <ArrowRight size={14} aria-hidden="true" />
-                    </Link>
-                </nav>
-            </header>
+            <LandingHeader />
 
             <main id="tresc">
                 <section className={styles["landing__hero"]} aria-labelledby="hero-title">

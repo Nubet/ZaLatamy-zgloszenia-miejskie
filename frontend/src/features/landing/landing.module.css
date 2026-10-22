@@ -47,11 +47,12 @@
 }
 .landing__header {
     position: sticky;
-    top: 16px;
+    top: 8px;
     z-index: 40;
-    width: min(var(--landing-content-width), calc(100% - 48px));
-    min-height: 64px;
-    margin: 16px auto 0;
+    width: min(1152px, calc(100% - 24px));
+    height: 48px;
+    min-height: 48px;
+    margin: 0 auto;
     padding: 12px 18px;
     display: flex;
     align-items: center;
@@ -61,7 +62,33 @@
     border-radius: 12px;
     background: var(--landing-header-background);
     backdrop-filter: blur(18px);
+    box-shadow: none;
+    transition:
+        top 300ms ease-in-out,
+        width 300ms ease-in-out,
+        margin 300ms ease-in-out,
+        border-radius 300ms ease-in-out,
+        box-shadow 300ms ease-in-out;
+}
+.landing__header--stage-1,
+.landing__header--stage-2,
+.landing__header--stage-3 {
+    top: 15px;
+    width: min(1000px, calc(100% - 48px));
+    border-radius: 50px;
     box-shadow: var(--landing-header-shadow);
+}
+.landing__header--stage-1 {
+    top: 10px;
+    width: min(1100px, calc(100% - 32px));
+    border-radius: 24px;
+    box-shadow: 0 4px 16px #00000014;
+}
+.landing__header--stage-2 {
+    top: 12px;
+    width: min(1050px, calc(100% - 40px));
+    border-radius: 36px;
+    box-shadow: 0 5px 20px #0000001c;
 }
 .landing__brand {
     display: inline-flex;
@@ -904,13 +931,40 @@
         width: calc(100% - 40px);
     }
     .landing__header {
-        width: calc(100% - 24px);
-        top: 10px;
-        margin-top: 10px;
-        padding: 11px 12px;
-        min-height: 58px;
+        width: calc(100% - 12px);
+        top: 6px;
+        margin-top: 0;
+        padding: 8px 12px;
+        height: 48px;
+        min-height: 48px;
         gap: 12px;
         border-radius: 10px;
+    }
+    .landing__header--stage-1,
+    .landing__header--stage-2,
+    .landing__header--stage-3 {
+        width: calc(100% - 24px);
+        top: 10px;
+        border-radius: 50px;
+    }
+    .landing__header--stage-1 {
+        width: calc(100% - 16px);
+        top: 8px;
+        border-radius: 22px;
+    }
+    .landing__header--stage-2 {
+        width: calc(100% - 20px);
+        top: 9px;
+        border-radius: 36px;
+    }
+    .landing__header,
+    .landing__header--stage-1,
+    .landing__header--stage-2,
+    .landing__header--stage-3 {
+        width: calc(100% - 24px);
+        top: 10px;
+        border-radius: 50px;
+        box-shadow: var(--landing-header-shadow);
     }
     .landing__brand {
         gap: 7px;
