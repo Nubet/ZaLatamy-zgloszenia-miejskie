@@ -64,7 +64,7 @@
 }
 .notifications__mark-all:hover:not(:disabled),
 .notification-card__mark-read:hover:not(:disabled) {
-    --notifications-action-hover: #ffffff09;
+    --notifications-action-hover: light-dark(var(--surface-hover), #ffffff09);
     background: var(--notifications-action-hover);
     color: var(--text-primary);
 }
@@ -122,7 +122,7 @@
     flex-shrink: 0;
     width: 36px;
     height: 36px;
-    --notification-card-photo-border: #ffffff12;
+    --notification-card-photo-border: light-dark(var(--border-subtle), #ffffff12);
     border: 1px solid var(--notification-card-photo-border);
     border-radius: 4px;
     object-fit: cover;

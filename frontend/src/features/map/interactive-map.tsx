@@ -18,6 +18,7 @@ import { statuses, type Report } from "@/domain/reports/model";
 import { lodzBoundary } from "@/domain/reports/rules";
 import type { CityMapProps } from "./city-map";
 import { useMapFocus } from "./use-map-focus";
+import { useTheme } from "next-themes";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 maplibregl.setWorkerUrl(`/maplibre-worker-${maplibreVersion}.mjs`);
@@ -34,6 +35,9 @@ export function InteractiveMap({
     onLocate,
     publicView = false,
 }: CityMapProps) {
+    const { resolvedTheme } = useTheme();
+    const mapStyle = resolvedTheme === "light" ? "positron-gl-style" : "dark-matter-gl-style";
+    const [boundaryColor, setBoundaryColor] = useState<string>();
     const map = useRef<MapRef>(null);
     const [loaded, setLoaded] = useState(false);
     const [mapVersion, setMapVersion] = useState(0);
@@ -75,7 +79,7 @@ export function InteractiveMap({
                 mapLib={maplibregl}
                 ref={attachMap}
                 initialViewState={location ? { ...location, zoom: 15 } : center}
-                mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
+                mapStyle={`https://basemaps.cartocdn.com/gl/${mapStyle}/style.json`}
                 maxBounds={bounds}
                 minZoom={10}
                 maxZoom={19}
@@ -91,12 +95,13 @@ export function InteractiveMap({
                 }}
                 canvasContextAttributes={{ antialias: true }}
                 cursor={onLocate ? "crosshair" : "grab"}
-                onLoad={(event) => {
-                    const boundaryColor = getComputedStyle(event.target.getContainer())
-                        .getPropertyValue("--city-map-boundary")
-                        .trim();
-                    event.target.setPaintProperty("lodz-outline", "line-color", boundaryColor);
-                    setLoaded(true);
+                onLoad={() => setLoaded(true)}
+                onStyleData={(event) => {
+                    setBoundaryColor(
+                        getComputedStyle(event.target.getContainer())
+                            .getPropertyValue("--city-map-boundary")
+                            .trim(),
+                    );
                 }}
                 onError={(event) => {
                     if (!event.target) setUnavailable(true);
@@ -120,17 +125,20 @@ export function InteractiveMap({
                         }
                         position="top-right"
                     />
-                    <Source id="lodz-boundary" type="geojson" data={lodzBoundary}>
-                        <Layer
-                            id="lodz-outline"
-                            type="line"
-                            paint={{
-                                "line-width": 2,
-                                "line-opacity": 0.65,
-                                "line-dasharray": [3, 3],
-                            }}
-                        />
-                    </Source>
+                    {boundaryColor && (
+                        <Source id="lodz-boundary" type="geojson" data={lodzBoundary}>
+                            <Layer
+                                id="lodz-outline"
+                                type="line"
+                                paint={{
+                                    "line-color": boundaryColor,
+                                    "line-width": 2,
+                                    "line-opacity": 0.65,
+                                    "line-dasharray": [3, 3],
+                                }}
+                            />
+                        </Source>
+                    )}
                     {reports.map((report) => (
                         <ReportMarker
                             key={report.id}

@@ -39,7 +39,7 @@
     color: var(--text-primary);
 }
 .demo-controls__success {
-    --demo-controls-success-text: #a5d6b8;
+    --demo-controls-success-text: light-dark(var(--feedback-success-text), #a5d6b8);
     color: var(--demo-controls-success-text);
     font-size: 10px;
 }

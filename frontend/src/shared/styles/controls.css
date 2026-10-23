@@ -6,10 +6,10 @@
     height: 16px;
     min-width: 24px;
     padding: 0 4px;
-    --count-badge-border: #414141;
-    --count-badge-background: #303033;
-    --count-badge-text: #bdbdc5;
-    --count-badge-shadow: 0 0 0 0.5px #0e0e0e;
+    --count-badge-border: light-dark(var(--border-default), #414141);
+    --count-badge-background: light-dark(var(--surface-emphasis), #303033);
+    --count-badge-text: light-dark(var(--text-secondary), #bdbdc5);
+    --count-badge-shadow: 0 0 0 0.5px light-dark(var(--border-subtle), #0e0e0e);
     border: 0.5px solid var(--count-badge-border);
     border-radius: 999px;
     background: var(--count-badge-background);
@@ -37,7 +37,7 @@
 }
 .eyebrow {
     display: block;
-    --eyebrow-text: #a29aa8;
+    --eyebrow-text: light-dark(var(--text-muted), #a29aa8);
     color: var(--eyebrow-text);
     font-size: 9px;
     font-weight: 500;
@@ -69,13 +69,17 @@
         box-shadow 150ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 .button--primary {
-    color: var(--control-text);
+    color: var(--text-inverse);
     background: var(--accent);
     border-color: transparent;
     box-shadow: var(--button-primary-shadow);
 }
 .button--primary:hover:not(:disabled) {
     background: var(--accent-hover);
+    box-shadow: var(--button-primary-hover-shadow);
+}
+.button--primary:active:not(:disabled) {
+    box-shadow: var(--button-primary-pressed-shadow);
 }
 .button--secondary {
     background: var(--control-background);
@@ -85,6 +89,10 @@
 }
 .button--secondary:hover:not(:disabled) {
     background: var(--control-hover);
+    box-shadow: var(--control-hover-shadow);
+}
+.button--secondary:active:not(:disabled) {
+    box-shadow: var(--control-pressed-shadow);
 }
 .icon-button {
     width: 31px;
@@ -97,11 +105,11 @@
     border: 1px solid var(--border-default);
     border-radius: 5px;
     color: var(--text-secondary);
-    --icon-button-background: #222225;
+    --icon-button-background: light-dark(var(--control-background), #222225);
     background: var(--icon-button-background);
 }
-.icon-button:hover {
-    --icon-button-hover: #313136;
+.icon-button:hover:where(:not(:disabled)) {
+    --icon-button-hover: light-dark(var(--control-hover), #313136);
     background: var(--icon-button-hover);
 }
 .text-link {
@@ -161,8 +169,9 @@
     appearance: none;
 }
 .search-field:focus-within {
-    --search-field-focus-border: #9b87f5;
+    --search-field-focus-border: light-dark(var(--focus-ring), #9b87f5);
     border-color: var(--search-field-focus-border);
+    box-shadow: var(--control-hover-shadow);
 }
 .search-field__clear {
     display: grid;
@@ -177,7 +186,7 @@
     padding: 0;
 }
 .search-field__clear:hover {
-    --search-field-clear-hover: #ffffff10;
+    --search-field-clear-hover: light-dark(var(--surface-hover), #ffffff10);
     background: var(--search-field-clear-hover);
     color: var(--text-primary);
 }
@@ -201,8 +210,8 @@
 .field .select-control {
     width: 100%;
     padding: 9px 11px;
-    --field-border: #3b3b40;
-    --field-background: #212123;
+    --field-border: light-dark(var(--border-default), #3b3b40);
+    --field-background: light-dark(var(--control-background), #212123);
     border: 1px solid var(--field-border);
     border-radius: 5px;
     background: var(--field-background);
@@ -214,7 +223,7 @@
 .field input:focus,
 .field textarea:focus,
 .field .select-control:focus-visible {
-    --field-focus-border: #a18bd9;
+    --field-focus-border: light-dark(var(--focus-ring), #a18bd9);
     border-color: var(--field-focus-border);
 }
 .field textarea {
@@ -292,11 +301,12 @@
 .filter-select:hover,
 .filter-select:focus-within {
     background: var(--control-hover);
+    box-shadow: var(--control-hover-shadow);
 }
 .filter-select > span {
     white-space: nowrap;
     padding: 0 9px;
-    --filter-select-divider: #ffffff14;
+    --filter-select-divider: light-dark(var(--border-subtle), #ffffff14);
     border-right: 1px solid var(--filter-select-divider);
     color: var(--text-muted);
 }
@@ -310,12 +320,15 @@
     font-size: inherit;
 }
 .select-control__popup {
-    --select-control-menu-background: #17171ce6;
-    --select-control-menu-shadow: #0000003d;
-    --select-control-menu-border: #fdfdff0a;
-    --select-control-menu-highlight: #ffffff0a;
-    --select-control-option-hover: #ffffff0d;
-    --select-control-indicator: #9875ff;
+    --select-control-menu-background: light-dark(var(--overlay-background), #17171ce6);
+    --select-control-menu-shadow: light-dark(
+        color-mix(in srgb, var(--palette-ink) 8%, transparent),
+        #0000003d
+    );
+    --select-control-menu-border: light-dark(var(--border-subtle), #fdfdff0a);
+    --select-control-menu-highlight: light-dark(var(--surface-background), #ffffff0a);
+    --select-control-option-hover: light-dark(var(--surface-hover), #ffffff0d);
+    --select-control-indicator: light-dark(var(--selection-indicator), #9875ff);
     min-width: max(var(--anchor-width), 180px);
     max-width: calc(100vw - 24px);
     border-radius: 12px;
@@ -421,8 +434,8 @@
 }
 .tabs button span {
     margin-left: 5px;
-    --tabs-count-background: #343037;
-    --tabs-count-text: #c6c0cf;
+    --tabs-count-background: light-dark(var(--surface-selected), #343037);
+    --tabs-count-text: light-dark(var(--accent-text), #c6c0cf);
     background: var(--tabs-count-background);
     color: var(--tabs-count-text);
     border-radius: 4px;
@@ -440,7 +453,7 @@
     padding: 35px 22px;
     color: var(--text-muted);
     background: var(--surface-background);
-    --feedback-border: #45414c;
+    --feedback-border: light-dark(var(--border-default), #45414c);
     border: 1px dashed var(--feedback-border);
     border-radius: 8px;
 }
@@ -461,7 +474,7 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
-    --photo-fallback-background: #29272e;
+    --photo-fallback-background: light-dark(var(--surface-emphasis), #29272e);
     background: var(--photo-fallback-background);
     color: var(--text-muted);
     font-size: 9px;

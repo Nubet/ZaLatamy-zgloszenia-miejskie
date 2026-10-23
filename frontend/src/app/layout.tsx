@@ -4,6 +4,7 @@ import "@/shared/styles/palette.css";
 import "@/shared/styles/tokens.css";
 import "./globals.css";
 import { Providers } from "./providers";
+import { ThemeProvider } from "@/shared/ui/theme-provider";
 
 export const metadata: Metadata = {
     title: "ZaŁatamy · Zgłoszenia miejskie w Łodzi",
@@ -14,7 +15,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="pl">
             <body>
-                <Providers>{children}</Providers>
+                <ThemeProvider>
+                    <Providers>{children}</Providers>
+                </ThemeProvider>
             </body>
         </html>
     );

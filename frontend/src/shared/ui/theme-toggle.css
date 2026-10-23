@@ -1,0 +1,17 @@
+.theme-toggle {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--control-radius);
+}
+.theme-toggle__moon {
+    display: none;
+}
+.theme-toggle__sun {
+    display: flex;
+}
+:root[data-theme="light"] .theme-toggle__sun {
+    display: none;
+}
+:root[data-theme="light"] .theme-toggle__moon {
+    display: flex;
+}

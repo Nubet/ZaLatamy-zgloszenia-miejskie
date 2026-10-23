@@ -10,9 +10,9 @@
 }
 .city-map,
 .public-map {
-    --city-map-background: #202124;
-    --city-map-overlay-background: #202124ed;
-    --city-map-control-border: #45454b;
+    --city-map-background: light-dark(var(--page-background), #202124);
+    --city-map-overlay-background: light-dark(var(--overlay-background), #202124ed);
+    --city-map-control-border: light-dark(var(--border-default), #45454b);
 }
 .city-map {
     width: 100%;
@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     gap: 7px;
-    --city-map-label-border: #44454b;
+    --city-map-label-border: light-dark(var(--border-default), #44454b);
     border: 1px solid var(--city-map-label-border);
     background: var(--city-map-overlay-background);
     border-radius: 5px;
@@ -40,7 +40,7 @@
 }
 .city-map__city-label small {
     color: var(--text-muted);
-    --city-map-label-divider: #45454a;
+    --city-map-label-divider: light-dark(var(--border-default), #45454a);
     border-left: 1px solid var(--city-map-label-divider);
     margin-left: 2px;
     padding-left: 8px;
@@ -54,7 +54,7 @@
     flex-wrap: wrap;
     gap: 12px;
     max-width: calc(100% - 75px);
-    --city-map-legend-border: #3c3d41;
+    --city-map-legend-border: light-dark(var(--border-default), #3c3d41);
     border: 1px solid var(--city-map-legend-border);
     background: var(--city-map-overlay-background);
     border-radius: 5px;
@@ -66,7 +66,7 @@
     align-items: center;
     gap: 5px;
     font-size: 9px;
-    --city-map-legend-text: #c5c5cb;
+    --city-map-legend-text: light-dark(var(--text-secondary), #c5c5cb);
     color: var(--city-map-legend-text);
 }
 .city-map__legend i {
@@ -85,10 +85,13 @@
 .city-map__actions .icon-button {
     width: 34px;
     height: 34px;
-    --city-map-control-text: #e5e5eb;
+    --city-map-control-text: light-dark(var(--text-primary), #e5e5eb);
     background: var(--city-map-control-background);
     border: 1px solid var(--city-map-control-border);
     color: var(--city-map-control-text);
+}
+.city-map__actions .icon-button:hover:not(:disabled) {
+    background: var(--control-hover);
 }
 .city-map .maplibregl-ctrl-group {
     background: var(--city-map-control-background);
@@ -99,15 +102,18 @@
     width: 34px;
     height: 34px;
 }
+.city-map .maplibregl-ctrl-group button:hover:not(:disabled) {
+    background-color: var(--control-hover);
+}
 .city-map .maplibregl-ctrl-group button + button {
     border-top-color: var(--city-map-control-border);
 }
 .city-map .maplibregl-ctrl-icon {
-    filter: invert(1);
+    filter: var(--map-control-icon-filter);
 }
 .city-map .maplibregl-ctrl-attrib {
-    --city-map-attribution-background: #202124e8;
-    --city-map-attribution-text: #b8b8c2;
+    --city-map-attribution-background: light-dark(var(--overlay-background), #202124e8);
+    --city-map-attribution-text: light-dark(var(--text-secondary), #b8b8c2);
     background: var(--city-map-attribution-background);
     color: var(--city-map-attribution-text);
 }
@@ -115,7 +121,7 @@
     color: inherit;
 }
 .city-map .maplibregl-ctrl-attrib-button {
-    filter: invert(0.8);
+    filter: var(--map-attribution-icon-filter);
 }
 .city-map--loading {
     display: grid;
@@ -131,9 +137,9 @@
     top: 62px;
     max-width: 390px;
     padding: 12px;
-    --city-map-feedback-border: #55515f;
-    --city-map-feedback-background: #252529f5;
-    --city-map-feedback-text: #dedbe5;
+    --city-map-feedback-border: light-dark(var(--border-default), #55515f);
+    --city-map-feedback-background: light-dark(var(--overlay-background), #252529f5);
+    --city-map-feedback-text: light-dark(var(--text-primary), #dedbe5);
     border: 1px solid var(--city-map-feedback-border);
     border-radius: 6px;
     background: var(--city-map-feedback-background);
@@ -144,8 +150,8 @@
     display: block;
     width: 20px;
     height: 20px;
-    --city-map-location-border: #e4d8ff;
-    --city-map-location-shadow: 0 0 0 12px #ab8be726;
+    --city-map-location-border: light-dark(var(--surface-background), #e4d8ff);
+    --city-map-location-shadow: 0 0 0 12px light-dark(var(--accent-soft), #ab8be726);
     border: 3px solid var(--city-map-location-border);
     border-radius: 50%;
     background: var(--city-map-boundary);
@@ -178,7 +184,7 @@
     padding: 16px;
     border: 1px solid var(--city-map-control-border);
     border-radius: 10px;
-    --public-map-toolbar-background: #202124f5;
+    --public-map-toolbar-background: light-dark(var(--overlay-background), #202124f5);
     background: var(--public-map-toolbar-background);
     box-shadow: var(--shadow-md);
 }
@@ -187,9 +193,14 @@
     align-items: center;
     gap: 6px;
     min-height: 32px;
-    margin-bottom: 8px;
     color: var(--text-muted);
     font-size: 11px;
+}
+.public-map__toolbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
 }
 .public-map__home-link:hover,
 .public-map__home-link:focus-visible {
@@ -200,7 +211,7 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 16px;
-    --public-map-title-text: #c5b3ee;
+    --public-map-title-text: light-dark(var(--accent-text), #c5b3ee);
     color: var(--public-map-title-text);
 }
 .public-map__title h1 {
@@ -271,7 +282,7 @@
     border: 1px solid var(--city-map-control-border);
     border-radius: 5px;
     padding: 0 8px;
-    --public-map-filter-background: #29292e;
+    --public-map-filter-background: light-dark(var(--control-background), #29292e);
     background: var(--public-map-filter-background);
     color: var(--text-primary);
     font: inherit;
@@ -301,7 +312,7 @@
     cursor: pointer;
 }
 .public-map__results > button:hover {
-    --public-map-result-hover: #ffffff07;
+    --public-map-result-hover: light-dark(var(--surface-hover), #ffffff07);
     background: var(--public-map-result-hover);
 }
 .public-map__results strong {
@@ -329,8 +340,8 @@
     flex-direction: column;
     width: min(360px, calc(100% - 32px));
     max-height: 760px;
-    --public-map-preview-border: #514960;
-    --public-map-preview-background: #202124fa;
+    --public-map-preview-border: light-dark(var(--dialog-border), #514960);
+    --public-map-preview-background: light-dark(var(--overlay-background), #202124fa);
     border: 1px solid var(--public-map-preview-border);
     border-radius: 10px;
     background: var(--public-map-preview-background);

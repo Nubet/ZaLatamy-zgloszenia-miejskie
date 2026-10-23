@@ -14,6 +14,7 @@ import { ErrorState, LoadingState } from "@/shared/ui/feedback";
 import { CityMap } from "./city-map";
 import { ReportHistory } from "@/features/reports/report-history";
 import { SelectControl } from "@/shared/ui/select-control";
+import { ThemeToggle } from "@/shared/ui/theme-toggle";
 
 function focusCloseButton(node: HTMLButtonElement | null) {
     node?.focus({ preventScroll: true });
@@ -86,10 +87,13 @@ export function PublicMap({ initialSelectedId }: { initialSelectedId: string | n
                 publicView
             />
             <section className="public-map__toolbar" aria-label="Wyszukiwanie zgłoszeń">
-                <Link href="/" className="public-map__home-link">
-                    <ArrowLeft size={14} aria-hidden="true" />
-                    Strona główna
-                </Link>
+                <div className="public-map__toolbar-actions">
+                    <Link href="/" className="public-map__home-link">
+                        <ArrowLeft size={14} aria-hidden="true" />
+                        Strona główna
+                    </Link>
+                    <ThemeToggle />
+                </div>
                 <div className="public-map__title">
                     <MapPin size={19} />
                     <div>

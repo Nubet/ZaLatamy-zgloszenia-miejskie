@@ -8,7 +8,7 @@
     --text-inverse: var(--palette-white);
     --border-default: var(--palette-neutral-700);
     --border-subtle: var(--palette-neutral-800);
-    --accent: #4124fb;
+    --accent: var(--palette-brand);
     --accent-hover: #4b30ff;
     --accent-text: #d8cdf0;
     --accent-soft: #252039;
@@ -44,6 +44,15 @@
         0 4px 4px rgba(42, 42, 42, 0.32), 0 0 0 1px #0e0e0e,
         inset 0 4px 6px rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.15),
         inset 0 -8px 14px rgba(0, 0, 0, 0.15);
+    --button-primary-hover-shadow:
+        var(--button-primary-shadow), 0 3px 12px color-mix(in srgb, var(--accent) 24%, transparent);
+    --button-primary-pressed-shadow:
+        inset 0 2px 5px color-mix(in srgb, var(--palette-black) 28%, transparent),
+        inset 0 0 0 1px color-mix(in srgb, var(--palette-white) 12%, transparent);
+    --control-hover-shadow: var(--control-shadow);
+    --control-pressed-shadow:
+        var(--control-shadow),
+        inset 0 2px 3px color-mix(in srgb, var(--palette-black) 16%, transparent);
     --text-link: #beb0ff;
     --text-link-hover: #ded5ff;
     --feedback-success-text: #a1d1b4;
@@ -102,4 +111,94 @@
     --dialog-border: #50445e;
     --dialog-background: #211e26;
     --dialog-backdrop: #0009;
+    --map-control-icon-filter: invert(1);
+    --map-attribution-icon-filter: invert(0.8);
+    --overlay-background: color-mix(in srgb, var(--surface-background) 94%, transparent);
+    --photo-overlay-background: var(--palette-photo-overlay);
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --text-primary: var(--palette-ink);
+    --text-secondary: var(--palette-neutral-600);
+    --text-muted: var(--palette-neutral-550);
+    --text-subtle: var(--palette-neutral-500);
+    --border-default: var(--palette-neutral-300);
+    --border-subtle: var(--palette-neutral-200);
+    --accent-hover: var(--palette-brand-hover-light);
+    --accent-text: var(--palette-purple-700);
+    --accent-soft: var(--palette-purple-100);
+    --accent-border: var(--palette-purple-300);
+    --page-background: var(--palette-neutral-50);
+    --surface-background: var(--palette-white);
+    --surface-navigation: var(--palette-neutral-100);
+    --surface-hover: var(--palette-neutral-150);
+    --surface-emphasis: var(--palette-neutral-250);
+    --surface-selected: var(--palette-purple-150);
+    --focus-ring: var(--palette-purple-500);
+    --scrollbar-thumb: var(--palette-neutral-400);
+    --shadow-sm: 0 1px 3px color-mix(in srgb, var(--palette-ink) 4%, transparent);
+    --shadow-md: 0 12px 32px color-mix(in srgb, var(--palette-ink) 7%, transparent);
+    --control-background: var(--palette-white);
+    --control-hover: var(--palette-neutral-75);
+    --control-text: var(--palette-ink);
+    --control-shadow:
+        0 0 0 1px color-mix(in srgb, var(--palette-ink) 12%, transparent),
+        0 1px 2px color-mix(in srgb, var(--palette-ink) 6%, transparent),
+        inset 0 1px 0 var(--palette-white);
+    --control-hover-shadow:
+        0 0 0 1px color-mix(in srgb, var(--palette-ink) 18%, transparent),
+        0 2px 4px color-mix(in srgb, var(--palette-ink) 8%, transparent),
+        inset 0 1px 0 var(--palette-white);
+    --control-pressed-shadow:
+        0 0 0 1px color-mix(in srgb, var(--palette-ink) 18%, transparent),
+        inset 0 2px 3px color-mix(in srgb, var(--palette-ink) 9%, transparent);
+    --button-primary-shadow:
+        0 0 0 1px color-mix(in srgb, var(--palette-brand) 80%, var(--palette-black)),
+        0 2px 0 color-mix(in srgb, var(--palette-brand) 65%, var(--palette-black)),
+        0 3px 5px color-mix(in srgb, var(--palette-ink) 18%, transparent),
+        0 6px 14px color-mix(in srgb, var(--palette-brand) 24%, transparent),
+        inset 0 4px 6px color-mix(in srgb, var(--palette-white) 32%, transparent),
+        inset 0 0 0 1px color-mix(in srgb, var(--palette-white) 22%, transparent),
+        inset 0 -8px 14px color-mix(in srgb, var(--palette-black) 22%, transparent);
+    --button-primary-hover-shadow:
+        var(--button-primary-shadow),
+        0 6px 18px color-mix(in srgb, var(--palette-brand) 28%, transparent);
+    --button-primary-pressed-shadow:
+        0 0 0 1px color-mix(in srgb, var(--palette-brand) 80%, var(--palette-black)),
+        inset 0 0 0 1px color-mix(in srgb, var(--palette-white) 12%, transparent),
+        inset 0 2px 5px color-mix(in srgb, var(--palette-black) 24%, transparent);
+    --text-link: var(--palette-purple-750);
+    --text-link-hover: var(--palette-purple-800);
+    --feedback-success-text: var(--palette-green-700);
+    --feedback-error-text: var(--palette-red-700);
+    --feedback-error-background: var(--palette-red-50);
+    --feedback-error-border: var(--palette-red-200);
+    --status-duplicate-text: var(--palette-neutral-600);
+    --status-duplicate-background: var(--palette-neutral-100);
+    --status-duplicate-border: var(--palette-neutral-300);
+    --status-new-marker: var(--palette-yellow-700);
+    --status-accepted-marker: var(--palette-blue-700);
+    --status-progress-marker: var(--palette-purple-650);
+    --status-resolved-marker: var(--palette-green-700);
+    --status-rejected-marker: var(--palette-neutral-550);
+    --category-waste-text: var(--palette-orange-700);
+    --category-waste-background: var(--palette-orange-50);
+    --category-waste-border: var(--palette-orange-200);
+    --category-other-background: var(--palette-neutral-100);
+    --city-map-boundary: var(--palette-purple-600);
+    --city-map-control-background: var(--palette-white);
+    --checkbox-accent: var(--palette-purple-600);
+    --selection-indicator: var(--palette-purple-600);
+    --surface-raised: var(--palette-white);
+    --surface-tinted: var(--palette-purple-25);
+    --surface-highlight: color-mix(in srgb, var(--palette-ink) 4%, transparent);
+    --surface-highlight-subtle: color-mix(in srgb, var(--palette-ink) 2%, transparent);
+    --surface-highlight-faint: color-mix(in srgb, var(--palette-ink) 1%, transparent);
+    --text-highlight: var(--palette-purple-650);
+    --dialog-border: var(--palette-purple-200);
+    --dialog-background: var(--palette-white);
+    --dialog-backdrop: color-mix(in srgb, var(--palette-ink) 35%, transparent);
+    --map-control-icon-filter: none;
+    --map-attribution-icon-filter: none;
 }

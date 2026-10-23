@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import styles from "./landing.module.css";
+import { ThemeToggle } from "@/shared/ui/theme-toggle";
 
 const scrollStep = 50;
 
@@ -38,6 +39,7 @@ export function LandingHeader() {
                 <a href="#pytania">Pytania</a>
             </nav>
             <nav className={styles["landing__navigation"]} aria-label="Główna nawigacja">
+                <ThemeToggle />
                 <Link href="/mapa" className={styles["landing__map-link"]}>
                     Mapa <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>

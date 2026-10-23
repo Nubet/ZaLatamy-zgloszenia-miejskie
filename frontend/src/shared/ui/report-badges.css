@@ -6,7 +6,7 @@
     flex-shrink: 0;
     justify-content: center;
     padding: 0 var(--pill-padding);
-    --status-badge-border: #363638;
+    --status-badge-border: light-dark(var(--border-default), #363638);
     border: 1px solid var(--status-badge-border);
     border-radius: 999px;
     font-size: var(--pill-font-size);
@@ -53,7 +53,7 @@
     white-space: nowrap;
 }
 .priority-label--high {
-    --priority-label-high-text: #e9a197;
+    --priority-label-high-text: light-dark(var(--feedback-error-text), #e9a197);
     color: var(--priority-label-high-text);
 }
 .category-tag {

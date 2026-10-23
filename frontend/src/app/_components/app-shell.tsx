@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Suspense, useState } from "react";
 import { useReports } from "@/application/reports/provider";
 import { AdminNavigation } from "@/features/administration/admin-navigation";
+import { ThemeToggle } from "@/shared/ui/theme-toggle";
 import {
     ArrowLeft,
     ArrowUpRight,
@@ -203,6 +204,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                         <span>{currentPage}</span>
                     </div>
                     <div className="topbar__actions">
+                        <ThemeToggle />
                         <Link href="/" className="topbar__home-link">
                             <ArrowLeft size={14} aria-hidden="true" />
                             Strona główna
