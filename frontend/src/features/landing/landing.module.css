@@ -6,16 +6,17 @@
     --landing-logo-background: light-dark(var(--selection-indicator), #9275da);
     --landing-hero-gradient: linear-gradient(
         180deg,
-        light-dark(color-mix(in srgb, var(--surface-tinted) 90%, transparent), #16161625) 0%,
-        light-dark(color-mix(in srgb, var(--page-background) 94%, transparent), #16161610) 36%,
+        light-dark(color-mix(in srgb, var(--surface-tinted) 50%, transparent), #16161625) 0%,
+        light-dark(color-mix(in srgb, var(--page-background) 68%, transparent), #16161610) 36%,
         var(--page-background) 95%
     );
     --landing-location-text: light-dark(var(--text-secondary), #c9c5d1);
     --landing-location-border: light-dark(var(--border-default), #ffffff20);
     --landing-location-background: light-dark(var(--surface-background), #1b1b1d80);
     --landing-location-icon: light-dark(var(--accent-text), #c4b2f1);
-    --landing-description-text: light-dark(var(--text-secondary), #b0adb7);
-    --landing-access-note-text: light-dark(var(--text-muted), #9d99a6);
+    --landing-description-text: light-dark(var(--text-secondary), #d0cdd6);
+    --landing-access-note-text: light-dark(var(--text-muted), #bbb7c4);
+    --landing-closing-description-text: light-dark(#454552, #b0adb7);
     --landing-preview-background: light-dark(var(--surface-background), #ffffff07);
     --landing-preview-border: light-dark(var(--border-subtle), #ffffff13);
     --landing-preview-shadow: 0 25px 80px
@@ -762,7 +763,7 @@
     position: absolute;
     inset: 0;
     --landing-closing-overlay: light-dark(
-        color-mix(in srgb, var(--page-background) 92%, transparent),
+        color-mix(in srgb, var(--page-background) 68%, transparent),
         transparent
     );
     background:
@@ -776,7 +777,7 @@
 }
 :global(html[data-theme="light"]) .landing__hero-backdrop::before,
 :global(html[data-theme="light"]) .landing__closing-backdrop::before {
-    filter: saturate(0.4);
+    filter: none;
 }
 .landing__closing-content {
     max-width: 600px;
@@ -794,7 +795,7 @@
     max-width: 450px;
     font-size: 13px;
     line-height: 1.9;
-    color: var(--text-muted);
+    color: var(--landing-closing-description-text);
 }
 .landing__footer {
     padding-top: 56px;
