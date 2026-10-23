@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Suspense, useState } from "react";
 import { useReports } from "@/application/reports/provider";
@@ -83,7 +84,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                         onClick={() => setMenuOpen(false)}
                     >
                         <span className="brand__symbol">
-                            <Building2 size={21} strokeWidth={1.6} />
+                            <Image
+                                src="/logo-transparent.svg"
+                                alt=""
+                                aria-hidden="true"
+                                width={26}
+                                height={26}
+                            />
                         </span>
                         <span className="sidebar__label">
                             <strong>ZaŁatamy</strong>

@@ -112,8 +112,7 @@
     display: inline-block;
     width: 27px;
     height: 27px;
-    border-radius: 5px;
-    background: var(--landing-logo-background);
+    object-fit: contain;
     flex-shrink: 0;
 }
 .landing__section-nav,
@@ -301,7 +300,6 @@
 .map-preview__brand .landing__logo {
     width: 21px;
     height: 21px;
-    border-radius: 4px;
 }
 .map-preview__sidebar-label {
     font-size: 8px;

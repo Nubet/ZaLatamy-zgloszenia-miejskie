@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight, Bell, Bookmark, MapPinned, Plus } from "lucide-react";
 import { useReports } from "@/application/reports/provider";
@@ -30,7 +31,15 @@ export function LandingOverview() {
             <div className={styles["map-preview__body"]}>
                 <aside className={styles["map-preview__sidebar"]} aria-label="Skróty do aplikacji">
                     <span className={styles["map-preview__brand"]}>
-                        <span className={styles["landing__logo"]} aria-hidden="true" /> ZaŁatamy
+                        <Image
+                            className={styles["landing__logo"]}
+                            src="/logo-transparent.svg"
+                            alt=""
+                            aria-hidden="true"
+                            width={21}
+                            height={21}
+                        />
+                        ZaŁatamy
                     </span>
                     <span className={styles["map-preview__sidebar-label"]}>PRZESTRZEŃ MIEJSKA</span>
                     <Link

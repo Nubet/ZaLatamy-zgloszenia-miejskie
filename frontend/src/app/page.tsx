@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
     ArrowRight,
     ArrowUp,
@@ -413,7 +414,14 @@ export default function HomePage() {
                             className={styles["landing__brand"]}
                             aria-label="ZaŁatamy — strona główna"
                         >
-                            <span className={styles["landing__logo"]} aria-hidden="true" />
+                            <Image
+                                className={styles["landing__logo"]}
+                                src="/logo-transparent.svg"
+                                alt=""
+                                aria-hidden="true"
+                                width={27}
+                                height={27}
+                            />
                             <strong>ZaŁatamy</strong>
                         </Link>
                         <p>

@@ -73,6 +73,11 @@
     border-radius: 8px;
     background: var(--surface-emphasis);
 }
+.brand__symbol img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
 .brand strong {
     display: block;
     font-size: var(--navigation-font-size);
