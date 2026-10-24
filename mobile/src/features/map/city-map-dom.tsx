@@ -4,6 +4,7 @@ import { Component, useCallback, useState, type ReactNode } from 'react';
 import { Map, Layer, Marker, NavigationControl, Source, type MapRef } from 'react-map-gl/maplibre';
 import * as maplibregl from 'maplibre-gl';
 import { version } from 'maplibre-gl/package.json';
+import type { Status } from '@/domain/reports/model';
 import { lodzBoundary } from '@/domain/reports/boundary';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './map.css';
@@ -13,7 +14,7 @@ export type MapPoint = {
   title: string;
   longitude: number;
   latitude: number;
-  color: string;
+  status: Status;
 };
 
 type Props = {
@@ -85,25 +86,42 @@ function MapContent({ theme, points, location, selectedId, onSelect, onLocate }:
             />
           </Source>
           {points.map((point) => (
-            <Marker key={point.id} longitude={point.longitude} latitude={point.latitude}>
+            <Marker
+              key={point.id}
+              longitude={point.longitude}
+              latitude={point.latitude}
+              style={{ zIndex: point.id === selectedId ? 2 : 1 }}
+            >
               <button
-                className={`city-map__marker ${point.id === selectedId ? 'city-map__marker--selected' : ''}`}
-                style={{ color: point.color }}
+                type="button"
+                className={`city-map__marker city-map__status--${point.status}`}
                 aria-label={point.title}
+                aria-pressed={point.id === selectedId}
                 onClick={(event) => {
                   event.stopPropagation();
                   void onSelect?.(point.id);
                 }}
               >
-                ●
+                <svg viewBox="-24 -24 48 48" aria-hidden="true">
+                  <circle
+                    r={point.id === selectedId ? 23 : 17}
+                    fill="currentColor"
+                    opacity={point.id === selectedId ? 0.25 : 0.1}
+                  />
+                  <circle
+                    className="city-map__marker-center"
+                    r={point.id === selectedId ? 11 : 8}
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <circle r={point.id === selectedId ? 5 : 3.5} fill="currentColor" />
+                </svg>
               </button>
             </Marker>
           ))}
           {location && (
             <Marker longitude={location.longitude} latitude={location.latitude}>
-              <span className="city-map__pin" aria-label="Wybrana lokalizacja">
-                ＋
-              </span>
+              <span className="city-map__pin" aria-label="Wybrana lokalizacja" />
             </Marker>
           )}
         </Map>

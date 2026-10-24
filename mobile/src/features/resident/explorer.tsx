@@ -125,9 +125,9 @@ function ExplorerContent({ state }: { state: DemoState }) {
           theme={name}
           points={reports.map((report) => ({
             id: report.id,
-            title: report.title,
+            title: `${report.title}, ${report.address}`,
             ...report.location,
-            color: colors[report.status],
+            status: report.status,
           }))}
           selectedId={selectedId}
           onSelect={async (id) => setSelectedId(id)}
