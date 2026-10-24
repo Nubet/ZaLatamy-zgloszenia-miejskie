@@ -1,2 +1,2 @@
-import { Heading, Screen } from '@/shared/ui/primitives';
-export default function Page() { return <Screen><Heading title="Do obsługi" /></Screen>; }
+import { WorkScreen } from '@/features/official/work-screen';
+export default function Page() { return <WorkScreen view="active" />; }
