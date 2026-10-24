@@ -131,7 +131,7 @@ function ExplorerContent({ state }: { state: DemoState }) {
           }))}
           selectedId={selectedId}
           onSelect={async (id) => setSelectedId(id)}
-          dom={{ style: { flex: 1 }, scrollEnabled: false, useExpoDOMWebView: false }}
+          dom={{ style: { flex: 1 }, scrollEnabled: false }}
         />
         {selected && (
           <View style={{ position: 'absolute', bottom: 10, left: 10, right: 10 }}>

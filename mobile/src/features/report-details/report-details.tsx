@@ -70,7 +70,7 @@ export function ReportDetails({
                   theme={name}
                   points={[]}
                   location={report.location}
-                  dom={{ style: { flex: 1 }, scrollEnabled: false, useExpoDOMWebView: false }}
+                  dom={{ style: { flex: 1 }, scrollEnabled: false }}
                 />
               </View>
             </Card>

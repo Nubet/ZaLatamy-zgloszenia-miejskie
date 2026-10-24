@@ -7,6 +7,7 @@ export default function OfficialLayout() {
       screenOptions={{
         headerStyle: { backgroundColor: colors.background },
         headerTintColor: colors.text,
+        headerBackTitle: 'Wstecz',
         contentStyle: { backgroundColor: colors.background },
         headerShadowVisible: false,
       }}
