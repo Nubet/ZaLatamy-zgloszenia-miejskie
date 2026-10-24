@@ -3,8 +3,19 @@
   "compilerOptions": {
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    "types": ["node", "react", "react-native"],
-    "paths": { "@/*": ["./src/*"] }
+    "types": [
+      "node",
+      "react",
+      "react-native"
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   },
-  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
