@@ -1,4 +1,5 @@
 import { Redirect } from 'expo-router';
+import { Image } from 'expo-image';
 import { View, Pressable } from 'react-native';
 import { ArrowUpRight, Building2, MapPinned, Moon, Sun } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -31,9 +32,12 @@ export function RoleSelection() {
     <Screen>
       <View style={{ paddingTop: insets.top + 20, gap: 20 }}>
         <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
-          <View style={{ backgroundColor: colors.accent, padding: 10, borderRadius: 12 }}>
-            <MapPinned color="#ffffff" size={24} />
-          </View>
+          <Image
+            source={require('../../../assets/logo.svg')}
+            style={{ width: 44, height: 44 }}
+            contentFit="contain"
+            accessibilityLabel="Logo ZaŁatamy"
+          />
           <Copy size={23} weight="800">
             ZaŁatamy
           </Copy>
