@@ -67,6 +67,7 @@ export function ReportEditor({
                     <label className="field">
                         Status zgłoszenia
                         <SelectControl
+                            aria-label="Status zgłoszenia"
                             disabled={mutation.isPending}
                             value={status}
                             onValueChange={(value) => {
@@ -85,6 +86,7 @@ export function ReportEditor({
                     <label className="field">
                         Priorytet urzędu
                         <SelectControl
+                            aria-label="Priorytet urzędu"
                             disabled={mutation.isPending}
                             value={priority}
                             onValueChange={(value) => {
@@ -108,6 +110,7 @@ export function ReportEditor({
                     <label className="field">
                         Połącz z istniejącą sprawą
                         <SelectControl
+                            aria-label="Połącz z istniejącą sprawą"
                             disabled={mutation.isPending}
                             required
                             value={duplicateOf}

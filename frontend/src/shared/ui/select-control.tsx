@@ -2,6 +2,7 @@
 
 import { Select } from "@base-ui/react/select";
 import { ChevronDown } from "lucide-react";
+import { useCallback, useState } from "react";
 
 export type SelectControlProps = {
     value: string;
@@ -20,6 +21,12 @@ export function SelectControl({
     onValueChange,
     ...props
 }: SelectControlProps) {
+    const [portalContainer, setPortalContainer] = useState<HTMLDialogElement | null>(null);
+    const attachTrigger = useCallback((element: HTMLButtonElement | null) => {
+        // Native modal dialogs make portals outside their top layer inert.
+        if (element) setPortalContainer(element.closest("dialog"));
+    }, []);
+
     return (
         <Select.Root
             {...props}
@@ -28,13 +35,13 @@ export function SelectControl({
                 if (value !== null) onValueChange(value);
             }}
         >
-            <Select.Trigger className="select-control" aria-label={ariaLabel}>
+            <Select.Trigger ref={attachTrigger} className="select-control" aria-label={ariaLabel}>
                 <Select.Value className="select-control__value" />
                 <Select.Icon className="select-control__icon">
                     <ChevronDown size={12} aria-hidden="true" />
                 </Select.Icon>
             </Select.Trigger>
-            <Select.Portal>
+            <Select.Portal container={portalContainer ?? undefined}>
                 <Select.Positioner
                     className="select-control__positioner"
                     sideOffset={6}
