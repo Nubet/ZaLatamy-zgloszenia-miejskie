@@ -116,6 +116,7 @@ export function useReportForm() {
         setAnalysisState({ status: "pending" });
         try {
             setProposal(await analysis.analyze(photo, proposal.category));
+            setReviewedDuplicates(false);
             setAnalysisState({ status: "done" });
             goToStep(2);
         } catch (cause) {

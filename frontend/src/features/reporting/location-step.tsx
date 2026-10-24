@@ -6,7 +6,7 @@ import { LocationPicker } from "./location-picker";
 import type { useReportForm } from "./use-report-form";
 
 export function LocationStep({ form }: { form: ReturnType<typeof useReportForm> }) {
-    const pending = form.analysisState.status === "pending";
+    const pending = form.saving;
     const disabled =
         pending || !form.location || !isWithinLodz(form.location) || form.address.trim().length < 3;
 
@@ -14,31 +14,35 @@ export function LocationStep({ form }: { form: ReturnType<typeof useReportForm> 
         <section>
             <h2>Gdzie jest problem?</h2>
             <p className="form-card__intro">
-                Użyj GPS lub wskaż punkt na mapie. Możesz poprawić lokalizację i wpisać adres
-                ręcznie.
+                Zaznacz miejsce usterki na mapie i dopisz adres lub charakterystyczny punkt.
             </p>
-            <button
-                type="button"
-                className="button button--secondary"
-                disabled={pending || form.gps.status === "pending"}
-                onClick={() => void form.locate()}
-            >
-                {form.gps.status === "pending" ? (
-                    <LoaderCircle size={16} className="loading-indicator" aria-hidden="true" />
-                ) : (
-                    <LocateFixed size={16} aria-hidden="true" />
-                )}
-                {form.gps.status === "pending"
-                    ? "Ustalanie lokalizacji…"
-                    : "Użyj mojej lokalizacji"}
-            </button>
+            <div className="location-picker__toolbar">
+                <span>
+                    <LocateFixed size={18} /> Jesteś w miejscu problemu?
+                </span>
+                <button
+                    type="button"
+                    className="button button--secondary"
+                    disabled={pending || form.gps.status === "pending"}
+                    onClick={() => void form.locate()}
+                >
+                    {form.gps.status === "pending" ? (
+                        <LoaderCircle size={16} className="loading-indicator" aria-hidden="true" />
+                    ) : (
+                        <LocateFixed size={16} aria-hidden="true" />
+                    )}
+                    {form.gps.status === "pending"
+                        ? "Ustalanie lokalizacji…"
+                        : "Użyj mojej lokalizacji"}
+                </button>
+            </div>
             <p className="form-hint">
                 <output>
                     {form.gps.status === "found"
                         ? `Dokładność GPS: około ${form.gps.accuracy} m. Sprawdź punkt i w razie potrzeby popraw go na mapie.`
                         : form.gps.status === "pending"
                           ? "Czekamy na odczyt GPS. Możesz też od razu wskazać punkt na mapie."
-                          : "Lokalizacja urządzenia nie musi być miejscem problemu — sprawdź wskazany punkt."}
+                          : "Możesz też wybrać punkt na mapie bez udostępniania GPS."}
                 </output>
             </p>
             {form.gps.status === "error" && (
@@ -54,20 +58,6 @@ export function LocationStep({ form }: { form: ReturnType<typeof useReportForm> 
                     onAddress={form.setAddress}
                 />
             </fieldset>
-            {form.analysisState.status === "error" && (
-                <div className="inline-error" role="alert">
-                    {form.analysisState.message}
-                </div>
-            )}
-            <button
-                type="button"
-                className="text-link"
-                disabled={disabled}
-                onClick={() => void form.analyze()}
-            >
-                {pending ? "Przygotowywanie opisu…" : "Pomóż mi przygotować opis ze zdjęcia"}
-                <ArrowRight size={13} />
-            </button>
             <div className="form-actions">
                 <button
                     className="button button--secondary"

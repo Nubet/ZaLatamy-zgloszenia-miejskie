@@ -1,53 +1,55 @@
-import { Camera, MapPin, ShieldCheck, Sparkles, ArrowDown } from "lucide-react";
+import { Camera, MapPin, FileText, Check } from "lucide-react";
+import { categories } from "@/domain/reports/model";
+import type { useReportForm } from "./use-report-form";
 
-export function ReportingAside() {
+export function ReportingAside({ form }: { form: ReturnType<typeof useReportForm> }) {
+    const items = [
+        {
+            icon: Camera,
+            label: "Zdjęcia",
+            value: form.photos.length ? `${form.photos.length} z 5 dodanych` : "Jeszcze nie dodano",
+            done: form.photos.length > 0,
+        },
+        {
+            icon: MapPin,
+            label: "Miejsce",
+            value: form.address || "Jeszcze nie wybrano",
+            done: !!form.location && !!form.address,
+        },
+        {
+            icon: FileText,
+            label: "Opis",
+            value: form.proposal.title || "Jeszcze nie uzupełniono",
+            done: !!form.proposal.title && !!form.proposal.description,
+        },
+    ];
     return (
-        <aside className="reporting-aside">
-            <div className="reporting-aside__illustration">
-                <span>
-                    <Camera size={24} />
-                </span>
-                <ArrowDown size={17} />
-                <span className="reporting-aside__ai-symbol">
-                    <Sparkles size={24} />
-                </span>
-                <ArrowDown size={17} />
-                <span>
-                    <ShieldCheck size={24} />
-                </span>
-            </div>
-            <span className="eyebrow">MNIEJ PISANIA, WIĘCEJ DZIAŁANIA</span>
-            <h2>
-                Ty robisz zdjęcie.
-                <br />
-                AI pomaga z resztą.
-            </h2>
-            <p className="reporting-aside__intro">
-                Rozpoznanie usterki, kategoria i gotowy opis — do sprawdzenia przed wysłaniem.
-            </p>
-            <ul className="reporting-aside__tips">
-                <li>
-                    <Camera size={16} />
-                    <span>
-                        <strong>Zdjęcie usterki</strong>
-                        Pokaż problem z odległości pozwalającej ocenić skalę uszkodzenia.
-                    </span>
-                </li>
-                <li>
-                    <MapPin size={16} />
-                    <span>
-                        <strong>Lokalizacja</strong>
-                        Wskaż punkt na mapie lub podaj najbliższy numer budynku albo skrzyżowanie.
-                    </span>
-                </li>
-                <li>
-                    <ShieldCheck size={16} />
-                    <span>
-                        <strong>Prywatność</strong>
-                        Unikaj fotografowania twarzy, tablic rejestracyjnych i danych osobowych.
-                    </span>
-                </li>
+        <aside className="reporting-aside" aria-label="Podsumowanie przygotowywanego zgłoszenia">
+            <h2>Twoje zgłoszenie</h2>
+            <p className="reporting-aside__intro">Wszystko w jednym miejscu.</p>
+            <ul className="reporting-aside__summary">
+                {items.map(({ icon: Icon, label, value, done }) => (
+                    <li key={label}>
+                        <Icon size={18} aria-hidden="true" />
+                        <span>
+                            <strong>{label}</strong>
+                            <small>{value}</small>
+                        </span>
+                        {done && (
+                            <Check
+                                size={16}
+                                className="reporting-aside__check"
+                                aria-label="Uzupełniono"
+                            />
+                        )}
+                    </li>
+                ))}
             </ul>
+            {form.step === 2 && (
+                <p className="reporting-aside__category">
+                    Kategoria: {categories[form.proposal.category]}
+                </p>
+            )}
         </aside>
     );
 }
