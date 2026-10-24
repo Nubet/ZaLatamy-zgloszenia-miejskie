@@ -8,7 +8,7 @@ export type WorkFilters = {
   status: Status | '';
   priority: Priority | '';
   sort: 'priority' | 'confirmations' | 'newest' | 'oldest';
-  days: 'all' | '30' | '90' | 'custom';
+  days: 'all' | '7' | '30' | '90' | 'month' | 'custom';
   from: string;
   to: string;
 };
@@ -59,10 +59,15 @@ export function filterWorkReports(
 ) {
   if (dateError(filters)) return [];
   const allowed = viewStatuses(view);
+  const today = dayFormat.format(now);
   const cutoff =
-    filters.days === '30' || filters.days === '90'
-      ? dayFormat.format(new Date(now.getTime() - (Number(filters.days) - 1) * 86400000))
-      : '';
+    filters.days === 'month'
+      ? `${today.slice(0, 7)}-01`
+      : filters.days === '7' || filters.days === '30' || filters.days === '90'
+        ? new Date(Date.parse(`${today}T12:00:00Z`) - (Number(filters.days) - 1) * 86400000)
+            .toISOString()
+            .slice(0, 10)
+        : '';
   const search = filters.search.trim().toLocaleLowerCase('pl');
   const rank = { high: 0, normal: 1, low: 2 };
   return reports
@@ -74,7 +79,7 @@ export function filterWorkReports(
         (!filters.category || report.category === filters.category) &&
         (!filters.priority || report.priority === filters.priority) &&
         `${report.title} ${report.id} ${report.address}`.toLocaleLowerCase('pl').includes(search) &&
-        (!cutoff || day >= cutoff) &&
+        (!cutoff || (day >= cutoff && day <= today)) &&
         (filters.days !== 'custom' ||
           ((!filters.from || day >= filters.from) && (!filters.to || day <= filters.to)))
       );

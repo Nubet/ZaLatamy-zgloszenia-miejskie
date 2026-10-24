@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import { router } from 'expo-router';
 import type { DemoState } from '@/domain/reports/model';
-import { Choice, Copy, Field, Sheet } from '@/shared/ui/primitives';
+import { Copy, Field } from '@/shared/ui/primitives';
 import { ReportsBoundary } from '@/features/report-details/reports-boundary';
 import { ReportList } from '@/features/report-details/report-list';
 import { defaultFilters, filterWorkReports, type WorkView } from './work-queue';
-import { WorkFilters } from './work-filters';
+import { WorkControls } from './work-filters';
 
 export function WorkScreen({ view }: { view: WorkView }) {
   return (
@@ -15,7 +15,6 @@ export function WorkScreen({ view }: { view: WorkView }) {
 }
 function Queue({ view, state }: { view: WorkView; state: DemoState }) {
   const [filters, setFilters] = useState(() => defaultFilters(view));
-  const [filtersOpen, setFiltersOpen] = useState(false);
   const filtered = filterWorkReports(state.reports, view, filters);
   return (
     <ReportList
@@ -30,25 +29,27 @@ function Queue({ view, state }: { view: WorkView; state: DemoState }) {
             value={filters.search}
             onChangeText={(search) => setFilters({ ...filters, search })}
           />
-          <View
-            style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
-          >
-            <Choice
-              label={`Filtry i sortowanie${JSON.stringify(filters) !== JSON.stringify(defaultFilters(view)) ? ' ●' : ''}`}
-              selected={filtersOpen}
-              onPress={() => setFiltersOpen(!filtersOpen)}
-            />
-            <Copy muted size={13}>
-              {filtered.length} spraw
+          <WorkControls value={filters} view={view} onChange={setFilters} />
+          <View style={{ gap: 4 }} accessibilityLiveRegion="polite">
+            <Copy weight="600" size={14}>
+              {view === 'active'
+                ? 'Niezakończone sprawy'
+                : view === 'archive'
+                  ? 'Zakończone sprawy'
+                  : 'Wszystkie statusy'}{' '}
+              · {filtered.length}
             </Copy>
+            {filters.search.trim() && (
+              <Copy muted size={13}>
+                Wyniki dla „{filters.search.trim()}” w wybranym zakresie dat i filtrów.
+              </Copy>
+            )}
+            {!filtered.length && (
+              <Copy muted size={13}>
+                Zmień daty, wyszukiwane hasło lub pozostałe filtry.
+              </Copy>
+            )}
           </View>
-          <Sheet
-            title="Filtry i sortowanie"
-            visible={filtersOpen}
-            onClose={() => setFiltersOpen(false)}
-          >
-            <WorkFilters value={filters} view={view} onChange={setFilters} />
-          </Sheet>
         </View>
       }
     />
