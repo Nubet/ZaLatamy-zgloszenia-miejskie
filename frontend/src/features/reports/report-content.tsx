@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Clock3, MapPin, Flag, CornerDownRight, Check, Building2 } from "lucide-react";
+import { Clock3, MapPin, Flag, CornerDownRight, Check } from "lucide-react";
 import { priorities, type Report } from "@/domain/reports/model";
 import { ReportGallery } from "@/shared/ui/report-gallery";
 import { CategoryBadge, StatusBadge } from "@/shared/ui/report-badges";
@@ -25,13 +25,6 @@ export function ReportContent({
     );
     const stages = ["new", "accepted", "progress", "resolved"];
     const activeStage = stages.indexOf(report.status);
-    const unit = {
-        road: "Zarząd Dróg i Transportu",
-        lighting: "Zarząd Dróg i Transportu",
-        waste: "Wydział Gospodarki Komunalnej",
-        greenery: "Zarząd Zieleni Miejskiej",
-        other: "Centrum Kontaktu z Mieszkańcami",
-    }[report.category];
     return (
         <div className="report-content">
             {activeStage >= 0 && (
@@ -68,12 +61,6 @@ export function ReportContent({
                 <span>
                     <Clock3 size={14} />
                     {formatDate(report.createdAt)}
-                </span>
-            </div>
-            <div className="responsible-unit">
-                <Building2 size={16} />
-                <span>
-                    Sugerowana jednostka<small>{unit}</small>
                 </span>
             </div>
             {report.duplicateOf && (
