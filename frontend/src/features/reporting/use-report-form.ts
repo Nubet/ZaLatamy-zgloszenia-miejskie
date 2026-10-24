@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useIsMutating } from "@tanstack/react-query";
 import { useAnalysis, useReports, useReportMutation } from "@/application/reports/provider";
 import { draftSchema, maxPhotos, type Location, type ReportDraft } from "@/domain/reports/model";
@@ -20,6 +21,7 @@ const emptyProposal: AnalysisResult = {
 };
 
 export function useReportForm() {
+    const router = useRouter();
     const saving = useIsMutating({ mutationKey: ["reports"] }) > 0;
     const analysis = useAnalysis();
     const reports = useReports();
@@ -33,13 +35,11 @@ export function useReportForm() {
     const [proposal, setProposal] = useState(emptyProposal);
     const [analysisState, setAnalysisState] = useState<AnalysisState>({ status: "idle" });
     const [error, setError] = useState("");
-    const [createdId, setCreatedId] = useState<string>();
-    const [confirmedId, setConfirmedId] = useState<string>();
     const [reviewedDuplicates, setReviewedDuplicates] = useState(false);
     const create = useReportMutation(
         async (gateway, input: { draft: ReportDraft; photos: File[] }) => {
             const report = await gateway.create(input.draft, input.photos);
-            setCreatedId(report.id);
+            router.push(`/zgloszenia/${report.id}`);
         },
     );
     const similar = location
@@ -182,9 +182,7 @@ export function useReportForm() {
             goToStep(2);
         },
         error: error || create.error?.message,
-        createdId,
-        confirmedId,
-        confirmExisting: setConfirmedId,
+        confirmExisting: (id: string) => router.push(`/zgloszenia/${id}`),
         reviewedDuplicates,
         setReviewedDuplicates,
         similar,

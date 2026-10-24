@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import { Check, CheckCircle2 } from "lucide-react";
+import { Check } from "lucide-react";
 import { PageHeading } from "@/shared/ui/page-heading";
 import { useReportForm } from "./use-report-form";
 import { PhotoStep } from "./photo-step";
@@ -13,12 +13,15 @@ import { ReportingAside } from "./reporting-aside";
 const steps = ["Dodaj zdjęcia", "Wskaż miejsce", "Opisz i wyślij"];
 
 export function ReportForm() {
+    const { bfcacheId } = useRouter();
+    return <ReportFormContent key={bfcacheId} />;
+}
+
+function ReportFormContent() {
     const form = useReportForm();
     const focusStep = useCallback((element: HTMLDivElement | null) => {
         element?.focus({ preventScroll: true });
     }, []);
-    if (form.createdId) return <ReportSuccess id={form.createdId} />;
-    if (form.confirmedId) return <ReportSuccess id={form.confirmedId} confirmed />;
 
     return (
         <div className="page report-form">
@@ -58,45 +61,6 @@ export function ReportForm() {
                     )}
                 </div>
                 <ReportingAside />
-            </div>
-        </div>
-    );
-}
-
-function ReportSuccess({ id, confirmed = false }: { id: string; confirmed?: boolean }) {
-    return (
-        <div className="page">
-            <div
-                className="success-card"
-                tabIndex={-1}
-                ref={(element) => {
-                    element?.focus();
-                }}
-            >
-                <span className="success-card__symbol">
-                    <CheckCircle2 size={36} />
-                </span>
-                <h1>Dobry krok dla Twojej okolicy.</h1>
-                <p>
-                    {confirmed ? (
-                        <>
-                            Potwierdzasz problem w sprawie <strong>{id}</strong>. Nie utworzono
-                            nowego zgłoszenia.
-                        </>
-                    ) : (
-                        <>
-                            Zgłoszenie <strong>{id}</strong> zostało pomyślnie zarejestrowane.
-                        </>
-                    )}
-                </p>
-                <div className="button-row">
-                    <Link className="button button--primary" href={`/zgloszenia/${id}`}>
-                        Śledź zgłoszenie
-                    </Link>
-                    <Link className="button button--secondary" href="/mapa">
-                        Wróć do mapy
-                    </Link>
-                </div>
             </div>
         </div>
     );
