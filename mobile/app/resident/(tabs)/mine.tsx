@@ -1,2 +1,1 @@
-import { Heading, Screen } from '@/shared/ui/primitives';
-export default function Page() { return <Screen><Heading title="Moje sprawy" /></Screen>; }
+export { MyReports as default } from '@/features/resident/my-reports';

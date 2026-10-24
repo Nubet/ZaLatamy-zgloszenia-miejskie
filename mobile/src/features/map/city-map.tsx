@@ -1,7 +1,8 @@
 'use dom';
 
 import { useState } from 'react';
-import Map, { Marker, NavigationControl } from 'react-map-gl/maplibre';
+import Map, { Layer, Marker, NavigationControl, Source } from 'react-map-gl/maplibre';
+import { lodzBoundary } from '@/domain/reports/boundary';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './map.css';
 
@@ -26,10 +27,12 @@ export default function CityMap({ theme, points, location, selectedId, onSelect,
       initialViewState={{ longitude: location?.longitude ?? 19.456, latitude: location?.latitude ?? 51.7592, zoom: location ? 15 : 12.3 }}
       mapStyle={`https://basemaps.cartocdn.com/gl/${style}/style.json`}
       minZoom={10} maxZoom={19} dragRotate={false} touchPitch={false}
+      maxBounds={[19.264, 51.642, 19.702, 51.904]}
       onError={() => setError(true)} onIdle={() => setError(false)}
       onClick={onLocate ? (event) => void onLocate({ longitude: event.lngLat.lng, latitude: event.lngLat.lat }) : undefined}
     >
       <NavigationControl showCompass={false} />
+      <Source id="lodz-boundary" type="geojson" data={lodzBoundary}><Layer id="lodz-outline" type="line" paint={{ 'line-color': theme === 'light' ? '#6240ce' : '#b198ec', 'line-width': 2, 'line-dasharray': [3, 3] }} /></Source>
       {points.map(point => <Marker key={point.id} longitude={point.longitude} latitude={point.latitude}>
         <button className={`city-map__marker ${point.id === selectedId ? 'city-map__marker--selected' : ''}`} style={{ color: point.color }} aria-label={point.title} onClick={event => { event.stopPropagation(); void onSelect?.(point.id); }}>●</button>
       </Marker>)}

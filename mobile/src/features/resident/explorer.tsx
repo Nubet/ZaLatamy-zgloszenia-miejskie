@@ -1,0 +1,32 @@
+import { useState } from 'react';
+import { View, useWindowDimensions } from 'react-native';
+import { router } from 'expo-router';
+import { categories, statuses, type Category, type DemoState, type Status } from '@/domain/reports/model';
+import { useTheme } from '@/shared/theme/provider';
+import { Button, Card, Choice, Copy, Field, Heading, Screen } from '@/shared/ui/primitives';
+import CityMap from '@/features/map/city-map';
+import { ReportsBoundary } from '@/features/report-details/reports-boundary';
+import { ReportCard } from '@/features/report-details/report-ui';
+import { ReportList } from '@/features/report-details/report-list';
+
+export function Explorer() { return <ReportsBoundary>{state => <ExplorerContent state={state} />}</ReportsBoundary>; }
+function ExplorerContent({ state }: { state: DemoState }) {
+  const { name, colors } = useTheme();
+  const { height } = useWindowDimensions();
+  const [view, setView] = useState<'map' | 'list'>('map');
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState<Category | ''>('');
+  const [status, setStatus] = useState<Status | ''>('');
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState('');
+  const cutoff = Date.now() - 30 * 86400000;
+  const reports = state.reports.filter(report => Date.parse(report.createdAt) >= cutoff && (!category || report.category === category) && (!status || report.status === status) && (status === 'duplicate' || !report.duplicateOf) && `${report.title} ${report.id} ${report.address}`.toLocaleLowerCase('pl').includes(search.trim().toLocaleLowerCase('pl')));
+  const selected = reports.find(report => report.id === selectedId);
+  const open = (id: string) => router.push({ pathname: '/resident/reports/[id]', params: { id } });
+  const header = <View style={{ gap: 16, marginBottom: 6 }}><Heading eyebrow="Łódź · Ostatnie 30 dni" title="Twoje miasto.\nW Twoich rękach." description="Zobacz, co zmienia się w Twojej okolicy." /><Button label="＋ Zgłoś problem" onPress={() => router.push('/resident/new-report')} /><Field label="Szukaj w okolicy" placeholder="Ulica, problem lub numer…" value={search} onChangeText={setSearch} />
+    <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}><Choice label="Mapa" selected={view === 'map'} onPress={() => setView('map')} /><Choice label={`Lista (${reports.length})`} selected={view === 'list'} onPress={() => setView('list')} /><Choice label={`Filtry${category || status ? ' ●' : ''}`} selected={filtersOpen} onPress={() => setFiltersOpen(!filtersOpen)} /></View>
+    {filtersOpen && <Card><Copy size={13} weight="600">Kategoria</Copy><View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}><Choice label="Wszystkie" selected={!category} onPress={() => setCategory('')} />{Object.entries(categories).map(([key, label]) => <Choice key={key} label={label} selected={category === key} onPress={() => setCategory(key as Category)} />)}</View><Copy size={13} weight="600">Status</Copy><View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}><Choice label="Wszystkie" selected={!status} onPress={() => setStatus('')} />{Object.entries(statuses).map(([key, label]) => <Choice key={key} label={label} selected={status === key} onPress={() => setStatus(key as Status)} />)}</View><Button label="Wyczyść filtry" variant="secondary" onPress={() => { setCategory(''); setStatus(''); setSearch(''); }} /></Card>}
+  </View>;
+  if (view === 'list') return <ReportList reports={reports} allReports={state.reports} header={header} onOpen={open} />;
+  return <Screen>{header}<View style={{ height: Math.max(300, height * 0.46), borderRadius: 14, overflow: 'hidden', borderWidth: 1, borderColor: colors.border }}><CityMap theme={name} points={reports.map(report => ({ id: report.id, title: report.title, ...report.location, color: colors[report.status] }))} selectedId={selectedId} onSelect={async id => setSelectedId(id)} dom={{ style: { flex: 1 }, scrollEnabled: false }} /></View>{selected ? <ReportCard report={selected} reports={state.reports} onPress={() => open(selected.id)} /> : <Copy muted size={13}>{reports.length ? 'Dotknij punktu, aby zobaczyć sprawę.' : 'Brak zgłoszeń spełniających kryteria.'}</Copy>}</Screen>;
+}
