@@ -1,2 +1,1 @@
-import { Heading, Screen } from '@/shared/ui/primitives';
-export default function Page() { return <Screen><Heading title="Powiadomienia" /></Screen>; }
+export { NotificationsList as default } from '@/features/notifications/notifications-list';

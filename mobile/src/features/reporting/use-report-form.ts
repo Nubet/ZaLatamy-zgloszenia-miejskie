@@ -84,7 +84,7 @@ export function useReportForm(initial: SavedDraft | null) {
       await persist(change({ location, address }));
     }),
     describe: () => void run(async () => { change(await services.describe(current.current.category)); setReviewed(false); await persist(); setNotice('Przykładowy opis przygotowany lokalnie. Sprawdź treść przed zapisem.'); }),
-    openExisting: (id: string) => void run(async () => { await persist(); allowExit.current = true; router.push({ pathname: '/resident/reports/[id]', params: { id } }); }),
+    openExisting: (id: string) => void run(async () => { await persist(); router.push({ pathname: '/resident/reports/[id]', params: { id } }); }),
     submit: (hasSimilar: boolean) => void run(async () => {
       if (hasSimilar && !reviewed) throw new Error('Sprawdź podobne sprawy i potwierdź, że to osobny problem.');
       const result = draftSchema.safeParse(current.current);
