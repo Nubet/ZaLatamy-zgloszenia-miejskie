@@ -1,8 +1,14 @@
 .idea/
 **/*.md
 **/*.txt
+!requirements.txt
+!**/requirements.txt
 *.log
 *.iml
+**/__pycache__/
+**/.venv/
+**/venv/
+*.pyc
 **/node_modules/
 **/.next/
 **/.vite/
