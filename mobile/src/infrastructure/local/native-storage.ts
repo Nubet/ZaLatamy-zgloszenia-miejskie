@@ -11,6 +11,6 @@ export const localGateway = createLocalGateway({
     catch { throw new Error('Nie udało się zapisać danych. Sprawdź wolne miejsce i spróbuj ponownie.'); }
   },
 }, {
-  exists: uri => uri.startsWith(`${photoDirectory.uri}/`) && new File(uri).exists,
-  remove: uri => { if (uri.startsWith(`${photoDirectory.uri}/`)) { const file = new File(uri); if (file.exists) file.delete(); } },
+  exists: uri => uri.startsWith(`${photoDirectory.uri.replace(/\/$/, '')}/`) && new File(uri).exists,
+  remove: uri => { if (uri.startsWith(`${photoDirectory.uri.replace(/\/$/, '')}/`)) { const file = new File(uri); if (file.exists) file.delete(); } },
 }, randomUUID);

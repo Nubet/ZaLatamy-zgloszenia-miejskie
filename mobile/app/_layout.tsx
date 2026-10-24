@@ -7,10 +7,12 @@ import { StatusBar } from 'expo-status-bar';
 import { ReportsProvider } from '@/application/reports/provider';
 import { localGateway } from '@/infrastructure/local/native-storage';
 import { SessionProvider, useSession } from '@/application/demo/session';
+import { ReportingProvider } from '@/application/reporting/services';
+import { reportingServices } from '@/infrastructure/media/reporting-services';
 
 export default function RootLayout() {
   const [client] = useState(() => new QueryClient({ defaultOptions: { queries: { staleTime: Infinity, retry: false }, mutations: { retry: false } } }));
-  return <SafeAreaProvider><QueryClientProvider client={client}><ThemeProvider><ReportsProvider gateway={localGateway}><SessionProvider><Navigation /></SessionProvider></ReportsProvider></ThemeProvider></QueryClientProvider></SafeAreaProvider>;
+  return <SafeAreaProvider><QueryClientProvider client={client}><ThemeProvider><ReportsProvider gateway={localGateway}><ReportingProvider services={reportingServices}><SessionProvider><Navigation /></SessionProvider></ReportingProvider></ReportsProvider></ThemeProvider></QueryClientProvider></SafeAreaProvider>;
 }
 
 function Navigation() {
