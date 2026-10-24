@@ -79,7 +79,7 @@ export function filterWorkReports(
           ((!filters.from || day >= filters.from) && (!filters.to || day <= filters.to)))
       );
     })
-    .toSorted((a, b) => {
+    .sort((a, b) => {
       const oldest = Date.parse(a.createdAt) - Date.parse(b.createdAt);
       return filters.sort === 'priority'
         ? rank[a.priority] - rank[b.priority] || oldest

@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { useIsMutating } from '@tanstack/react-query';
 import { useSession } from '@/application/demo/session';
 import { useTheme } from '@/shared/theme/provider';
-import { Button, Card, Choice, Copy, Heading, Notice, Screen } from '@/shared/ui/primitives';
+import { Button, Card, Choice, Copy, Notice, Screen } from '@/shared/ui/primitives';
 import { ResetDemo } from './reset-demo';
 
 export function Settings() {
@@ -17,11 +17,6 @@ export function Settings() {
   }
   return (
     <Screen>
-      <Heading
-        eyebrow="Ustawienia demo"
-        title="Po Twojemu"
-        description="Wygląd aplikacji i wybór perspektywy."
-      />
       <Card>
         <Copy weight="600">Wygląd</Copy>
         <View
@@ -31,20 +26,11 @@ export function Settings() {
           <Choice label="Jasny" selected={name === 'light'} onPress={() => changeTheme('light')} />
           <Choice label="Ciemny" selected={name === 'dark'} onPress={() => changeTheme('dark')} />
         </View>
-        <Copy muted size={13}>
-          Motyw jest wspólny dla obu trybów i zapamiętany na urządzeniu.
-        </Copy>
       </Card>
       <Card>
-        <Copy weight="600">
-          {role === 'official' ? 'Anna Kowalska · Urzędnik' : 'Marta Kowalska · Mieszkanka'}
-        </Copy>
-        <Copy muted>
-          Profil demonstracyjny. Zmień perspektywę, aby prześledzić tę samą sprawę po drugiej
-          stronie.
-        </Copy>
+        <Copy weight="600">{role === 'official' ? 'Urzędnik' : 'Mieszkaniec'}</Copy>
         <Button
-          label="Zmień tryb"
+          label="Zmień profil"
           variant="secondary"
           disabled={busy}
           onPress={() => setRole(null)}
@@ -52,13 +38,13 @@ export function Settings() {
       </Card>
       <Notice message={error} error />
       <Card>
-        <Copy weight="600">Zacznij od nowa</Copy>
-        <Copy muted>Przywróć wspólny zestaw demonstracyjny mieszkańca i urzędnika.</Copy>
+        <Copy weight="600">Dane aplikacji</Copy>
         <ResetDemo />
       </Card>
       <View style={{ height: 1, backgroundColor: colors.border }} />
       <Copy muted size={12}>
-        ZaŁatamy · lokalne demo{'\n'}Mapa: MapLibre / CARTO. Brak integracji z urzędem.
+        ZaŁatamy · wersja demonstracyjna. Dane są przechowywane na tym urządzeniu i nie są wysyłane
+        do urzędu.
       </Copy>
     </Screen>
   );

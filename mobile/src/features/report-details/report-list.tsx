@@ -26,12 +26,11 @@ export function ReportList({
       keyExtractor={(item) => item.id}
       keyboardShouldPersistTaps="handled"
       contentInsetAdjustmentBehavior="automatic"
-      contentContainerStyle={{ padding: 20, paddingBottom: insets.bottom + 24, gap: 14 }}
+      contentContainerStyle={{ padding: 16, paddingBottom: insets.bottom + 16, gap: 10 }}
       ListHeaderComponent={header}
       ListEmptyComponent={
         <Card>
           <Copy weight="600">Brak spraw w tym widoku</Copy>
-          <Copy muted>Zmień filtry lub dodaj zgłoszenie.</Copy>
         </Card>
       }
       renderItem={({ item }) => (

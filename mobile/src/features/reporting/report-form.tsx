@@ -19,18 +19,18 @@ export function ReportForm() {
 function Form({ initial, reports }: { initial: SavedDraft | null; reports: Report[] }) {
   const form = useReportForm(initial);
   const { colors } = useTheme();
-  const titles = ['Zdjęcia', 'Lokalizacja', 'Opis i zapis'];
+  const titles = ['Zdjęcia', 'Lokalizacja', 'Opis'];
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       style={{ flex: 1, backgroundColor: colors.background }}
       keyboardVerticalOffset={90}
     >
-      <Stack.Screen options={{ title: 'Nowe zgłoszenie · Demo', gestureEnabled: !form.busy }} />
+      <Stack.Screen options={{ title: 'Zgłoś problem', gestureEnabled: !form.busy }} />
       <Screen>
         <View style={{ gap: 16 }}>
           <Copy muted size={12}>
-            KROK {form.draft.step + 1} Z 3 · {titles[form.draft.step]?.toLocaleUpperCase('pl')}
+            Krok {form.draft.step + 1} z 3
           </Copy>
           <View style={{ flexDirection: 'row', gap: 6 }}>
             {titles.map((title, index) => (
@@ -60,35 +60,33 @@ function Form({ initial, reports }: { initial: SavedDraft | null; reports: Repor
         </View>
         <Notice error message={form.error} />
         <Notice message={form.notice} />
-        {form.busy && <Notice message="Przygotowujemy lub zapisujemy dane…" />}
         <View style={{ gap: 10 }}>
           {form.draft.step < 2 && (
             <Button
               label="Dalej"
-              disabled={form.busy}
+              pending={form.busy}
               onPress={() => form.next(form.draft.step + 1)}
             />
           )}
-          {form.draft.step > 0 && (
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            {form.draft.step > 0 && (
+              <Button
+                label="Wstecz"
+                variant="text"
+                disabled={form.busy}
+                onPress={() => form.next(form.draft.step - 1)}
+              />
+            )}
+            <Button label="Zachowaj szkic" variant="text" pending={form.busy} onPress={form.save} />
+          </View>
+          {initial && (
             <Button
-              label="Wstecz"
-              variant="secondary"
+              label="Usuń szkic"
+              variant="danger"
               disabled={form.busy}
-              onPress={() => form.next(form.draft.step - 1)}
+              onPress={form.discard}
             />
           )}
-          <Button
-            label="Zachowaj szkic"
-            variant="secondary"
-            pending={form.busy}
-            onPress={form.save}
-          />
-          <Button
-            label="Odrzuć szkic"
-            variant="danger"
-            disabled={form.busy}
-            onPress={form.discard}
-          />
         </View>
       </Screen>
     </KeyboardAvoidingView>

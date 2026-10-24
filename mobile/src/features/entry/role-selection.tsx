@@ -29,7 +29,7 @@ export function RoleSelection() {
   ];
   return (
     <Screen>
-      <View style={{ paddingTop: insets.top + 20, gap: 30 }}>
+      <View style={{ paddingTop: insets.top + 20, gap: 20 }}>
         <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
           <View style={{ backgroundColor: colors.accent, padding: 10, borderRadius: 12 }}>
             <MapPinned color="#ffffff" size={24} />
@@ -41,18 +41,7 @@ export function RoleSelection() {
             ŁÓDŹ
           </Copy>
         </View>
-        <Heading
-          eyebrow="Wersja demonstracyjna"
-          title={'Jedno miasto.\nDwie perspektywy.'}
-          description="Wybierz, z której strony chcesz poznać aplikację."
-        />
-        <Card>
-          <Copy weight="600">To jest demo</Copy>
-          <Copy muted>
-            Zgłoszenia i działania urzędu są demonstracyjne. Dane zapisują się tylko na tym
-            urządzeniu. Nic nie jest wysyłane do miasta.
-          </Copy>
-        </Card>
+        <Heading title="Wybierz profil" />
         {modes.map((mode) => (
           <Pressable
             key={mode.role}
@@ -61,21 +50,25 @@ export function RoleSelection() {
             onPress={() => setRole(mode.role)}
             style={({ pressed }) => ({ opacity: pressed ? 0.75 : 1 })}
           >
-            <Card style={{ gap: 16 }}>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <mode.icon size={28} color={colors.accentText} />
-                <ArrowUpRight size={20} color={colors.muted} />
+            <Card
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 20 }}
+            >
+              <mode.icon size={24} color={colors.accentText} />
+              <View style={{ flex: 1, gap: 4 }}>
+                <Copy size={17} weight="600">
+                  {mode.title}
+                </Copy>
+                <Copy muted size={13}>
+                  {mode.description}
+                </Copy>
               </View>
-              <Copy size={21} weight="700">
-                {mode.title}
-              </Copy>
-              <Copy muted>{mode.description}</Copy>
+              <ArrowUpRight size={18} color={colors.muted} />
             </Card>
           </Pressable>
         ))}
         <Button
           label={name === 'dark' ? 'Włącz jasny motyw' : 'Włącz ciemny motyw'}
-          variant="secondary"
+          variant="text"
           pending={pending}
           icon={
             name === 'dark' ? (
@@ -93,7 +86,7 @@ export function RoleSelection() {
         />
         <Notice message={error} error />
         <Copy muted size={12}>
-          Mapa korzysta z internetu. Pozostałe dane demo są lokalne.
+          Wersja demonstracyjna. Zgłoszenia nie są wysyłane do urzędu.
         </Copy>
       </View>
     </Screen>

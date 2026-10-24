@@ -98,11 +98,9 @@ function Editor({ report, reports }: { report: Report; reports: Report[] }) {
       keyboardVerticalOffset={90}
       style={{ flex: 1, backgroundColor: colors.background }}
     >
-      <Stack.Screen
-        options={{ title: 'Aktualizacja · Demo', gestureEnabled: !mutation.isPending }}
-      />
+      <Stack.Screen options={{ title: 'Edytuj zgłoszenie', gestureEnabled: !mutation.isPending }} />
       <Screen>
-        <Heading eyebrow={report.id} title="Aktualizuj sprawę" description={report.title} />
+        <Heading eyebrow={report.id} title={report.title} />
         <View style={{ gap: 16 }} pointerEvents={mutation.isPending ? 'none' : 'auto'}>
           <Copy weight="600">Status</Copy>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
@@ -115,7 +113,7 @@ function Editor({ report, reports }: { report: Report; reports: Report[] }) {
               />
             ))}
           </View>
-          <Copy weight="600">Priorytet urzędu</Copy>
+          <Copy weight="600">Priorytet</Copy>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {Object.entries(priorities).map(([key, label]) => (
               <Choice
@@ -126,9 +124,6 @@ function Editor({ report, reports }: { report: Report; reports: Report[] }) {
               />
             ))}
           </View>
-          <Copy muted size={12}>
-            Liczba potwierdzeń mieszkańców nie zmienia priorytetu.
-          </Copy>
           {changes.status === 'duplicate' && (
             <Card>
               <Copy weight="600">Sprawa nadrzędna</Copy>
@@ -149,10 +144,6 @@ function Editor({ report, reports }: { report: Report; reports: Report[] }) {
               {!targets.length && (
                 <Copy muted>Brak aktywnych spraw pasujących do wyszukiwania.</Copy>
               )}
-              <Copy muted size={12}>
-                Zdjęcia i historie pozostaną zachowane. Potwierdzenia liczymy wspólnie, bez
-                powielania osób.
-              </Copy>
             </Card>
           )}
           <Field
@@ -168,17 +159,13 @@ function Editor({ report, reports }: { report: Report; reports: Report[] }) {
             onChangeText={(comment) => change({ comment })}
             hint={
               requiresUpdateComment(changes.status)
-                ? 'Minimum 5 znaków. Komentarz zobaczą mieszkańcy.'
-                : 'Komentarz trafi do historii sprawy.'
+                ? 'Minimum 5 znaków. Widoczne dla mieszkańców.'
+                : undefined
             }
           />
         </View>
         <Notice error message={mutation.error?.message} />
-        <Button
-          label="Zapisz zmiany demo"
-          pending={mutation.isPending}
-          onPress={() => void submit()}
-        />
+        <Button label="Zapisz zmiany" pending={mutation.isPending} onPress={() => void submit()} />
       </Screen>
     </KeyboardAvoidingView>
   );

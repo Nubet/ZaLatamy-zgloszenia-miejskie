@@ -10,12 +10,9 @@ export function ReviewStep({ form, reports }: { form: ReportForm; reports: Repor
     : [];
   return (
     <View style={{ gap: 16 }}>
-      <Heading
-        title="Opisz i sprawdź"
-        description="To ostatni krok. Nic nie zostanie wysłane do urzędu."
-      />
+      <Heading title="Opis problemu" />
       <Copy weight="600">Kategoria</Copy>
-      <View style={{ gap: 8 }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
         {Object.entries(categories).map(([key, label]) => (
           <Choice
             key={key}
@@ -25,10 +22,7 @@ export function ReviewStep({ form, reports }: { form: ReportForm; reports: Repor
           />
         ))}
       </View>
-      <Button label="Przygotuj przykładowy opis" variant="secondary" onPress={form.describe} />
-      <Copy muted size={12}>
-        Symulacja lokalna według kategorii, bez analizy obrazu i bez AI.
-      </Copy>
+      <Button label="Wstaw przykładowy opis" variant="text" onPress={form.describe} />
       <Field
         label="Tytuł"
         value={form.draft.title}
@@ -50,7 +44,7 @@ export function ReviewStep({ form, reports }: { form: ReportForm; reports: Repor
         <Card>
           <Copy weight="600">Podobne sprawy w promieniu 100 m</Copy>
           <Copy muted size={13}>
-            Jeśli to ten sam problem, otwórz sprawę i potwierdź ją. Twój szkic pozostanie zachowany.
+            To ten sam problem? Potwierdź istniejące zgłoszenie.
           </Copy>
           {similar.map(({ report, meters }) => (
             <Button
@@ -75,7 +69,11 @@ export function ReviewStep({ form, reports }: { form: ReportForm; reports: Repor
           {form.draft.photos.length} zdjęć · {categories[form.draft.category]}
         </Copy>
       </Card>
-      <Button label="Zapisz zgłoszenie demo" onPress={() => form.submit(similar.length > 0)} />
+      <Button
+        label="Dodaj zgłoszenie"
+        pending={form.busy}
+        onPress={() => form.submit(similar.length > 0)}
+      />
     </View>
   );
 }

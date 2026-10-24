@@ -69,7 +69,7 @@ export function useReportForm(initial: SavedDraft | null) {
   }
   const disablePrevention = usePreventRemove((dirty || busy) && !finished, ({ repeat }) => {
     if (locked.current) return;
-    Alert.alert('Zachować szkic?', 'Możesz wrócić do niego później, także po zmianie trybu.', [
+    Alert.alert('Zachować szkic?', 'Możesz dokończyć zgłoszenie później.', [
       { text: 'Zostań', style: 'cancel' },
       {
         text: 'Odrzuć',
@@ -106,7 +106,7 @@ export function useReportForm(initial: SavedDraft | null) {
     save: () =>
       void run(async () => {
         await persist();
-        setNotice('Szkic zapisany na urządzeniu.');
+        setNotice('Szkic zapisany.');
       }),
     next: (step: number) =>
       void run(async () => {
@@ -179,7 +179,7 @@ export function useReportForm(initial: SavedDraft | null) {
         change(await services.describe(current.current.category));
         setReviewed(false);
         await persist();
-        setNotice('Przykładowy opis przygotowany lokalnie. Sprawdź treść przed zapisem.');
+        setNotice('Sprawdź i uzupełnij opis.');
       }),
     openExisting: (id: string) =>
       void run(async () => {

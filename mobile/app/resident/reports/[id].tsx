@@ -5,7 +5,7 @@ export default function Page() {
   const { id } = useLocalSearchParams<{ id: string }>();
   return (
     <>
-      <Stack.Screen options={{ title: 'Szczegóły · Demo' }} />
+      <Stack.Screen options={{ title: 'Zgłoszenie' }} />
       <ReportDetails
         key={id}
         id={id}

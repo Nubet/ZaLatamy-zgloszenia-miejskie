@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { Image } from 'expo-image';
-import { Construction, LampDesk, Leaf, MapPin, Trash2, Users } from 'lucide-react-native';
+import {
+  ChevronRight,
+  Construction,
+  LampDesk,
+  Leaf,
+  MapPin,
+  Trash2,
+  Users,
+} from 'lucide-react-native';
 import {
   categories,
   priorities,
@@ -71,13 +79,14 @@ export function PhotoView({ photo, height = 200 }: { photo: Photo; height?: numb
         borderWidth: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        gap: 12,
       }}
     >
       <Icon size={Math.min(64, height / 3)} strokeWidth={1.2} color={colors.accentText} />
-      <Copy muted size={12}>
-        {failed ? 'Zdjęcie niedostępne' : 'ILUSTRACJA DEMO'}
-      </Copy>
+      {failed && (
+        <Copy muted size={12}>
+          Zdjęcie niedostępne
+        </Copy>
+      )}
     </View>
   );
 }
@@ -121,7 +130,7 @@ export function ReportCard({
       onPress={onPress}
       style={({ pressed }) => ({ opacity: pressed ? 0.75 : 1 })}
     >
-      <Card>
+      <Card style={{ gap: 8 }}>
         <View
           style={{
             flexDirection: 'row',
@@ -130,14 +139,19 @@ export function ReportCard({
             alignItems: 'center',
           }}
         >
+          <StatusBadge status={report.status} />
           <Copy muted size={11}>
             {report.id}
           </Copy>
-          <StatusBadge status={report.status} />
         </View>
-        <Copy size={18} weight="600">
-          {report.title}
-        </Copy>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <View style={{ flex: 1 }}>
+            <Copy size={16} weight="600">
+              {report.title}
+            </Copy>
+          </View>
+          <ChevronRight size={18} color={colors.muted} />
+        </View>
         <Copy muted size={13}>
           {report.address}
         </Copy>

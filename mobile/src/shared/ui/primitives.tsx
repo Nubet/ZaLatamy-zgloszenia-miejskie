@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import {
   ActivityIndicator,
+  Modal,
   Pressable,
   ScrollView,
   Text,
@@ -9,7 +10,7 @@ import {
   type TextInputProps,
   type ViewStyle,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '@/shared/theme/provider';
 
 export function Copy({
@@ -50,7 +51,7 @@ export function Heading({
 }) {
   const { colors } = useTheme();
   return (
-    <View style={{ gap: 8 }}>
+    <View style={{ gap: 6 }}>
       {eyebrow && (
         <Text
           style={{ color: colors.accentText, fontSize: 11, fontWeight: '700', letterSpacing: 1.5 }}
@@ -58,7 +59,7 @@ export function Heading({
           {eyebrow.toLocaleUpperCase('pl')}
         </Text>
       )}
-      <Copy size={29} weight="700">
+      <Copy size={24} weight="700">
         {title}
       </Copy>
       {description && <Copy muted>{description}</Copy>}
@@ -69,7 +70,7 @@ export function Heading({
 export function Screen({ children, scroll = true }: { children: ReactNode; scroll?: boolean }) {
   const { colors } = useTheme();
   const insets = useSafeAreaInsets();
-  const content = { padding: 20, paddingBottom: Math.max(24, insets.bottom + 16), gap: 20 };
+  const content = { padding: 16, paddingBottom: Math.max(16, insets.bottom + 8), gap: 16 };
   return scroll ? (
     <ScrollView
       style={{ flex: 1, backgroundColor: colors.background }}
@@ -89,9 +90,9 @@ export function Card({ children, style }: { children: ReactNode; style?: ViewSty
   return (
     <View
       style={{
-        padding: 18,
-        gap: 12,
-        borderRadius: 14,
+        padding: 14,
+        gap: 10,
+        borderRadius: 12,
         borderWidth: 1,
         borderColor: colors.border,
         backgroundColor: colors.surface,
@@ -113,7 +114,7 @@ export function Button({
 }: {
   label: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary' | 'danger';
+  variant?: 'primary' | 'secondary' | 'danger' | 'text';
   disabled?: boolean;
   pending?: boolean;
   icon?: ReactNode;
@@ -128,13 +129,23 @@ export function Button({
       disabled={disabled || pending}
       onPress={onPress}
       style={({ pressed }) => ({
-        minHeight: 48,
-        paddingHorizontal: 18,
-        paddingVertical: 12,
+        minHeight: 44,
+        paddingHorizontal: variant === 'text' ? 8 : 16,
+        paddingVertical: 10,
         borderRadius: 12,
         borderWidth: 1,
-        borderColor: variant === 'primary' ? colors.accent : colors.border,
-        backgroundColor: variant === 'primary' ? colors.accent : colors.surface,
+        borderColor:
+          variant === 'text' || variant === 'danger'
+            ? 'transparent'
+            : variant === 'primary'
+              ? colors.accent
+              : colors.border,
+        backgroundColor:
+          variant === 'text' || variant === 'danger'
+            ? 'transparent'
+            : variant === 'primary'
+              ? colors.accent
+              : colors.surface,
         opacity: disabled || pending ? 0.5 : pressed ? 0.75 : 1,
         flexDirection: 'row',
         gap: 10,
@@ -196,6 +207,46 @@ export function Field({
         </Copy>
       )}
     </View>
+  );
+}
+
+export function Sheet({
+  title,
+  visible,
+  onClose,
+  children,
+}: {
+  title: string;
+  visible: boolean;
+  onClose: () => void;
+  children: ReactNode;
+}) {
+  const { colors } = useTheme();
+  return (
+    <Modal
+      visible={visible}
+      animationType="slide"
+      presentationStyle="pageSheet"
+      onRequestClose={onClose}
+    >
+      <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingHorizontal: 16,
+            paddingVertical: 8,
+          }}
+        >
+          <Copy size={18} weight="600">
+            {title}
+          </Copy>
+          <Button label="Gotowe" variant="text" onPress={onClose} />
+        </View>
+        <Screen>{children}</Screen>
+      </SafeAreaView>
+    </Modal>
   );
 }
 

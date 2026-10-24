@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { View } from 'react-native';
 import CityMap from '@/features/map/city-map';
 import { useTheme } from '@/shared/theme/provider';
-import { Button, Card, Copy, Field, Heading } from '@/shared/ui/primitives';
+import { Button, Field, Heading, Sheet } from '@/shared/ui/primitives';
 import type { ReportForm } from './use-report-form';
 
 const places = [
@@ -11,6 +12,7 @@ const places = [
 ];
 export function LocationStep({ form }: { form: ReportForm }) {
   const { name } = useTheme();
+  const [placesOpen, setPlacesOpen] = useState(false);
   return (
     <View style={{ gap: 16 }}>
       <Heading
@@ -27,12 +29,6 @@ export function LocationStep({ form }: { form: ReportForm }) {
         />
       </View>
       <Button label="Użyj mojej lokalizacji" variant="secondary" onPress={form.locate} />
-      {form.draft.location && (
-        <Copy muted size={12}>
-          {form.draft.location.latitude.toFixed(5)}° N, {form.draft.location.longitude.toFixed(5)}°
-          E
-        </Copy>
-      )}
       <Field
         label="Adres lub opis miejsca"
         value={form.draft.address}
@@ -42,17 +38,28 @@ export function LocationStep({ form }: { form: ReportForm }) {
         onBlur={form.saveOnBlur}
         placeholder="Ulica, numer lub charakterystyczny punkt"
       />
-      <Card>
-        <Copy weight="600">Lokalizacje demonstracyjne</Copy>
+      <Button
+        label="Wybierz przykładową lokalizację"
+        variant="text"
+        onPress={() => setPlacesOpen(true)}
+      />
+      <Sheet
+        title="Przykładowe lokalizacje"
+        visible={placesOpen}
+        onClose={() => setPlacesOpen(false)}
+      >
         {places.map((place) => (
           <Button
             key={place.label}
             variant="secondary"
             label={place.label}
-            onPress={() => form.setLocation(place, place.label)}
+            onPress={() => {
+              form.setLocation(place, place.label);
+              setPlacesOpen(false);
+            }}
           />
         ))}
-      </Card>
+      </Sheet>
     </View>
   );
 }

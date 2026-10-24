@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import { router } from 'expo-router';
 import { localResidentId } from '@/domain/reports/model';
-import { Button, Card, Choice, Copy, Heading } from '@/shared/ui/primitives';
+import { Button, Card, Choice, Copy } from '@/shared/ui/primitives';
 import { ReportsBoundary } from '@/features/report-details/reports-boundary';
 import { ReportList } from '@/features/report-details/report-list';
 
@@ -19,15 +19,9 @@ export function MyReports() {
           onOpen={(id) => router.push({ pathname: '/resident/reports/[id]', params: { id } })}
           header={
             <View style={{ gap: 16, marginBottom: 6 }}>
-              <Heading eyebrow="Twoje sprawy" title={'Zgłaszasz. Śledzisz.\nZmieniasz okolicę.'} />
-              <Button
-                label="＋ Nowe zgłoszenie"
-                onPress={() => router.push('/resident/new-report')}
-              />
               {state.draft && (
                 <Card>
-                  <Copy weight="600">Masz zachowany szkic</Copy>
-                  <Copy muted>{state.draft.title || 'Dokończ zgłoszenie w dogodnej chwili.'}</Copy>
+                  <Copy weight="600">{state.draft.title || 'Niedokończone zgłoszenie'}</Copy>
                   <Button
                     variant="secondary"
                     label="Wznów szkic"

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import { View } from 'react-native';
 import { router } from 'expo-router';
 import {
   categories,
@@ -9,7 +9,7 @@ import {
   type Status,
 } from '@/domain/reports/model';
 import { useTheme } from '@/shared/theme/provider';
-import { Button, Card, Choice, Copy, Field, Heading, Screen } from '@/shared/ui/primitives';
+import { Button, Choice, Copy, Field, Screen, Sheet } from '@/shared/ui/primitives';
 import CityMap from '@/features/map/city-map';
 import { ReportsBoundary } from '@/features/report-details/reports-boundary';
 import { ReportCard } from '@/features/report-details/report-ui';
@@ -20,7 +20,6 @@ export function Explorer() {
 }
 function ExplorerContent({ state }: { state: DemoState }) {
   const { name, colors } = useTheme();
-  const { height } = useWindowDimensions();
   const [view, setView] = useState<'map' | 'list'>('map');
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState<Category | ''>('');
@@ -41,13 +40,7 @@ function ExplorerContent({ state }: { state: DemoState }) {
   const selected = reports.find((report) => report.id === selectedId);
   const open = (id: string) => router.push({ pathname: '/resident/reports/[id]', params: { id } });
   const header = (
-    <View style={{ gap: 16, marginBottom: 6 }}>
-      <Heading
-        eyebrow="Łódź · Ostatnie 30 dni"
-        title={'Twoje miasto.\nW Twoich rękach.'}
-        description="Zobacz, co zmienia się w Twojej okolicy."
-      />
-      <Button label="＋ Zgłoś problem" onPress={() => router.push('/resident/new-report')} />
+    <View style={{ gap: 10 }}>
       <Field
         label="Szukaj w okolicy"
         placeholder="Ulica, problem lub numer…"
@@ -67,47 +60,48 @@ function ExplorerContent({ state }: { state: DemoState }) {
           onPress={() => setFiltersOpen(!filtersOpen)}
         />
       </View>
-      {filtersOpen && (
-        <Card>
-          <Copy size={13} weight="600">
-            Kategoria
-          </Copy>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-            <Choice label="Wszystkie" selected={!category} onPress={() => setCategory('')} />
-            {Object.entries(categories).map(([key, label]) => (
-              <Choice
-                key={key}
-                label={label}
-                selected={category === key}
-                onPress={() => setCategory(key as Category)}
-              />
-            ))}
-          </View>
-          <Copy size={13} weight="600">
-            Status
-          </Copy>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-            <Choice label="Wszystkie" selected={!status} onPress={() => setStatus('')} />
-            {Object.entries(statuses).map(([key, label]) => (
-              <Choice
-                key={key}
-                label={label}
-                selected={status === key}
-                onPress={() => setStatus(key as Status)}
-              />
-            ))}
-          </View>
-          <Button
-            label="Wyczyść filtry"
-            variant="secondary"
-            onPress={() => {
-              setCategory('');
-              setStatus('');
-              setSearch('');
-            }}
-          />
-        </Card>
-      )}
+      <Sheet title="Filtry" visible={filtersOpen} onClose={() => setFiltersOpen(false)}>
+        <Copy size={13} weight="600">
+          Kategoria
+        </Copy>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+          <Choice label="Wszystkie" selected={!category} onPress={() => setCategory('')} />
+          {Object.entries(categories).map(([key, label]) => (
+            <Choice
+              key={key}
+              label={label}
+              selected={category === key}
+              onPress={() => setCategory(key as Category)}
+            />
+          ))}
+        </View>
+        <Copy size={13} weight="600">
+          Status
+        </Copy>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+          <Choice label="Wszystkie" selected={!status} onPress={() => setStatus('')} />
+          {Object.entries(statuses).map(([key, label]) => (
+            <Choice
+              key={key}
+              label={label}
+              selected={status === key}
+              onPress={() => setStatus(key as Status)}
+            />
+          ))}
+        </View>
+        <Button
+          label="Wyczyść filtry"
+          variant="secondary"
+          onPress={() => {
+            setCategory('');
+            setStatus('');
+            setSearch('');
+          }}
+        />
+      </Sheet>
+      <Copy muted size={12}>
+        Łódź · ostatnie 30 dni
+      </Copy>
     </View>
   );
   if (view === 'list')
@@ -115,11 +109,12 @@ function ExplorerContent({ state }: { state: DemoState }) {
       <ReportList reports={reports} allReports={state.reports} header={header} onOpen={open} />
     );
   return (
-    <Screen>
+    <Screen scroll={false}>
       {header}
       <View
         style={{
-          height: Math.max(300, height * 0.46),
+          flex: 1,
+          minHeight: 160,
           borderRadius: 14,
           overflow: 'hidden',
           borderWidth: 1,
@@ -138,14 +133,19 @@ function ExplorerContent({ state }: { state: DemoState }) {
           onSelect={async (id) => setSelectedId(id)}
           dom={{ style: { flex: 1 }, scrollEnabled: false }}
         />
+        {selected && (
+          <View style={{ position: 'absolute', bottom: 10, left: 10, right: 10 }}>
+            <ReportCard
+              report={selected}
+              reports={state.reports}
+              onPress={() => open(selected.id)}
+            />
+          </View>
+        )}
       </View>
-      {selected ? (
-        <ReportCard report={selected} reports={state.reports} onPress={() => open(selected.id)} />
-      ) : (
+      {!reports.length && (
         <Copy muted size={13}>
-          {reports.length
-            ? 'Dotknij punktu, aby zobaczyć sprawę.'
-            : 'Brak zgłoszeń spełniających kryteria.'}
+          Brak zgłoszeń spełniających kryteria.
         </Copy>
       )}
     </Screen>

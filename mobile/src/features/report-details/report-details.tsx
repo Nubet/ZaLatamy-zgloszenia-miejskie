@@ -27,10 +27,7 @@ export function ReportDetails({
         if (!report)
           return (
             <Screen>
-              <Heading
-                title="Nie znaleziono sprawy"
-                description="Zgłoszenie nie istnieje lub dane demo zostały zresetowane."
-              />
+              <Heading title="Nie znaleziono sprawy" />
               <Button
                 label="Wróć do spraw"
                 onPress={() => router.replace(official ? '/official' : '/resident')}
@@ -47,10 +44,7 @@ export function ReportDetails({
           });
         return (
           <Screen>
-            <Heading
-              eyebrow={`${report.id} · ${official ? 'Obsługa urzędu' : 'Sprawa mieszkańców'}`}
-              title={report.title}
-            />
+            <Heading eyebrow={report.id} title={report.title} />
             <StatusBadge status={report.status} />
             {actions?.(report, state.reports)}
             <Gallery key={report.id} photos={report.photos} />
@@ -79,14 +73,10 @@ export function ReportDetails({
                   dom={{ style: { flex: 1 }, scrollEnabled: false }}
                 />
               </View>
-              <Copy muted size={12}>
-                {report.location.latitude.toFixed(5)}° N, {report.location.longitude.toFixed(5)}° E
-              </Copy>
             </Card>
             {report.duplicateOf && (
               <Card>
                 <Copy weight="600">Ta sprawa została połączona</Copy>
-                <Copy muted>Materiały pozostają dostępne. Postęp śledź w sprawie nadrzędnej.</Copy>
                 <Button
                   variant="secondary"
                   label={`Otwórz ${report.duplicateOf}`}
@@ -95,7 +85,7 @@ export function ReportDetails({
               </Card>
             )}
             <Heading title="Historia sprawy" />
-            {report.history.toReversed().map((item) => (
+            {[...report.history].reverse().map((item) => (
               <Card key={item.id}>
                 <Copy muted size={12}>
                   {formatDate(item.at)}
@@ -107,9 +97,6 @@ export function ReportDetails({
             {!report.duplicateOf && linked.length > 0 && (
               <Card>
                 <Copy weight="600">Powiązane zgłoszenia</Copy>
-                <Copy muted size={13}>
-                  Oryginalne zdjęcia i historie pozostają zachowane.
-                </Copy>
                 {linked.map((item) => (
                   <Button
                     key={item.id}

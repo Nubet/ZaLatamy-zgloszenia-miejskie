@@ -5,11 +5,17 @@ import { dateError, defaultFilters, filterWorkReports } from './work-queue';
 
 test('queues split active and closed reports and rank urgency before age', () => {
   const { reports } = createSeed();
+  const originalOrder = reports.map((report) => report.id);
+  Object.freeze(reports);
   const active = filterWorkReports(reports, 'active', defaultFilters('active'));
   const archive = filterWorkReports(reports, 'archive', defaultFilters('archive'));
   assert.equal(active.length + archive.length, reports.length);
   assert.equal(active[0]!.priority, 'high');
   assert.ok(archive.some((item) => item.status === 'duplicate'));
+  assert.deepEqual(
+    reports.map((report) => report.id),
+    originalOrder,
+  );
 });
 test('custom dates reject invalid days and apply inclusive Warsaw dates', () => {
   const filters = { ...defaultFilters('all'), days: 'custom' as const, from: '2026-02-30' };

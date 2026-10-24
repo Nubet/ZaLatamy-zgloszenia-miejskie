@@ -14,11 +14,11 @@ export function ResetDemo() {
     reset.reset();
     Alert.alert(
       'Przywrócić dane początkowe?',
-      'Zgłoszenia, szkic, zdjęcia i powiadomienia obu trybów zostaną zastąpione zestawem demo. Motyw pozostanie bez zmian.',
+      'Twoje zgłoszenia, szkic, zdjęcia i powiadomienia zostaną usunięte. Zostaną przywrócone przykładowe zgłoszenia.',
       [
         { text: 'Anuluj', style: 'cancel' },
         {
-          text: 'Resetuj demo',
+          text: 'Przywróć',
           style: 'destructive',
           onPress: () => {
             if (locked.current) return;
@@ -37,14 +37,14 @@ export function ResetDemo() {
   return (
     <>
       <Button
-        label="Przywróć dane demo"
+        label="Przywróć dane początkowe"
         variant="danger"
         disabled={busy}
         pending={reset.isPending}
         onPress={confirm}
       />
       <Notice error message={reset.error?.message} />
-      {done && <Notice message="Przywrócono dane początkowe obu trybów." />}
+      {done && <Notice message="Przywrócono dane początkowe." />}
     </>
   );
 }

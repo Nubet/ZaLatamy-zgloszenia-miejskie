@@ -123,7 +123,7 @@ class MapBoundary extends Component<{ children: ReactNode }, { failed: boolean }
     if (this.state.failed)
       return (
         <div className="city-map__error" role="alert">
-          Nie można uruchomić mapy na tym urządzeniu. Skorzystaj z listy lub lokalizacji demo.{' '}
+          Nie można uruchomić mapy na tym urządzeniu.{' '}
           <button onClick={() => this.setState({ failed: false })}>Ponów</button>
         </div>
       );

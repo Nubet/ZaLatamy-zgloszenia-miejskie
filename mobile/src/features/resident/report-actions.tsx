@@ -21,26 +21,21 @@ export function ResidentActions({ report, reports }: { report: Report; reports: 
   const busy = confirmation.isPending || watch.isPending;
   return (
     <Card>
-      <Copy weight="600">Też widzisz ten problem?</Copy>
-      <Copy muted size={13}>
-        {support.count} osób potwierdza. Jedna osoba jest liczona raz, również po połączeniu spraw.
-      </Copy>
+      {support.authored && (
+        <Copy muted size={13}>
+          Twoje zgłoszenie
+        </Copy>
+      )}
       <View style={{ gap: 10 }}>
-        <Button
-          label={
-            support.authored
-              ? 'Twoje zgłoszenie już się liczy'
-              : !active
-                ? 'Sprawa zakończona'
-                : support.confirmed
-                  ? 'Potwierdzono · cofnij'
-                  : 'Potwierdzam problem'
-          }
-          variant={support.confirmed ? 'secondary' : 'primary'}
-          disabled={busy || support.authored || !active}
-          pending={confirmation.isPending}
-          onPress={() => confirmation.mutate(!support.confirmed)}
-        />
+        {!support.authored && active && (
+          <Button
+            label={support.confirmed ? 'Cofnij potwierdzenie' : 'Potwierdzam problem'}
+            variant={support.confirmed ? 'secondary' : 'primary'}
+            disabled={busy || support.authored || !active}
+            pending={confirmation.isPending}
+            onPress={() => confirmation.mutate(!support.confirmed)}
+          />
+        )}
         <Button
           label={watching ? 'Przestań obserwować' : 'Obserwuj sprawę'}
           variant="secondary"
@@ -49,9 +44,6 @@ export function ResidentActions({ report, reports }: { report: Report; reports: 
           onPress={() => watch.mutate()}
         />
       </View>
-      <Copy muted size={12}>
-        Obserwacja zapisuje aktualizacje w lokalnej skrzynce. To nie są powiadomienia systemowe.
-      </Copy>
       <Notice error message={confirmation.error?.message || watch.error?.message} />
     </Card>
   );
