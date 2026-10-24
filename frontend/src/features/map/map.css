@@ -50,16 +50,23 @@
     position: absolute;
     bottom: 30px;
     left: 14px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
     max-width: calc(100% - 75px);
     --city-map-legend-border: light-dark(var(--border-default), #3c3d41);
     border: 1px solid var(--city-map-legend-border);
     background: var(--city-map-overlay-background);
     border-radius: 5px;
     padding: 8px 10px;
-    pointer-events: none;
+}
+.city-map__legend-toggle {
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 10px;
+}
+.city-map__legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
 }
 .city-map__legend span {
     display: flex;
@@ -496,8 +503,10 @@
         display: none;
     }
     .city-map__legend {
-        gap: 8px;
         padding: 8px;
+    }
+    .city-map__legend-items {
+        gap: 8px;
     }
     .city-map__legend span {
         font-size: 8px;

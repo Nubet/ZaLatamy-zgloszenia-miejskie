@@ -12,7 +12,13 @@ import { useReports } from "@/application/reports/provider";
 import { relatedReports } from "@/domain/reports/rules";
 import { ReportSupportCount } from "@/shared/ui/report-support";
 
-export function ReportContent({ report }: { report: Report }) {
+export function ReportContent({
+    report,
+    minimalMap = false,
+}: {
+    report: Report;
+    minimalMap?: boolean;
+}) {
     const query = useReports();
     const linked = relatedReports(report, query.data?.reports ?? [report]).filter(
         (item) => item.id !== report.id,
@@ -89,11 +95,13 @@ export function ReportContent({ report }: { report: Report }) {
                 </div>
             )}
             <div className="report-content__location">
-                <CityMap location={report.location} />
-                <span>
-                    Współrzędne: {report.location.latitude.toFixed(5)}° N,{" "}
-                    {report.location.longitude.toFixed(5)}° E · Łódź
-                </span>
+                <CityMap location={report.location} minimal={minimalMap} />
+                {!minimalMap && (
+                    <span>
+                        Współrzędne: {report.location.latitude.toFixed(5)}° N,{" "}
+                        {report.location.longitude.toFixed(5)}° E · Łódź
+                    </span>
+                )}
             </div>
             <h3 className="report-content__history-heading">Historia zgłoszenia</h3>
             <ReportHistory history={report.history} />

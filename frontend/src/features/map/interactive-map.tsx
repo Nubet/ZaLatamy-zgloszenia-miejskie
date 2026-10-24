@@ -34,6 +34,7 @@ export function InteractiveMap({
     location,
     onLocate,
     publicView = false,
+    minimal = false,
 }: CityMapProps) {
     const { resolvedTheme } = useTheme();
     const mapStyle = resolvedTheme === "light" ? "positron-gl-style" : "dark-matter-gl-style";
@@ -95,7 +96,15 @@ export function InteractiveMap({
                 }}
                 canvasContextAttributes={{ antialias: true }}
                 cursor={onLocate ? "crosshair" : "grab"}
-                onLoad={() => setLoaded(true)}
+                onLoad={(event) => {
+                    event.target
+                        .getContainer()
+                        .querySelector<HTMLElement>(
+                            ".maplibregl-compact-show .maplibregl-ctrl-attrib-button",
+                        )
+                        ?.click();
+                    setLoaded(true);
+                }}
                 onStyleData={(event) => {
                     setBoundaryColor(
                         getComputedStyle(event.target.getContainer())
@@ -118,13 +127,15 @@ export function InteractiveMap({
                 {/* Activity preserves React state while react-map-gl replaces the map instance. */}
                 <Fragment key={mapVersion}>
                     <AttributionControl compact position="bottom-right" />
-                    <NavigationControl showCompass={false} position="bottom-right" />
-                    <FullscreenControl
-                        containerId={
-                            publicView ? "public-map" : onSelect ? "reports-map-panel" : mapId
-                        }
-                        position="top-right"
-                    />
+                    {!minimal && <NavigationControl showCompass={false} position="bottom-right" />}
+                    {!minimal && (
+                        <FullscreenControl
+                            containerId={
+                                publicView ? "public-map" : onSelect ? "reports-map-panel" : mapId
+                            }
+                            position="top-right"
+                        />
+                    )}
                     {boundaryColor && (
                         <Source id="lodz-boundary" type="geojson" data={lodzBoundary}>
                             <Layer
@@ -163,58 +174,64 @@ export function InteractiveMap({
                     nadal dostępne.
                 </output>
             )}
-            <div className="city-map__city-label">
-                <MapPin size={14} /> Łódź{" "}
-                <small>{onLocate ? "Wskaż miejsce na mapie" : "Zgłoszenia mieszkańców"}</small>
-            </div>
-            {!onLocate && (
-                <div className="city-map__legend" aria-label="Legenda statusów">
-                    {Object.entries(statuses).map(([status, label]) => (
-                        <span key={status}>
-                            <i className={`city-map__status city-map__status--${status}`} />
-                            {label}
-                        </span>
-                    ))}
+            {!minimal && onLocate && (
+                <div className="city-map__city-label">
+                    <MapPin size={14} /> Łódź <small>Wskaż miejsce na mapie</small>
                 </div>
             )}
-            <div className="city-map__actions">
-                {!publicView && !onLocate && (
-                    <Link
-                        href={
-                            selected
-                                ? `/mapa?zgloszenie=${encodeURIComponent(selected.id)}`
-                                : "/mapa"
-                        }
-                        className="icon-button"
-                        aria-label="Otwórz publiczną mapę"
-                        title="Otwórz publiczną mapę"
-                    >
-                        <Maximize2 size={17} />
-                    </Link>
-                )}
-                <button
-                    type="button"
-                    className="icon-button"
-                    aria-label="Przywróć widok Łodzi"
-                    title="Przywróć widok Łodzi"
-                    onClick={resetView}
-                >
-                    <LocateFixed size={17} />
-                </button>
-                {onLocate && (
+            {!minimal && !onLocate && (
+                <details className="city-map__legend" open>
+                    <summary className="city-map__legend-toggle">Legenda statusów</summary>
+                    <div className="city-map__legend-items">
+                        {Object.entries(statuses).map(([status, label]) => (
+                            <span key={status}>
+                                <i className={`city-map__status city-map__status--${status}`} />
+                                {label}
+                            </span>
+                        ))}
+                    </div>
+                </details>
+            )}
+            {!minimal && (
+                <div className="city-map__actions">
+                    {!publicView && !onLocate && (
+                        <Link
+                            href={
+                                selected
+                                    ? `/mapa?zgloszenie=${encodeURIComponent(selected.id)}`
+                                    : "/mapa"
+                            }
+                            className="icon-button"
+                            aria-label="Otwórz publiczną mapę"
+                            title="Otwórz publiczną mapę"
+                        >
+                            <Maximize2 size={17} />
+                        </Link>
+                    )}
                     <button
                         type="button"
                         className="icon-button"
-                        aria-label="Wybierz środek mapy"
-                        onClick={() => {
-                            const point = map.current?.getCenter();
-                            if (point) onLocate({ longitude: point.lng, latitude: point.lat });
-                        }}
+                        aria-label="Przywróć widok Łodzi"
+                        title="Przywróć widok Łodzi"
+                        onClick={resetView}
                     >
-                        <Crosshair size={17} />
+                        <LocateFixed size={17} />
                     </button>
-                )}
-            </div>
+                    {onLocate && (
+                        <button
+                            type="button"
+                            className="icon-button"
+                            aria-label="Wybierz środek mapy"
+                            onClick={() => {
+                                const point = map.current?.getCenter();
+                                if (point) onLocate({ longitude: point.lng, latitude: point.lat });
+                            }}
+                        >
+                            <Crosshair size={17} />
+                        </button>
+                    )}
+                </div>
+            )}
         </div>
     );
 }

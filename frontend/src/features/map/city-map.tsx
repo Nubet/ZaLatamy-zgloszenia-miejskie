@@ -10,6 +10,7 @@ export type CityMapProps = {
     location?: Location | null;
     onLocate?: (location: Location) => void;
     publicView?: boolean;
+    minimal?: boolean;
 };
 
 export const CityMap = dynamic<CityMapProps>(

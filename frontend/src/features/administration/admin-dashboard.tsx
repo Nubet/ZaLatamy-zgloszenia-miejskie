@@ -138,7 +138,7 @@ export function AdminDashboard({
                         initialStatus={selection?.status}
                     />
                     <div className="admin-detail__content">
-                        <ReportContent report={selected} />
+                        <ReportContent report={selected} minimalMap={filters.view === "archive"} />
                         <div className="admin-detail__public-link">
                             <Link href={`/zgloszenia/${selected.id}`} className="text-link">
                                 Otwórz widok publiczny
