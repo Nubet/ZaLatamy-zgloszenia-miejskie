@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "ZaŁatamy Demo",
+    "slug": "zalatamy-demo",
+    "scheme": "zalatamy-demo",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "plugins": ["expo-router"],
+    "ios": { "supportsTablet": true },
+    "android": { "package": "pl.zalatamy.demo" },
+    "web": { "bundler": "metro" }
+  }
+}

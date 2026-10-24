@@ -1,0 +1,7 @@
+html, body, #root { margin: 0; width: 100%; height: 100%; }
+.city-map { position: relative; width: 100%; height: 100%; background: #111114; color: #f0f0f3; }
+.city-map--light { background: #f6f6f9; color: #202027; }
+.city-map__marker { width: 44px; height: 44px; border: 0; background: transparent; font-size: 30px; cursor: pointer; text-shadow: 0 0 3px #111114; }
+.city-map__marker--selected { border: 2px solid currentColor; border-radius: 50%; }
+.city-map__pin { font-size: 32px; color: #9278c6; text-shadow: 0 0 3px #111114; }
+.city-map__error { position: absolute; left: 12px; right: 12px; bottom: 30px; background: #1b1b1d; color: #f0f0f3; padding: 12px; border-radius: 10px; font: 14px system-ui; }
