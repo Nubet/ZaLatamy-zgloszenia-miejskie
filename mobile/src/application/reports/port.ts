@@ -1,4 +1,10 @@
-import type { DemoState, Report, ReportDraft, ReportUpdate, SavedDraft } from '@/domain/reports/model';
+import type {
+  DemoState,
+  Report,
+  ReportDraft,
+  ReportUpdate,
+  SavedDraft,
+} from '@/domain/reports/model';
 
 export interface ReportsGateway {
   load(): Promise<DemoState>;
@@ -11,5 +17,12 @@ export interface ReportsGateway {
   reset(): Promise<void>;
 }
 
-export interface StateStorage { read(): Promise<string | null>; write(value: string): Promise<void> }
-export interface PhotoFiles { exists(uri: string): boolean; remove(uri: string): void }
+export interface StateStorage {
+  read(): Promise<string | null>;
+  write(value: string): Promise<void>;
+}
+export interface PhotoFiles {
+  exists(uri: string): boolean;
+  remove(uri: string): void;
+  removeUnused(retained: string[]): void;
+}

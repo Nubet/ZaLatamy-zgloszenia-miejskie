@@ -1,2 +1,4 @@
 import { WorkScreen } from '@/features/official/work-screen';
-export default function Page() { return <WorkScreen view="all" />; }
+export default function Page() {
+  return <WorkScreen view="all" />;
+}

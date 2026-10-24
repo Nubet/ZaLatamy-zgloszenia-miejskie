@@ -9,11 +9,13 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test \"src/**/*.test.ts\""
+    "test": "tsx --test \"src/**/*.test.ts\"",
+    "lint": "eslint app src",
+    "format": "prettier --write app src *.json *.js *.md",
+    "format:check": "prettier --check app src *.json *.js *.md"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
-    "@react-navigation/native": "7.5.1",
     "@tanstack/react-query": "5.104.5",
     "@turf/boolean-point-in-polygon": "7.4.0",
     "@turf/distance": "7.4.0",
@@ -42,9 +44,14 @@
     "zod": "4.6.7"
   },
   "devDependencies": {
-    "@types/node": "26.6.5",
+    "@types/node": "24.19.2",
     "@types/react": "19.3.0",
+    "@typescript-eslint/parser": "8.72.0",
+    "eslint": "9.39.5",
+    "eslint-config-expo": "58.0.4",
+    "eslint-import-resolver-typescript": "4.4.5",
+    "prettier": "3.9.10",
     "tsx": "4.23.15",
-    "typescript": "7.0.2"
+    "typescript": "6.0.3"
   }
 }

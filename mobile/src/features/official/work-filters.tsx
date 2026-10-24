@@ -1,9 +1,130 @@
 import { View } from 'react-native';
 import { categories, priorities, statuses } from '@/domain/reports/model';
 import { Button, Card, Choice, Copy, Field, Notice } from '@/shared/ui/primitives';
-import { dateError, defaultFilters, viewStatuses, type WorkFilters as Filters, type WorkView } from './work-queue';
+import {
+  dateError,
+  defaultFilters,
+  viewStatuses,
+  type WorkFilters as Filters,
+  type WorkView,
+} from './work-queue';
 
-export function WorkFilters({ value, view, onChange }: { value: Filters; view: WorkView; onChange: (value: Filters) => void }) {
+export function WorkFilters({
+  value,
+  view,
+  onChange,
+}: {
+  value: Filters;
+  view: WorkView;
+  onChange: (value: Filters) => void;
+}) {
   const change = (update: Partial<Filters>) => onChange({ ...value, ...update });
-  return <Card><Copy weight="600">Status</Copy><View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}><Choice label="Wszystkie" selected={!value.status} onPress={() => change({ status: '' })} />{viewStatuses(view).map(status => <Choice key={status} label={statuses[status]} selected={value.status === status} onPress={() => change({ status })} />)}</View><Copy weight="600">Kategoria</Copy><View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}><Choice label="Wszystkie" selected={!value.category} onPress={() => change({ category: '' })} />{Object.entries(categories).map(([key, label]) => <Choice key={key} label={label} selected={value.category === key} onPress={() => change({ category: key as Filters['category'] })} />)}</View><Copy weight="600">Priorytet</Copy><View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}><Choice label="Wszystkie" selected={!value.priority} onPress={() => change({ priority: '' })} />{Object.entries(priorities).map(([key, label]) => <Choice key={key} label={label} selected={value.priority === key} onPress={() => change({ priority: key as Filters['priority'] })} />)}</View><Copy weight="600">Sortowanie</Copy><View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>{([['priority', 'Priorytet'], ['confirmations', 'Potwierdzenia'], ['newest', 'Najnowsze'], ['oldest', 'Najstarsze']] as const).map(([key, label]) => <Choice key={key} label={label} selected={value.sort === key} onPress={() => change({ sort: key })} />)}</View><Copy weight="600">Data zgłoszenia</Copy><View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>{([['all', 'Bez limitu'], ['30', '30 dni'], ['90', '90 dni'], ['custom', 'Własny zakres']] as const).map(([key, label]) => <Choice key={key} label={label} selected={value.days === key} onPress={() => change({ days: key })} />)}</View>{value.days === 'custom' && <><Field label="Od (RRRR-MM-DD)" value={value.from} placeholder="2026-10-01" maxLength={10} onChangeText={from => change({ from })} /><Field label="Do (RRRR-MM-DD)" value={value.to} placeholder="2026-10-31" maxLength={10} onChangeText={to => change({ to })} /><Notice error message={dateError(value)} /></>}<Button variant="secondary" label="Przywróć domyślne filtry" onPress={() => onChange(defaultFilters(view))} /></Card>;
+  return (
+    <Card>
+      <Copy weight="600">Status</Copy>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+        <Choice label="Wszystkie" selected={!value.status} onPress={() => change({ status: '' })} />
+        {viewStatuses(view).map((status) => (
+          <Choice
+            key={status}
+            label={statuses[status]}
+            selected={value.status === status}
+            onPress={() => change({ status })}
+          />
+        ))}
+      </View>
+      <Copy weight="600">Kategoria</Copy>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+        <Choice
+          label="Wszystkie"
+          selected={!value.category}
+          onPress={() => change({ category: '' })}
+        />
+        {Object.entries(categories).map(([key, label]) => (
+          <Choice
+            key={key}
+            label={label}
+            selected={value.category === key}
+            onPress={() => change({ category: key as Filters['category'] })}
+          />
+        ))}
+      </View>
+      <Copy weight="600">Priorytet</Copy>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+        <Choice
+          label="Wszystkie"
+          selected={!value.priority}
+          onPress={() => change({ priority: '' })}
+        />
+        {Object.entries(priorities).map(([key, label]) => (
+          <Choice
+            key={key}
+            label={label}
+            selected={value.priority === key}
+            onPress={() => change({ priority: key as Filters['priority'] })}
+          />
+        ))}
+      </View>
+      <Copy weight="600">Sortowanie</Copy>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+        {(
+          [
+            ['priority', 'Priorytet'],
+            ['confirmations', 'Potwierdzenia'],
+            ['newest', 'Najnowsze'],
+            ['oldest', 'Najstarsze'],
+          ] as const
+        ).map(([key, label]) => (
+          <Choice
+            key={key}
+            label={label}
+            selected={value.sort === key}
+            onPress={() => change({ sort: key })}
+          />
+        ))}
+      </View>
+      <Copy weight="600">Data zgłoszenia</Copy>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+        {(
+          [
+            ['all', 'Bez limitu'],
+            ['30', '30 dni'],
+            ['90', '90 dni'],
+            ['custom', 'Własny zakres'],
+          ] as const
+        ).map(([key, label]) => (
+          <Choice
+            key={key}
+            label={label}
+            selected={value.days === key}
+            onPress={() => change({ days: key })}
+          />
+        ))}
+      </View>
+      {value.days === 'custom' && (
+        <>
+          <Field
+            label="Od (RRRR-MM-DD)"
+            value={value.from}
+            placeholder="2026-10-01"
+            maxLength={10}
+            onChangeText={(from) => change({ from })}
+          />
+          <Field
+            label="Do (RRRR-MM-DD)"
+            value={value.to}
+            placeholder="2026-10-31"
+            maxLength={10}
+            onChangeText={(to) => change({ to })}
+          />
+          <Notice error message={dateError(value)} />
+        </>
+      )}
+      <Button
+        variant="secondary"
+        label="Przywróć domyślne filtry"
+        onPress={() => onChange(defaultFilters(view))}
+      />
+    </Card>
+  );
 }

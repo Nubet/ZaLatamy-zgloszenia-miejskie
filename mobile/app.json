@@ -9,8 +9,18 @@
     "plugins": [
       "expo-router",
       "expo-image",
-      ["expo-image-picker", { "photosPermission": "Dodaj zdjęcia problemu do lokalnego zgłoszenia demo.", "cameraPermission": "Zrób zdjęcie problemu do lokalnego zgłoszenia demo.", "microphonePermission": false }],
-      ["expo-location", { "locationWhenInUsePermission": "Wskaż miejsce zgłoszenia na mapie Łodzi." }]
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Dodaj zdjęcia problemu do lokalnego zgłoszenia demo.",
+          "cameraPermission": "Zrób zdjęcie problemu do lokalnego zgłoszenia demo.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-location",
+        { "locationWhenInUsePermission": "Wskaż miejsce zgłoszenia na mapie Łodzi." }
+      ]
     ],
     "ios": {
       "supportsTablet": true

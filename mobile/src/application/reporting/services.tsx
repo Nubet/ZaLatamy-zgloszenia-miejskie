@@ -8,5 +8,17 @@ export interface ReportingServices {
   describe(category: Category): Promise<{ title: string; description: string }>;
 }
 const Context = createContext<ReportingServices | null>(null);
-export function ReportingProvider({ services, children }: { services: ReportingServices; children: ReactNode }) { return <Context.Provider value={services}>{children}</Context.Provider>; }
-export function useReportingServices() { const value = useContext(Context); if (!value) throw new Error('ReportingProvider is required'); return value; }
+export function ReportingProvider({
+  services,
+  children,
+}: {
+  services: ReportingServices;
+  children: ReactNode;
+}) {
+  return <Context.Provider value={services}>{children}</Context.Provider>;
+}
+export function useReportingServices() {
+  const value = useContext(Context);
+  if (!value) throw new Error('ReportingProvider is required');
+  return value;
+}
