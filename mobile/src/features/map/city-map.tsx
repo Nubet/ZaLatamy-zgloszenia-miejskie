@@ -2,6 +2,8 @@
 
 import { Component, useCallback, useState, type ReactNode } from 'react';
 import { Map, Layer, Marker, NavigationControl, Source, type MapRef } from 'react-map-gl/maplibre';
+import * as maplibregl from 'maplibre-gl';
+import { version } from 'maplibre-gl/package.json';
 import { lodzBoundary } from '@/domain/reports/boundary';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import './map.css';
@@ -49,6 +51,9 @@ export default function CityMap({
         <Map
           key={style}
           ref={focus}
+          mapLib={maplibregl}
+          // Metro cannot bundle the worker's dynamic imports; keep it matched to the installed library.
+          workerUrl={`https://unpkg.com/maplibre-gl@${version}/dist/maplibre-gl-worker.mjs`}
           initialViewState={{
             longitude: location?.longitude ?? 19.456,
             latitude: location?.latitude ?? 51.7592,

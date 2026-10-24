@@ -2,9 +2,11 @@
   "name": "zalatamy-mobile",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "bun@1.3.6",
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
+    "start:tunnel": "expo start --tunnel ngrok",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -44,6 +46,7 @@
     "zod": "4.6.7"
   },
   "devDependencies": {
+    "@expo/ngrok": "^4.1.0",
     "@types/node": "24.19.2",
     "@types/react": "19.3.0",
     "@typescript-eslint/parser": "8.72.0",

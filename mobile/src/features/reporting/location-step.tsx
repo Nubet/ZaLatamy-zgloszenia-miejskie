@@ -25,7 +25,7 @@ export function LocationStep({ form }: { form: ReportForm }) {
           points={[]}
           location={form.draft.location ?? undefined}
           onLocate={async (point) => form.setLocation(point)}
-          dom={{ style: { flex: 1 }, scrollEnabled: false }}
+          dom={{ style: { flex: 1 }, scrollEnabled: false, useExpoDOMWebView: false }}
         />
       </View>
       <Button label="Użyj mojej lokalizacji" variant="secondary" onPress={form.locate} />
