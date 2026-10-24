@@ -1,9 +1,9 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import CityMap from '@/features/map/city-map';
+import { useTheme } from '@/shared/theme/provider';
+import { Button, Heading, Screen } from '@/shared/ui/primitives';
 
 export default function Index() {
-  return <View style={{ flex: 1, paddingTop: 60, backgroundColor: '#111114' }}>
-    <Text style={{ color: '#f0f0f3', fontSize: 24, padding: 20 }}>ZaŁatamy · Demo</Text>
-    <CityMap theme="dark" points={[]} dom={{ style: { flex: 1 }, scrollEnabled: false }} />
-  </View>;
+  const { name, setTheme } = useTheme();
+  return <Screen><View style={{ height: 30 }} /><Heading eyebrow="Łódź · Demo" title="ZaŁatamy" description="Twoje miasto. W Twoich rękach." /><Button label={name === 'dark' ? 'Jasny motyw' : 'Ciemny motyw'} onPress={() => void setTheme(name === 'dark' ? 'light' : 'dark')} /><View style={{ height: 400, borderRadius: 14, overflow: 'hidden' }}><CityMap theme={name} points={[]} dom={{ style: { flex: 1 }, scrollEnabled: false }} /></View></Screen>;
 }
