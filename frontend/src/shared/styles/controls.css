@@ -461,11 +461,6 @@
     background: var(--select-control-option-hover);
     color: var(--text-primary);
 }
-@media (prefers-reduced-motion: reduce) {
-    .select-control__popup {
-        transition: none;
-    }
-}
 .tabs {
     display: flex;
     gap: 24px;

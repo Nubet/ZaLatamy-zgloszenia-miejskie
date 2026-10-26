@@ -12,13 +12,3 @@
 @import "../features/notifications/notifications.css";
 @import "../features/demo/demo.css";
 @import "../shared/styles/accessibility.css";
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-    }
-}

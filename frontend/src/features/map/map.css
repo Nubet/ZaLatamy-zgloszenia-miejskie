@@ -16,6 +16,17 @@
     .city-map__legend span {
         --city-map-legend-text: var(--text-primary);
     }
+    .city-map__legend i {
+        width: 1.25rem;
+        height: 1.25rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--surface-background);
+        border: 1px solid currentColor;
+        font-style: normal;
+        font-weight: 700;
+    }
     .city-map__actions .icon-button {
         --city-map-control-text: var(--text-primary);
     }
@@ -143,6 +154,12 @@
     top: 52px;
     display: grid;
     gap: 6px;
+}
+.city-map__accessibility {
+    position: absolute;
+    right: 10px;
+    top: 140px;
+    z-index: 4;
 }
 .city-map__actions .icon-button {
     width: 34px;

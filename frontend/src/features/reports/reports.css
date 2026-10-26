@@ -912,9 +912,3 @@
         flex-basis: 100%;
     }
 }
-@media (prefers-reduced-motion: reduce) {
-    .stats-strip__card::before,
-    .stats-strip__copy > span {
-        transition: none;
-    }
-}

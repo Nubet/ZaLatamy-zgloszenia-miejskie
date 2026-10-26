@@ -48,3 +48,19 @@
     --control-height: 2.25rem;
     --pill-height: 1.5rem;
 }
+:root[data-animations="reduced"] *,
+:root[data-animations="reduced"] *::before,
+:root[data-animations="reduced"] *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+    :root:not([data-animations="enabled"]) *,
+    :root:not([data-animations="enabled"]) *::before,
+    :root:not([data-animations="enabled"]) *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
