@@ -7,6 +7,14 @@
 .report-gallery {
     min-width: 0;
 }
+:root[data-contrast]:not([data-contrast="default"]) {
+    .report-gallery__expand {
+        --report-gallery-expand-background: var(--photo-overlay-background);
+    }
+    .report-gallery__lightbox::backdrop {
+        --report-gallery-backdrop: var(--dialog-backdrop);
+    }
+}
 .report-gallery__open {
     position: relative;
     display: block;

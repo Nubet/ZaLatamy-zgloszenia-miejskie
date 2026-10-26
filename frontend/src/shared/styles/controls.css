@@ -19,6 +19,60 @@
     box-shadow: var(--count-badge-shadow);
     font-variant-numeric: tabular-nums;
 }
+:root[data-contrast]:not([data-contrast="default"]) {
+    .count-badge {
+        --count-badge-border: var(--border-default);
+        --count-badge-background: var(--surface-background);
+        --count-badge-text: var(--text-primary);
+        --count-badge-shadow: none;
+    }
+    .eyebrow {
+        --eyebrow-text: var(--text-primary);
+    }
+    .icon-button {
+        --icon-button-background: var(--control-background);
+        --icon-button-hover: var(--control-hover);
+    }
+    .search-field {
+        border-color: var(--border-default);
+        --search-field-focus-border: var(--focus-ring);
+    }
+    .search-field__clear {
+        --search-field-clear-hover: var(--surface-hover);
+    }
+    .field :is(input, textarea, .select-control) {
+        --field-border: var(--border-default);
+        --field-background: var(--control-background);
+        --field-focus-border: var(--focus-ring);
+    }
+    .filter-select {
+        --filter-select-divider: var(--border-default);
+    }
+    .select-control__popup {
+        --select-control-menu-background: var(--surface-background);
+        --select-control-menu-shadow: transparent;
+        --select-control-menu-border: var(--border-default);
+        --select-control-menu-highlight: transparent;
+        --select-control-option-hover: var(--surface-hover);
+        --select-control-indicator: var(--selection-indicator);
+        border: 1px solid var(--border-default);
+    }
+    .select-control__option[data-highlighted] {
+        outline: 2px solid var(--focus-ring);
+        outline-offset: -2px;
+        text-decoration: underline;
+    }
+    .tabs span {
+        --tabs-count-background: var(--surface-background);
+        --tabs-count-text: var(--text-primary);
+    }
+    .feedback {
+        --feedback-border: var(--border-default);
+    }
+    .photo-fallback {
+        --photo-fallback-background: var(--surface-background);
+    }
+}
 .page {
     max-width: 1640px;
     padding: 30px 32px 26px;

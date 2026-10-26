@@ -1,3 +1,84 @@
+:root[data-contrast]:not([data-contrast="default"]) {
+    .stats-strip {
+        --stats-strip-background: var(--surface-background);
+        --stats-strip-light: var(--border-default);
+        --stats-strip-hover-light: var(--border-default);
+        --stats-strip-hover-glow: transparent;
+        --stats-strip-card-shadow: transparent;
+        --stats-strip-icon-shadow: transparent;
+    }
+    .stats-strip__icon {
+        --stats-strip-icon-background: var(--surface-background);
+        --stats-strip-icon-highlight: var(--surface-background);
+        --stats-strip-icon-text: var(--text-primary);
+        --stats-strip-icon-border: var(--border-default);
+    }
+    .section-nav > span:first-child {
+        --section-nav-active-border: var(--selection-indicator);
+    }
+    .reports-explorer__grid {
+        --reports-explorer-border: var(--border-default);
+    }
+    .reports-explorer__selection {
+        --reports-explorer-selection-border: var(--border-default);
+        --reports-explorer-selection-background: var(--surface-background);
+    }
+    .reports-explorer__list-heading h2 span {
+        --reports-explorer-count-background: var(--surface-background);
+        --reports-explorer-count-text: var(--text-primary);
+    }
+    .report-card {
+        --report-card-selected-shadow: inset 3px 0 var(--selection-indicator);
+    }
+    .report-card__photo {
+        --report-card-photo-border: var(--border-default);
+    }
+    .community-banner__icon {
+        --community-banner-icon-border: var(--border-default);
+        --community-banner-icon-background: var(--surface-background);
+        --community-banner-icon-text: var(--text-primary);
+    }
+    .community-banner__action {
+        --community-banner-action-text: var(--text-link);
+    }
+    .report-content__image-wrapper {
+        --report-content-image-background: var(--surface-background);
+    }
+    .report-content__image-caption {
+        --report-content-caption-border: var(--border-default);
+        --report-content-caption-background: var(--surface-background);
+        --report-content-caption-text: var(--text-primary);
+    }
+    .duplicate-link {
+        --duplicate-link-background: var(--surface-background);
+        --duplicate-link-border: var(--border-default);
+        --duplicate-link-text: var(--text-primary);
+    }
+    .report-journey li,
+    .report-journey li > span {
+        --report-journey-step-border: var(--border-default);
+        --report-journey-reached-text: var(--text-primary);
+        --report-journey-reached-background: var(--surface-background);
+        --report-journey-reached-border: var(--border-default);
+        --report-journey-current-shadow: 0 0 0 2px var(--focus-ring);
+    }
+    .timeline li::before {
+        --timeline-line-background: var(--border-default);
+    }
+    .timeline__dot {
+        --timeline-dot-background: var(--text-primary);
+        --timeline-dot-shadow: 0 0 0 1px var(--border-default);
+    }
+    .local-note {
+        --local-note-background: var(--surface-background);
+        --local-note-border: var(--border-default);
+    }
+    .reports-explorer__view-toggle {
+        --reports-explorer-toggle-background: var(--surface-background);
+        --reports-explorer-toggle-active-background: var(--surface-background);
+        --reports-explorer-toggle-active-border: var(--border-default);
+    }
+}
 .stats-strip {
     --stats-strip-background: light-dark(var(--surface-background), #141417);
     --stats-strip-light: light-dark(var(--accent-border), var(--palette-white));

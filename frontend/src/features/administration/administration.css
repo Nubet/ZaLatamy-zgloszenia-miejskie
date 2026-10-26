@@ -898,3 +898,54 @@
         padding-inline: 12px;
     }
 }
+:root[data-contrast]:not([data-contrast="default"]) {
+    .work-queue__filter-popover {
+        --work-queue-filter-border: var(--border-default);
+    }
+    .kanban-column {
+        --kanban-column-drop-background: var(--surface-background);
+    }
+    .kanban-card {
+        --kanban-card-border: var(--border-default);
+        --kanban-card-shadow: transparent;
+        --kanban-card-hover-border: var(--focus-ring);
+        --kanban-card-hover-shadow: transparent;
+    }
+    .kanban-card__open {
+        --kanban-card-open-hover: var(--surface-hover);
+    }
+    .kanban-card__footer {
+        --kanban-card-footer-border: var(--border-default);
+    }
+    .kanban-card__watching {
+        --kanban-card-watching-text: var(--text-primary);
+    }
+    .kanban-column__empty {
+        --kanban-column-empty-border: var(--border-default);
+    }
+    .admin-detail {
+        --admin-detail-border: var(--border-default);
+        --admin-detail-shadow: none;
+    }
+    .admin-detail::backdrop {
+        --admin-detail-backdrop: var(--dialog-backdrop);
+    }
+    .admin-editor {
+        --admin-editor-background: var(--surface-background);
+    }
+    .date-range-filter summary {
+        --date-range-filter-border: var(--border-default);
+    }
+    .date-range-filter__popover {
+        --date-range-filter-popover-border: var(--border-default);
+    }
+    .date-range-filter__popover > button {
+        --date-range-filter-selected-text: var(--text-primary);
+    }
+    .work-queue__chip {
+        --work-queue-chip-border: var(--border-default);
+    }
+    .kanban-card__age {
+        --kanban-card-age-text: var(--text-primary);
+    }
+}

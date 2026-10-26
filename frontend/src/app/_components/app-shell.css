@@ -1,3 +1,46 @@
+:root[data-contrast]:not([data-contrast="default"]) {
+    .brand {
+        --brand-border: var(--border-default);
+    }
+    .sidebar__workspace-icon {
+        --sidebar-workspace-border: var(--border-default);
+        --sidebar-workspace-background: var(--surface-background);
+    }
+    .sidebar__nav-link {
+        --sidebar-nav-hover: var(--surface-hover);
+        --sidebar-nav-selected-background: var(--surface-selected);
+        --sidebar-nav-selected-text: var(--text-primary);
+        --sidebar-nav-selected-shadow: var(--border-default);
+        --sidebar-nav-selected-hover: var(--surface-hover);
+    }
+    .sidebar__nav-link--active {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+    .sidebar__notification-count {
+        --sidebar-notification-text: var(--text-primary);
+    }
+    .sidebar__online-indicator {
+        --sidebar-online-background: var(--feedback-success-text);
+    }
+    .avatar {
+        --avatar-background: var(--surface-background);
+        --avatar-text: var(--text-primary);
+        --avatar-border: var(--border-default);
+    }
+    .topbar__divider {
+        --topbar-divider-text: var(--text-primary);
+    }
+    .role-switch {
+        --role-switch-hover: var(--surface-hover);
+    }
+    .topbar__unread-indicator {
+        --topbar-unread-background: var(--selection-indicator);
+    }
+    .help-dialog li svg {
+        --help-dialog-check-text: var(--feedback-success-text);
+    }
+}
 .app-shell {
     --app-shell-sidebar-width: var(--navigation-width);
     min-height: 100dvh;

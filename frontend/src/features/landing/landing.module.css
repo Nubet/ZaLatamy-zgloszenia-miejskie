@@ -1,3 +1,58 @@
+:global(:root[data-contrast]:not([data-contrast="default"])) {
+    .landing {
+        --landing-header-border: var(--border-default);
+        --landing-header-background: var(--surface-background);
+        --landing-header-shadow: none;
+        --landing-logo-background: var(--selection-indicator);
+        --landing-hero-gradient: none;
+        --landing-location-text: var(--text-primary);
+        --landing-location-border: var(--border-default);
+        --landing-location-background: var(--surface-background);
+        --landing-location-icon: var(--text-primary);
+        --landing-description-text: var(--text-primary);
+        --landing-access-note-text: var(--text-primary);
+        --landing-closing-description-text: var(--text-primary);
+        --landing-preview-background: var(--surface-background);
+        --landing-preview-border: var(--border-default);
+        --landing-preview-shadow: none;
+        --landing-section-background: var(--surface-background);
+        --landing-section-border: var(--border-default);
+        --landing-eyebrow-text: var(--text-primary);
+        --landing-category-background: var(--surface-background);
+        --landing-step-number-text: var(--text-primary);
+        --landing-form-stage-background: var(--surface-background);
+        --landing-form-stage-border: var(--border-default);
+        --landing-form-preview-border: var(--border-default);
+        --landing-form-preview-shadow: none;
+        --landing-completed-text: var(--text-primary);
+        --landing-current-step-text: var(--text-primary);
+        --landing-ai-heading-text: var(--text-primary);
+        --landing-timeline-line: var(--border-default);
+        --landing-timeline-dot-border: var(--border-default);
+        --landing-closing-icon: var(--text-primary);
+    }
+    .landing__header {
+        --landing-header-stage-shadow: none;
+    }
+    .map-preview {
+        --map-preview-border: var(--border-default);
+        --map-preview-chrome-background: var(--surface-background);
+        --map-preview-divider-text: var(--text-primary);
+        --map-preview-dot-background: var(--text-primary);
+        --map-preview-link-hover: var(--surface-hover);
+        --map-preview-link-active-background: var(--surface-selected);
+        --map-preview-link-active-text: var(--text-primary);
+    }
+    .landing__category-icon {
+        --landing-category-icon-background: var(--surface-background);
+        --landing-category-icon-border: var(--border-default);
+        --landing-category-icon-text: var(--text-primary);
+    }
+    .landing__hero-backdrop,
+    .landing__closing-backdrop {
+        display: none;
+    }
+}
 .landing {
     --landing-header-border: light-dark(var(--border-subtle), #ffffff17);
     --landing-header-background: light-dark(var(--overlay-background), #1b1b1dec);

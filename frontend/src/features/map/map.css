@@ -1,3 +1,58 @@
+:root[data-contrast]:not([data-contrast="default"]) {
+    :is(.city-map, .public-map) {
+        --city-map-background: var(--page-background);
+        --city-map-overlay-background: var(--surface-background);
+        --city-map-control-border: var(--border-default);
+    }
+    .city-map__city-label {
+        --city-map-label-border: var(--border-default);
+    }
+    .city-map__city-label small {
+        --city-map-label-divider: var(--border-default);
+    }
+    .city-map__legend {
+        --city-map-legend-border: var(--border-default);
+    }
+    .city-map__legend span {
+        --city-map-legend-text: var(--text-primary);
+    }
+    .city-map__actions .icon-button {
+        --city-map-control-text: var(--text-primary);
+    }
+    .city-map .maplibregl-ctrl-attrib {
+        --city-map-attribution-background: var(--surface-background);
+        --city-map-attribution-text: var(--text-primary);
+    }
+    :is(.city-map__loading-indicator, .city-map__error) {
+        --city-map-feedback-border: var(--border-default);
+        --city-map-feedback-background: var(--surface-background);
+        --city-map-feedback-text: var(--text-primary);
+    }
+    .city-map__location {
+        --city-map-location-border: var(--border-default);
+        --city-map-location-shadow: none;
+    }
+    .public-map__toolbar {
+        --public-map-toolbar-background: var(--surface-background);
+        border: 1px solid var(--border-default);
+    }
+    .public-map__title h1 {
+        --public-map-title-text: var(--text-primary);
+    }
+    .public-map__filters .select-control {
+        --public-map-filter-background: var(--control-background);
+    }
+    .public-map__results > button {
+        --public-map-result-hover: var(--surface-hover);
+    }
+    .public-map__preview {
+        --public-map-preview-border: var(--border-default);
+        --public-map-preview-background: var(--surface-background);
+    }
+    .city-map__marker-center {
+        fill: var(--surface-background);
+    }
+}
 .map-panel {
     min-width: 0;
     position: relative;

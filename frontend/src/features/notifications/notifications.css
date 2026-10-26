@@ -295,3 +295,12 @@
         min-height: 44px;
     }
 }
+:root[data-contrast]:not([data-contrast="default"]) {
+    .notifications__mark-all,
+    .notification-card__mark-read {
+        --notifications-action-hover: var(--surface-hover);
+    }
+    .notification-card__photo {
+        --notification-card-photo-border: var(--border-default);
+    }
+}

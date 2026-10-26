@@ -202,3 +202,123 @@
     --map-control-icon-filter: none;
     --map-attribution-icon-filter: none;
 }
+
+:root[data-contrast]:not([data-contrast="default"]) {
+    --contrast-foreground: var(--palette-white);
+    --contrast-background: var(--palette-black);
+    --contrast-surface: var(--contrast-background);
+    --contrast-accent: var(--contrast-foreground);
+    color-scheme: dark;
+    --text-primary: var(--contrast-foreground);
+    --text-secondary: var(--contrast-foreground);
+    --text-muted: var(--contrast-foreground);
+    --text-subtle: var(--contrast-foreground);
+    --text-inverse: var(--contrast-background);
+    --text-highlight: var(--contrast-foreground);
+    --text-link: var(--contrast-accent);
+    --text-link-hover: var(--contrast-accent);
+    --page-background: var(--contrast-background);
+    --surface-background: var(--contrast-surface);
+    --surface-navigation: var(--contrast-surface);
+    --surface-hover: var(--contrast-surface);
+    --surface-emphasis: var(--contrast-surface);
+    --surface-selected: var(--contrast-surface);
+    --surface-raised: var(--contrast-surface);
+    --surface-tinted: var(--contrast-surface);
+    --surface-highlight: transparent;
+    --surface-highlight-subtle: transparent;
+    --surface-highlight-faint: transparent;
+    --border-default: var(--contrast-foreground);
+    --border-subtle: var(--contrast-foreground);
+    --accent: var(--contrast-accent);
+    --accent-hover: var(--contrast-accent);
+    --accent-text: var(--contrast-accent);
+    --accent-soft: var(--contrast-surface);
+    --accent-border: var(--contrast-accent);
+    --focus-ring: var(--contrast-accent);
+    --scrollbar-thumb: var(--contrast-foreground);
+    --control-background: var(--contrast-surface);
+    --control-hover: var(--contrast-surface);
+    --control-text: var(--contrast-foreground);
+    --control-shadow: 0 0 0 1px var(--border-default);
+    --control-hover-shadow: 0 0 0 2px var(--border-default);
+    --control-pressed-shadow: var(--control-hover-shadow);
+    --button-primary-shadow: none;
+    --button-primary-hover-shadow: 0 0 0 2px var(--border-default);
+    --button-primary-pressed-shadow: var(--button-primary-hover-shadow);
+    --shadow-sm: none;
+    --shadow-md: none;
+    --dialog-border: var(--border-default);
+    --dialog-background: var(--contrast-surface);
+    --dialog-backdrop: color-mix(in srgb, var(--contrast-background) 85%, transparent);
+    --overlay-background: var(--contrast-surface);
+    --photo-overlay-background: var(--contrast-foreground);
+    --feedback-success-text: var(--contrast-foreground);
+    --feedback-error-text: var(--contrast-foreground);
+    --feedback-error-background: var(--contrast-surface);
+    --feedback-error-border: var(--contrast-foreground);
+    --status-new-text: var(--contrast-foreground);
+    --status-new-background: var(--contrast-surface);
+    --status-new-border: var(--contrast-foreground);
+    --status-accepted-text: var(--contrast-foreground);
+    --status-accepted-background: var(--contrast-surface);
+    --status-accepted-border: var(--contrast-foreground);
+    --status-progress-text: var(--contrast-foreground);
+    --status-progress-background: var(--contrast-surface);
+    --status-progress-border: var(--contrast-foreground);
+    --status-resolved-text: var(--contrast-foreground);
+    --status-resolved-background: var(--contrast-surface);
+    --status-resolved-border: var(--contrast-foreground);
+    --status-rejected-text: var(--contrast-foreground);
+    --status-rejected-background: var(--contrast-surface);
+    --status-rejected-border: var(--contrast-foreground);
+    --status-duplicate-text: var(--contrast-foreground);
+    --status-duplicate-background: var(--contrast-surface);
+    --status-duplicate-border: var(--contrast-foreground);
+    --category-road-text: var(--contrast-foreground);
+    --category-road-background: var(--contrast-surface);
+    --category-road-border: var(--contrast-foreground);
+    --category-lighting-text: var(--contrast-foreground);
+    --category-lighting-background: var(--contrast-surface);
+    --category-lighting-border: var(--contrast-foreground);
+    --category-greenery-text: var(--contrast-foreground);
+    --category-greenery-background: var(--contrast-surface);
+    --category-greenery-border: var(--contrast-foreground);
+    --category-waste-text: var(--contrast-foreground);
+    --category-waste-background: var(--contrast-surface);
+    --category-waste-border: var(--contrast-foreground);
+    --category-other-text: var(--contrast-foreground);
+    --category-other-background: var(--contrast-surface);
+    --category-other-border: var(--contrast-foreground);
+    --status-new-marker: var(--contrast-foreground);
+    --status-accepted-marker: var(--contrast-foreground);
+    --status-progress-marker: var(--contrast-foreground);
+    --status-resolved-marker: var(--contrast-foreground);
+    --status-rejected-marker: var(--contrast-foreground);
+    --status-duplicate-marker: var(--contrast-foreground);
+    --city-map-boundary: var(--contrast-accent);
+    --city-map-control-background: var(--contrast-surface);
+    --checkbox-accent: var(--contrast-accent);
+    --selection-indicator: var(--contrast-accent);
+    --map-control-icon-filter: invert(1);
+    --map-attribution-icon-filter: invert(1);
+}
+:root[data-contrast="high"][data-theme="dark"] {
+    --contrast-background: var(--palette-neutral-950);
+    --contrast-surface: var(--palette-neutral-900);
+    --contrast-accent: var(--palette-contrast-cyan);
+}
+:root[data-contrast="black-on-white"][data-contrast],
+:root[data-contrast="high"][data-theme="light"] {
+    --contrast-foreground: var(--palette-black);
+    --contrast-background: var(--palette-white);
+    color-scheme: light;
+    --map-control-icon-filter: none;
+    --map-attribution-icon-filter: none;
+}
+:root[data-contrast="high"][data-theme="light"] {
+    --contrast-accent: var(--palette-contrast-blue);
+}
+:root[data-contrast="yellow-on-black"][data-contrast] {
+    --contrast-foreground: var(--palette-contrast-yellow);
+}

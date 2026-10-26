@@ -1,0 +1,40 @@
+:root[data-contrast]:not([data-contrast="default"]) {
+    a:not(.button):hover {
+        text-decoration: underline;
+    }
+    :focus-visible {
+        outline: 3px solid var(--focus-ring);
+        outline-offset: 3px;
+    }
+    ::selection {
+        background: var(--contrast-foreground);
+        color: var(--contrast-background);
+    }
+    .button--primary {
+        border-color: var(--accent);
+    }
+    .button--secondary {
+        border-color: var(--border-default);
+    }
+    input[type="checkbox"],
+    input[type="radio"] {
+        outline-offset: 3px;
+    }
+    a:not([class]) {
+        text-decoration: underline;
+    }
+}
+@media (forced-colors: active) {
+    :root {
+        --focus-ring: Highlight;
+    }
+    button,
+    input,
+    select,
+    textarea {
+        border: 1px solid ButtonText;
+    }
+    :focus-visible {
+        outline: 3px solid Highlight;
+    }
+}

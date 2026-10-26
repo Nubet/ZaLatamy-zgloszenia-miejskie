@@ -1,6 +1,9 @@
 :root {
     --palette-white: #fff;
     --palette-black: #000;
+    --palette-contrast-yellow: #ffff00;
+    --palette-contrast-blue: #003087;
+    --palette-contrast-cyan: #80d4ff;
     --palette-neutral-50: #f6f6f9;
     --palette-neutral-75: #f0f0f5;
     --palette-neutral-100: #efeff4;

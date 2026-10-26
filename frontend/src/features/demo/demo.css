@@ -82,3 +82,6 @@
         padding-inline: 10px;
     }
 }
+:root[data-contrast]:not([data-contrast="default"]) .demo-controls__success {
+    --demo-controls-success-text: var(--feedback-success-text);
+}

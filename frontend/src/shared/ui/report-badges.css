@@ -56,6 +56,9 @@
     --priority-label-high-text: light-dark(var(--feedback-error-text), #e9a197);
     color: var(--priority-label-high-text);
 }
+:root[data-contrast]:not([data-contrast="default"]) .priority-label--high {
+    --priority-label-high-text: var(--feedback-error-text);
+}
 .category-tag {
     display: inline-flex;
     align-items: center;
