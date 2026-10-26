@@ -2,7 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { Accessibility, X } from "lucide-react";
+import { Accessibility, Pause, Waves, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { SelectControl } from "@/shared/ui/select-control";
 import {
@@ -37,13 +37,14 @@ export function AccessibilitySettings() {
             <button
                 ref={opener}
                 type="button"
-                className="icon-button accessibility-settings__trigger"
+                className="accessibility-settings__trigger"
                 aria-label="Ustawienia dostępności"
                 title="Ustawienia dostępności"
                 aria-haspopup="dialog"
+                aria-expanded={open}
                 onClick={() => setOpen(true)}
             >
-                <Accessibility size={18} aria-hidden="true" />
+                <Accessibility size={26} aria-hidden="true" />
             </button>
             {open &&
                 createPortal(
@@ -66,7 +67,6 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
     const { theme, setTheme } = useTheme();
     function close() {
         dialog.current?.close();
-        onClose();
     }
     function update<K extends keyof AccessibilityPreferences>(key: K, value: string) {
         if ((preferenceValues[key] as readonly string[]).includes(value)) {
@@ -80,8 +80,12 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
             aria-describedby={`${id}-description`}
             ref={(node) => {
                 dialog.current = node;
-                if (node && !node.open) node.showModal();
+                if (node && !node.open) {
+                    node.setAttribute("closedby", "any");
+                    node.showModal();
+                }
             }}
+            onClose={onClose}
             onCancel={(event) => {
                 event.preventDefault();
                 close();
@@ -98,7 +102,7 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
                     <X size={18} aria-hidden="true" />
                 </button>
             </header>
-            <p id={`${id}-description`}>
+            <p className="accessibility-settings__description" id={`${id}-description`}>
                 Zmiany są stosowane od razu i zapamiętywane w tej przeglądarce.
             </p>
             <label className="field" htmlFor={`${id}-theme`}>
@@ -116,25 +120,45 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
             />
             {(
                 [
-                    ["contrast", "Kontrast"],
                     ["fontSize", "Rozmiar tekstu"],
+                    ["contrast", "Tryby kontrastu"],
                     ["animations", "Animacje"],
                 ] as const
             ).map(([key, label]) => (
-                <div key={key}>
-                    <label className="field" htmlFor={`${id}-${key}`}>
-                        {label}
-                    </label>
-                    <SelectControl
-                        id={`${id}-${key}`}
-                        value={preferences[key]}
-                        onValueChange={(value) => update(key, value)}
-                        options={preferenceValues[key].map((value, index) => ({
-                            value,
-                            label: labels[key][index]!,
-                        }))}
-                    />
-                </div>
+                <fieldset className="accessibility-settings__group" key={key}>
+                    <legend>{label}</legend>
+                    <div className="accessibility-settings__choices">
+                        {preferenceValues[key].map((value, index) => (
+                            <button
+                                type="button"
+                                key={value}
+                                className={`accessibility-settings__choice accessibility-settings__choice--${key === "contrast" ? value : key === "fontSize" ? "text" : "motion"}`}
+                                aria-label={
+                                    key === "fontSize"
+                                        ? `${["A−", "A", "A+"][index]} — ${labels[key][index]}`
+                                        : key === "animations" && index === 0
+                                          ? "Auto — Systemowe"
+                                          : labels[key][index]
+                                }
+                                title={labels[key][index]}
+                                aria-pressed={preferences[key] === value}
+                                onClick={() => update(key, value)}
+                            >
+                                {key === "fontSize" ? (
+                                    ["A−", "A", "A+"][index]
+                                ) : key === "contrast" ? (
+                                    "A"
+                                ) : index === 0 ? (
+                                    "Auto"
+                                ) : index === 1 ? (
+                                    <Waves size={22} aria-hidden="true" />
+                                ) : (
+                                    <Pause size={22} aria-hidden="true" />
+                                )}
+                            </button>
+                        ))}
+                    </div>
+                </fieldset>
             ))}
             {preferences.contrast !== "default" && preferences.contrast !== "high" && (
                 <p className="accessibility-settings__note">
@@ -150,7 +174,7 @@ function SettingsDialog({ onClose }: { onClose: () => void }) {
                 >
                     Przywróć domyślną dostępność
                 </button>
-                <button type="button" className="button button--primary" onClick={close}>
+                <button type="button" className="button button--secondary" onClick={close}>
                     Gotowe
                 </button>
             </footer>

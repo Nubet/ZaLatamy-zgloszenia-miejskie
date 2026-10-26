@@ -25,7 +25,26 @@
     }
 }
 @media (forced-colors: active) {
-    :root {
+    :root,
+    :root[data-contrast][data-contrast] {
+        color-scheme: light dark;
+        --contrast-foreground: CanvasText;
+        --contrast-background: Canvas;
+        --contrast-surface: Canvas;
+        --contrast-accent: LinkText;
+        --text-primary: CanvasText;
+        --text-secondary: CanvasText;
+        --text-muted: CanvasText;
+        --text-subtle: CanvasText;
+        --text-inverse: Canvas;
+        --text-link: LinkText;
+        --text-link-hover: LinkText;
+        --page-background: Canvas;
+        --surface-background: Canvas;
+        --dialog-background: Canvas;
+        --control-background: ButtonFace;
+        --control-text: ButtonText;
+        --border-default: CanvasText;
         --focus-ring: Highlight;
     }
     button,
@@ -36,6 +55,11 @@
     }
     :focus-visible {
         outline: 3px solid Highlight;
+    }
+    .button--primary {
+        color: ButtonText;
+        background: ButtonFace;
+        border: 1px solid ButtonText;
     }
 }
 :root[data-font-size="large"] {

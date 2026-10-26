@@ -7,7 +7,6 @@ import { Suspense, useState, type KeyboardEvent } from "react";
 import { useReports } from "@/application/reports/provider";
 import { AdminNavigation } from "@/features/administration/admin-navigation";
 import { ThemeToggle } from "@/shared/ui/theme-toggle";
-import { AccessibilitySettings } from "@/features/accessibility/accessibility-settings";
 import {
     ArrowLeft,
     ArrowUpRight,
@@ -248,7 +247,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     </div>
                     <div className="topbar__actions">
                         <ThemeToggle />
-                        <AccessibilitySettings />
                         <Link href="/" className="topbar__home-link">
                             <ArrowLeft size={14} aria-hidden="true" />
                             Strona główna

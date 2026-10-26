@@ -22,8 +22,7 @@ for (const system of ["reduce", "no-preference"] as const) {
             ["Systemowe", system === "reduce" ? "reduced" : "enabled"],
         ]) {
             await page.getByRole("button", { name: "Ustawienia dostępności", exact: true }).click();
-            await page.getByRole("combobox", { name: "Animacje", exact: true }).click();
-            await page.getByRole("option", { name: label, exact: true }).click();
+            await page.getByRole("button", { name: label }).click();
             await page.getByRole("button", { name: "Gotowe", exact: true }).click();
             await expect(map).toHaveAttribute("data-map-motion", motion!);
             await expect(map).toHaveAttribute("data-map-ready", "true", { timeout: 30_000 });

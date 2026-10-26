@@ -6,6 +6,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { ThemeProvider } from "@/shared/ui/theme-provider";
 import { accessibilityBootstrap } from "@/shared/accessibility/preferences";
+import { AccessibilitySettings } from "@/features/accessibility/accessibility-settings";
 
 export const metadata: Metadata = {
     title: "ZaŁatamy · Zgłoszenia miejskie w Łodzi",
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <ThemeProvider>
                     <Providers>{children}</Providers>
+                    <AccessibilitySettings />
                 </ThemeProvider>
             </body>
         </html>

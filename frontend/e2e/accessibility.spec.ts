@@ -9,6 +9,9 @@ const routes = [
     "/powiadomienia",
     "/zgloszenia/nowe",
     "/admin",
+    "/admin?view=list",
+    "/admin?view=archive",
+    "/zgloszenia/LDZ-1042",
 ];
 
 for (const { contrast, theme } of accessiblePalettes) {

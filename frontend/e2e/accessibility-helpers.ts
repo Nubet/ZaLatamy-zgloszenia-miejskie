@@ -1,4 +1,3 @@
-import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, type TestInfo } from "@playwright/test";
 
 export const accessiblePalettes = [
@@ -10,6 +9,8 @@ export const accessiblePalettes = [
 ] as const;
 
 export async function scanAccessibility(page: Page, info: TestInfo, name: string) {
+    const packageName = "@axe-core/playwright";
+    const { default: AxeBuilder } = await import(packageName);
     await page.evaluate(() => document.fonts.ready);
     const results = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
@@ -32,6 +33,12 @@ export async function checkTokenContrast(page: Page) {
         ["text-inverse", "accent"],
         ["text-inverse", "accent-hover"],
         ["control-text", "control-background"],
+        ["control-text", "control-hover"],
+        ["text-primary", "surface-selected"],
+        ["text-inverse", "photo-overlay-background"],
+        ["border-default", "surface-background"],
+        ["focus-ring", "surface-background"],
+        ["selection-indicator", "surface-background"],
         ["feedback-error-text", "feedback-error-background"],
         ...["new", "accepted", "progress", "resolved", "rejected", "duplicate"].map((status) => [
             `status-${status}-text`,
@@ -71,5 +78,9 @@ export async function checkTokenContrast(page: Page) {
         return result;
     }, pairs);
     for (const pair of ratios)
-        expect(pair.ratio, `${pair.foreground}/${pair.background}`).toBeGreaterThanOrEqual(4.5);
+        expect(pair.ratio, `${pair.foreground}/${pair.background}`).toBeGreaterThanOrEqual(
+            ["border-default", "focus-ring", "selection-indicator"].includes(pair.foreground!)
+                ? 3
+                : 4.5,
+        );
 }

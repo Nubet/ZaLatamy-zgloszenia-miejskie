@@ -41,7 +41,6 @@ export function ReportsList({
                         <button
                             type="button"
                             className="work-queue__result-row"
-                            aria-label={`Obsłuż ${report.id}`}
                             onClick={() => onOpen(report)}
                         >
                             <span className="work-queue__result-title">

@@ -9,6 +9,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
             defaultTheme="dark"
             themes={["dark", "light"]}
             enableSystem
+            enableColorScheme={false}
             storageKey="zalatamy-theme"
             disableTransitionOnChange
         >

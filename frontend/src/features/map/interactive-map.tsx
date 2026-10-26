@@ -237,10 +237,9 @@ export function InteractiveMap({
                         ))}
                         {location && (
                             <Marker longitude={location.longitude} latitude={location.latitude}>
-                                <span
-                                    className="city-map__location"
-                                    aria-label="Wybrana lokalizacja"
-                                />
+                                <svg className="city-map__location">
+                                    <title>Wybrana lokalizacja</title>
+                                </svg>
                             </Marker>
                         )}
                     </Fragment>
@@ -361,10 +360,10 @@ function ReportMarker({
                     {accessible ? (
                         <>
                             <circle
-                                r="20"
+                                r={active ? 21 : 18}
                                 fill="var(--surface-background)"
                                 stroke="currentColor"
-                                strokeWidth="3"
+                                strokeWidth={active ? 4 : 2}
                             />
                             <text
                                 textAnchor="middle"

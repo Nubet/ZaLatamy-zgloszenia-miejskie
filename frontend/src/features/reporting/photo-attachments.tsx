@@ -42,7 +42,7 @@ export function PhotoAttachments({
                                 type="button"
                                 className="text-link"
                                 disabled={disabled}
-                                aria-label={`Ustaw zdjęcie ${index + 1} jako główne`}
+                                aria-label={`Ustaw jako główne — zdjęcie ${index + 1}`}
                                 onClick={() => onMakeCover(index)}
                             >
                                 Ustaw jako główne
