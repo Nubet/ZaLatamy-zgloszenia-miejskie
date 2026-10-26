@@ -8,7 +8,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
             attribute="data-theme"
             defaultTheme="dark"
             themes={["dark", "light"]}
-            enableSystem={false}
+            enableSystem
             storageKey="zalatamy-theme"
             disableTransitionOnChange
         >

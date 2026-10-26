@@ -15,6 +15,7 @@ import { CityMap } from "./city-map";
 import { ReportHistory } from "@/features/reports/report-history";
 import { SelectControl } from "@/shared/ui/select-control";
 import { ThemeToggle } from "@/shared/ui/theme-toggle";
+import { AccessibilitySettings } from "@/features/accessibility/accessibility-settings";
 
 function focusCloseButton(node: HTMLButtonElement | null) {
     node?.focus({ preventScroll: true });
@@ -93,6 +94,7 @@ export function PublicMap({ initialSelectedId }: { initialSelectedId: string | n
                         Strona główna
                     </Link>
                     <ThemeToggle />
+                    <AccessibilitySettings />
                 </div>
                 <div className="public-map__title">
                     <MapPin size={19} />

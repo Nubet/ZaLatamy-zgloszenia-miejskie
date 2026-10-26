@@ -6,6 +6,7 @@ import { useSyncExternalStore } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import styles from "./landing.module.css";
 import { ThemeToggle } from "@/shared/ui/theme-toggle";
+import { AccessibilitySettings } from "@/features/accessibility/accessibility-settings";
 
 const scrollStep = 50;
 
@@ -48,6 +49,7 @@ export function LandingHeader() {
             </nav>
             <nav className={styles["landing__navigation"]} aria-label="Główna nawigacja">
                 <ThemeToggle />
+                <AccessibilitySettings />
                 <Link href="/mapa" className={styles["landing__map-link"]}>
                     Mapa <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>

@@ -1,0 +1,48 @@
+.accessibility-settings {
+    margin: auto;
+    padding: 1.5rem;
+    width: min(30rem, calc(100% - 2rem));
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    color: var(--text-primary);
+    background: var(--dialog-background);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    font-size: 0.875rem;
+}
+.accessibility-settings::backdrop {
+    background: var(--dialog-backdrop);
+}
+.accessibility-settings__header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.accessibility-settings__header h2 {
+    font-size: 1.25rem;
+}
+.accessibility-settings .field {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+.accessibility-settings .select-control {
+    width: 100%;
+    min-height: 2.5rem;
+    font-size: 0.875rem;
+}
+.accessibility-settings__note {
+    margin-top: 1rem;
+}
+.accessibility-settings__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+.accessibility-settings__footer .button {
+    white-space: normal;
+    font-size: 0.875rem;
+}
