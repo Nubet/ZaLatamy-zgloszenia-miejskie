@@ -11,7 +11,8 @@
         "check": "vp check",
         "typecheck": "tsc --noEmit",
         "test": "vp test run",
-        "test:e2e": "playwright test"
+        "test:e2e": "playwright test",
+        "test:a11y": "node scripts/test-accessibility.mjs"
     },
     "dependencies": {
         "@base-ui/react": "1.9.0",
@@ -29,6 +30,7 @@
         "zod": "4.6.7"
     },
     "devDependencies": {
+        "@axe-core/playwright": "4.14.0",
         "@playwright/test": "1.64.1",
         "@types/node": "^20",
         "@types/react": "^19",
