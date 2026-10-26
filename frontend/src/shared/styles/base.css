@@ -22,7 +22,8 @@ body {
     margin: 0;
     background: var(--page-background);
     color: var(--text-primary);
-    font: 13px/1.5 var(--font-sans);
+    font: 0.8125rem/1.5 var(--font-sans);
+    overflow-wrap: anywhere;
     -webkit-font-smoothing: antialiased;
 }
 button,
@@ -70,21 +71,21 @@ p {
 }
 h1 {
     margin-bottom: 8px;
-    font-size: 25px;
+    font-size: 1.5625rem;
     line-height: 1.25;
     letter-spacing: -0.75px;
     font-weight: 550;
 }
 h2 {
     margin-bottom: 8px;
-    font-size: 17px;
+    font-size: 1.0625rem;
     line-height: 1.4;
     font-weight: 550;
     letter-spacing: -0.3px;
 }
 h3 {
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 550;
 }
 .sr-only {
@@ -128,12 +129,12 @@ input[type="checkbox"] {
 }
 @media (max-width: 850px) {
     h1 {
-        font-size: 22px;
+        font-size: 1.375rem;
     }
 }
 @media (max-width: 640px) {
     h1 {
-        font-size: 24px;
+        font-size: 1.5rem;
         line-height: 1.3;
         letter-spacing: -0.7px;
     }

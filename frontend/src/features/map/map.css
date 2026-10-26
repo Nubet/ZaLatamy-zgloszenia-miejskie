@@ -89,7 +89,7 @@
     border: 1px solid var(--city-map-label-border);
     background: var(--city-map-overlay-background);
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 0.625rem;
     box-shadow: var(--shadow-sm);
     pointer-events: none;
 }
@@ -99,7 +99,7 @@
     border-left: 1px solid var(--city-map-label-divider);
     margin-left: 2px;
     padding-left: 8px;
-    font-size: 9px;
+    font-size: 0.5625rem;
 }
 .city-map__legend {
     position: absolute;
@@ -115,7 +115,7 @@
 .city-map__legend-toggle {
     cursor: pointer;
     color: var(--text-secondary);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .city-map__legend-items {
     display: flex;
@@ -127,7 +127,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 9px;
+    font-size: 0.5625rem;
     --city-map-legend-text: light-dark(var(--text-secondary), #c5c5cb);
     color: var(--city-map-legend-text);
 }
@@ -206,7 +206,7 @@
     border-radius: 6px;
     background: var(--city-map-feedback-background);
     color: var(--city-map-feedback-text);
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .city-map__location {
     display: block;
@@ -256,7 +256,7 @@
     gap: 6px;
     min-height: 32px;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .public-map__toolbar-actions {
     display: flex;
@@ -279,12 +279,12 @@
 .public-map__title h1 {
     margin: 0 0 4px;
     color: var(--text-primary);
-    font-size: 18px;
+    font-size: 1.125rem;
     letter-spacing: -0.4px;
 }
 .public-map__title span {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .public-map__panel-link {
     display: inline-flex;
@@ -294,7 +294,7 @@
     margin-left: auto;
     padding: 4px;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
     white-space: nowrap;
 }
 .public-map__panel-link:hover,
@@ -326,7 +326,7 @@
     outline: 0;
     color: var(--text-primary);
     background: transparent;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .public-map__search .icon-button {
     flex-shrink: 0;
@@ -348,7 +348,7 @@
     background: var(--public-map-filter-background);
     color: var(--text-primary);
     font: inherit;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .public-map__filters .button {
     flex-shrink: 0;
@@ -378,16 +378,16 @@
     background: var(--public-map-result-hover);
 }
 .public-map__results strong {
-    font-size: 13px;
+    font-size: 0.8125rem;
 }
 .public-map__results > button > span:last-child {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .public-map__empty {
     margin: 12px 0 0;
     color: var(--text-muted);
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .public-map__preview {
     left: auto;
@@ -418,7 +418,7 @@
     padding: 10px 14px;
     border-bottom: 1px solid var(--border-default);
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .public-map__preview-body {
     padding: 16px;
@@ -439,17 +439,17 @@
     margin: 16px 0 12px;
 }
 .public-map__preview h2 {
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 1.3;
     margin: 0 0 12px;
 }
 .public-map__preview p {
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.65;
 }
 .public-map__preview .report-support > p {
     margin: 0;
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .public-map__address,
 .public-map__date {
@@ -465,7 +465,7 @@
 }
 .public-map__preview h3 {
     margin: 22px 0 16px;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 .public-map .city-map__error,
 .public-map .city-map__loading-indicator {
@@ -527,7 +527,7 @@
         margin-bottom: 10px;
     }
     .public-map__title h1 {
-        font-size: 16px;
+        font-size: 1rem;
     }
     .public-map__preview {
         top: auto;
@@ -564,6 +564,6 @@
         gap: 8px;
     }
     .city-map__legend span {
-        font-size: 8px;
+        font-size: 0.5rem;
     }
 }

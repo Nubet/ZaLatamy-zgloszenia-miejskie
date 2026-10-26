@@ -105,7 +105,7 @@ export function PublicMap({ initialSelectedId }: { initialSelectedId: string | n
                     <Link
                         href="/panel"
                         className="public-map__panel-link"
-                        aria-label="Przejdź do panelu mieszkańca"
+                        aria-label="Panel mieszkańca"
                         title="Panel mieszkańca"
                     >
                         Panel <ArrowUpRight size={14} />

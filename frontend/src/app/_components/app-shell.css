@@ -75,7 +75,7 @@
 }
 .sidebar__brand-row {
     position: relative;
-    height: 56px;
+    min-height: max(56px, 3.5rem);
     flex-shrink: 0;
     border-bottom: 1px solid var(--border-default);
     transition: height 200ms;
@@ -99,7 +99,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    height: 56px;
+    min-height: max(56px, 3.5rem);
     flex-shrink: 0;
     padding: var(--navigation-padding);
     width: max-content;
@@ -132,7 +132,7 @@
     display: block;
     margin-top: 4px;
     color: var(--text-subtle);
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 1;
 }
 .sidebar__workspace-icon {
@@ -146,14 +146,14 @@
     place-items: center;
     --sidebar-workspace-background: light-dark(var(--surface-emphasis), #2d2d30);
     background: var(--sidebar-workspace-background);
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .sidebar__nav-label {
     margin: 0;
     padding: 0;
     margin-bottom: 4px;
     color: var(--text-subtle);
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     line-height: 1;
     letter-spacing: 1px;
@@ -182,7 +182,7 @@
     font-size: var(--navigation-font-size);
     line-height: 1;
     border-radius: 8px;
-    white-space: nowrap;
+    white-space: normal;
     transition:
         background-color 150ms,
         color 150ms,
@@ -248,7 +248,7 @@
 .sidebar__team small {
     display: block;
     color: var(--text-muted);
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .sidebar__team > .sidebar__online-indicator {
     margin-left: auto;
@@ -289,7 +289,7 @@
 .sidebar__profile small {
     display: block;
     margin-top: 2px;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--text-muted);
 }
 .sidebar__profile > .sidebar__online-indicator {
@@ -307,7 +307,7 @@
     --avatar-border: light-dark(var(--category-waste-border), #80634b);
     background: var(--avatar-background);
     color: var(--avatar-text);
-    font-size: 10px;
+    font-size: 0.625rem;
     border: 2px solid var(--avatar-border);
 }
 .avatar.avatar--official {
@@ -353,12 +353,13 @@
     justify-content: center;
 }
 .topbar {
-    height: 57px;
-    padding: 0 30px;
+    min-height: 57px;
+    padding: 8px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    flex-wrap: wrap;
     border-bottom: 1px solid var(--border-default);
 }
 .topbar__breadcrumbs,
@@ -366,7 +367,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 11px;
+    flex-wrap: wrap;
+    font-size: 0.6875rem;
 }
 .topbar__breadcrumbs > svg,
 .topbar__city {
@@ -397,7 +399,7 @@
     align-items: center;
     gap: 6px;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .role-switch {
     display: inline-flex;
@@ -407,7 +409,7 @@
     border: 1px solid var(--border-default);
     border-radius: 5px;
     color: var(--text-secondary);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .role-switch:hover {
     --role-switch-hover: light-dark(var(--surface-hover), #29292d);
@@ -458,7 +460,7 @@
     backdrop-filter: blur(3px);
 }
 .help-dialog p {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--text-muted);
     line-height: 1.8;
 }
@@ -471,7 +473,7 @@
     margin-top: 12px;
 }
 .help-dialog h2 {
-    font-size: 24px;
+    font-size: 1.5rem;
     max-width: 300px;
     margin-top: 16px;
 }
@@ -486,7 +488,7 @@
     display: flex;
     gap: 12px;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
     line-height: 1.8;
 }
 .help-dialog li svg {
@@ -498,7 +500,7 @@
 .help-dialog li strong {
     display: block;
     color: var(--text-primary);
-    font-size: 12px;
+    font-size: 0.75rem;
     margin-bottom: 4px;
     font-weight: 500;
 }
@@ -563,19 +565,19 @@
     }
     .topbar {
         padding: 0 15px;
-        height: 55px;
+        min-height: 55px;
         gap: 8px;
     }
     .topbar__breadcrumbs {
         gap: 7px;
-        font-size: 10px;
+        font-size: 0.625rem;
     }
     .topbar__actions {
         gap: 6px;
     }
     .role-switch {
         padding: 6px;
-        font-size: 9px;
+        font-size: 0.5625rem;
         gap: 5px;
     }
     .role-switch > svg:last-child {

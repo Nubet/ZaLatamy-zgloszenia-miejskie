@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Check, LoaderCircle, Save } from "lucide-react";
 import {
     priorities,
@@ -25,6 +25,7 @@ export function ReportEditor({
     reports: Report[];
     initialStatus?: Status;
 }) {
+    const id = useId();
     const [changes, setChanges] = useState<Partial<ReportUpdate>>(
         initialStatus ? { status: initialStatus } : {},
     );
@@ -64,9 +65,10 @@ export function ReportEditor({
             </div>
             <fieldset disabled={mutation.isPending} className="form-fieldset">
                 <div className="field-pair">
-                    <label className="field">
+                    <label className="field" htmlFor={`${id}-status`}>
                         Status zgłoszenia
                         <SelectControl
+                            id={`${id}-status`}
                             aria-label="Status zgłoszenia"
                             disabled={mutation.isPending}
                             value={status}
@@ -83,9 +85,10 @@ export function ReportEditor({
                             }))}
                         />
                     </label>
-                    <label className="field">
+                    <label className="field" htmlFor={`${id}-priority`}>
                         Priorytet urzędu
                         <SelectControl
+                            id={`${id}-priority`}
                             aria-label="Priorytet urzędu"
                             disabled={mutation.isPending}
                             value={priority}
@@ -107,9 +110,10 @@ export function ReportEditor({
                     Priorytet ustala urząd. Liczba potwierdzeń mieszkańców go nie zmienia.
                 </p>
                 {status === "duplicate" && (
-                    <label className="field">
+                    <label className="field" htmlFor={`${id}-duplicate`}>
                         Połącz z istniejącą sprawą
                         <SelectControl
+                            id={`${id}-duplicate`}
                             aria-label="Połącz z istniejącą sprawą"
                             disabled={mutation.isPending}
                             required

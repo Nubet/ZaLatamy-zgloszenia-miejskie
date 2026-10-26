@@ -152,7 +152,6 @@ export function ReportsBoard({
                                                 <button
                                                     type="button"
                                                     className="kanban-card__open"
-                                                    aria-label={`Obsłuż ${report.id}`}
                                                     onClick={() => onOpen(report)}
                                                     draggable={!mutation.isPending}
                                                     onDragStart={(event) => {

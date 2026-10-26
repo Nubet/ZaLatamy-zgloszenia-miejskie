@@ -3,7 +3,7 @@
     align-items: center;
     gap: 5px;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
     white-space: nowrap;
 }
 .support-count > svg {
@@ -20,11 +20,11 @@
 }
 .report-support > .support-count {
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .report-support > .form-hint {
     margin: 0;
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .report-support > .button {
     min-height: 40px;
@@ -41,5 +41,5 @@
 }
 .linked-reports p {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }

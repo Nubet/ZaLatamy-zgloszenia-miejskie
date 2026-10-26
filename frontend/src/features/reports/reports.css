@@ -182,7 +182,7 @@
 }
 .stats-strip__copy > span {
     color: var(--text-muted);
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 550;
     transition: color 400ms;
 }
@@ -191,7 +191,7 @@
     display: flex;
     align-items: baseline;
     gap: 10px;
-    font-size: 36px;
+    font-size: 2.25rem;
     line-height: 1.2;
     font-weight: 500;
     letter-spacing: -0.8px;
@@ -199,7 +199,7 @@
 }
 .stats-strip__copy small {
     color: var(--text-subtle);
-    font-size: 10px;
+    font-size: 0.625rem;
     font-weight: 400;
     letter-spacing: 0;
 }
@@ -210,7 +210,7 @@
     border-bottom: 1px solid var(--border-default);
     margin-bottom: 17px;
     min-height: 37px;
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .section-nav > span:first-child {
     display: flex;
@@ -229,7 +229,7 @@
     align-items: center;
     gap: 6px;
     padding-bottom: 11px;
-    font-size: 10px;
+    font-size: 0.625rem;
     color: var(--text-subtle);
 }
 .reports-explorer__toolbar {
@@ -282,7 +282,7 @@
     align-items: center;
     gap: 4px;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
     margin-bottom: 14px;
 }
 .reports-explorer__results {
@@ -302,7 +302,7 @@
     display: flex;
     align-items: center;
     gap: 7px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     margin: 0;
 }
 .reports-explorer__list-heading h2 span {
@@ -311,12 +311,12 @@
     background: var(--reports-explorer-count-background);
     color: var(--reports-explorer-count-text);
     border-radius: 4px;
-    font-size: 9px;
+    font-size: 0.5625rem;
     padding: 1px 5px;
 }
 .reports-explorer__list-heading > span {
     color: var(--text-subtle);
-    font-size: 9px;
+    font-size: 0.5625rem;
 }
 .reports-explorer__list {
     overflow-y: auto;
@@ -365,7 +365,7 @@
     --report-card-photo-count-background: var(--photo-overlay-background);
     background: var(--report-card-photo-count-background);
     color: var(--text-inverse);
-    font-size: 9px;
+    font-size: 0.5625rem;
 }
 .report-card__body {
     min-width: 0;
@@ -375,7 +375,7 @@
     gap: 6px;
 }
 .report-card__body strong {
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
@@ -385,11 +385,11 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 9px;
+    font-size: 0.5625rem;
 }
 .report-card__id {
     color: var(--text-subtle);
-    font-size: 10px;
+    font-size: 0.625rem;
     font-variant-numeric: tabular-nums;
 }
 .report-card__meta .report-card__id {
@@ -400,7 +400,7 @@
     align-items: center;
     gap: 4px;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .report-card__footer {
     display: flex;
@@ -412,7 +412,7 @@
 }
 .report-card__footer time {
     color: var(--text-subtle);
-    font-size: 9px;
+    font-size: 0.5625rem;
 }
 .community-banner {
     display: flex;
@@ -436,13 +436,13 @@
 }
 .community-banner strong {
     display: block;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 500;
 }
 .community-banner small {
     display: block;
     margin-top: 3px;
-    font-size: 10px;
+    font-size: 0.625rem;
     color: var(--text-muted);
 }
 .community-banner__action {
@@ -450,7 +450,7 @@
     align-items: center;
     gap: 8px;
     margin-left: auto;
-    font-size: 10px;
+    font-size: 0.625rem;
     --community-banner-action-text: light-dark(var(--text-link), #c2b3f4);
     color: var(--community-banner-action-text);
 }
@@ -493,7 +493,7 @@
     border-radius: 4px;
     background: var(--report-content-caption-background);
     color: var(--report-content-caption-text);
-    font-size: 9px;
+    font-size: 0.5625rem;
 }
 .report-content__meta {
     display: flex;
@@ -503,12 +503,12 @@
     margin: 20px 0 12px;
 }
 .report-details__card h2 {
-    font-size: 21px;
+    font-size: 1.3125rem;
 }
 .report-content__description {
     color: var(--text-secondary);
     line-height: 1.8;
-    font-size: 13px;
+    font-size: 0.8125rem;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
@@ -520,7 +520,7 @@
     padding: 13px 0;
     margin: 18px 0;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .report-content__facts span {
     display: flex;
@@ -541,7 +541,7 @@
     padding: 8px 12px;
     border-top: 1px solid var(--border-default);
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .duplicate-link {
     display: flex;
@@ -555,7 +555,7 @@
     border: 1px solid var(--duplicate-link-border);
     border-radius: 5px;
     color: var(--duplicate-link-text);
-    font-size: 11px;
+    font-size: 0.6875rem;
     margin-bottom: 15px;
 }
 .duplicate-link span {
@@ -579,7 +579,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 9px;
+    font-size: 0.5625rem;
     color: var(--text-subtle);
 }
 .report-journey li > span {
@@ -590,7 +590,7 @@
     border-radius: 50%;
     --report-journey-step-border: light-dark(var(--border-default), #4a454f);
     border: 1px solid var(--report-journey-step-border);
-    font-size: 9px;
+    font-size: 0.5625rem;
 }
 .report-journey .report-journey__step--reached {
     --report-journey-reached-text: light-dark(var(--accent-text), #c9bade);
@@ -649,12 +649,12 @@
 }
 .timeline time {
     display: block;
-    font-size: 9px;
+    font-size: 0.5625rem;
     color: var(--text-muted);
     margin-bottom: 4px;
 }
 .timeline p {
-    font-size: 11px;
+    font-size: 0.6875rem;
     color: var(--text-secondary);
     margin: 5px 0 0;
     white-space: pre-wrap;
@@ -673,12 +673,12 @@
     border-radius: 8px;
 }
 .watch-card h2 {
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 .watch-card p,
 .local-note p {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
     line-height: 1.7;
 }
 .watch-card .button {
@@ -691,7 +691,7 @@
     border-color: var(--local-note-border);
 }
 .local-note h3 {
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .report-details__sidebar .watch-card + .watch-card {
     margin-top: 16px;
@@ -726,12 +726,12 @@
     width: 100%;
 }
 .my-reports__grid .report-card__body strong {
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 .local-info {
     margin-top: 25px;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 @media (min-width: 1600px) {
     .reports-explorer__grid {
@@ -805,16 +805,16 @@
         height: 18px;
     }
     .stats-strip__copy > span {
-        font-size: 10px;
+        font-size: 0.625rem;
     }
     .stats-strip__copy strong {
-        font-size: 28px;
+        font-size: 1.75rem;
     }
     .section-nav {
         margin-bottom: 13px;
     }
     .reports-explorer__toolbar .select-control {
-        font-size: 10px;
+        font-size: 0.625rem;
         padding-right: 4px;
     }
     .reports-explorer__toolbar {
@@ -842,7 +842,7 @@
         border-radius: 4px;
         background: transparent;
         color: var(--text-muted);
-        font-size: 11px;
+        font-size: 0.6875rem;
     }
     .reports-explorer__view-toggle button[aria-pressed="true"] {
         --reports-explorer-toggle-active-background: light-dark(var(--surface-selected), #333038);
@@ -870,7 +870,7 @@
         padding: 16px;
     }
     .report-card__body strong {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
     .report-card__photo {
         width: 64px;
@@ -881,10 +881,10 @@
         gap: 10px;
     }
     .community-banner strong {
-        font-size: 10px;
+        font-size: 0.625rem;
     }
     .community-banner small {
-        font-size: 9px;
+        font-size: 0.5625rem;
         line-height: 1.6;
     }
     .community-banner__icon {
@@ -894,7 +894,7 @@
         padding: 17px;
     }
     .report-details__card h2 {
-        font-size: 19px;
+        font-size: 1.1875rem;
     }
     .report-content__facts {
         gap: 10px;
@@ -903,7 +903,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 7px;
-        font-size: 8px;
+        font-size: 0.5rem;
     }
     .my-reports__grid {
         grid-template-columns: 1fr;

@@ -38,7 +38,7 @@ export default function HomePage() {
             </a>
             <LandingHeader />
 
-            <main id="tresc">
+            <main id="tresc" tabIndex={-1}>
                 <section className={styles["landing__hero"]} aria-labelledby="hero-title">
                     <div className={styles["landing__hero-backdrop"]} aria-hidden="true" />
                     <div className={styles["landing__hero-copy"]}>

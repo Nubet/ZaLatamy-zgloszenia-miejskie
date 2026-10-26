@@ -44,7 +44,7 @@
     justify-content: center;
     gap: 16px;
     padding: 6px 0;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .report-gallery__navigation .icon-button {
     width: 40px;

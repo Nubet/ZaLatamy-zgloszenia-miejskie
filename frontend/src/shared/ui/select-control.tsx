@@ -56,10 +56,9 @@ export function SelectControl({
                                     value={value}
                                     className="select-control__option"
                                 >
-                                    <Select.ItemIndicator
-                                        className="select-control__indicator"
-                                        children={null}
-                                    />
+                                    <Select.ItemIndicator className="select-control__indicator">
+                                        {null}
+                                    </Select.ItemIndicator>
                                     <Select.ItemText>{label}</Select.ItemText>
                                 </Select.Item>
                             ))}

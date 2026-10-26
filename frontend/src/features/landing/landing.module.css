@@ -53,6 +53,16 @@
         display: none;
     }
 }
+.landing__header {
+    flex-wrap: wrap;
+}
+.landing__navigation {
+    flex-wrap: wrap;
+}
+.landing__hero-copy {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
 .landing {
     --landing-header-border: light-dark(var(--border-subtle), #ffffff17);
     --landing-header-background: light-dark(var(--overlay-background), #1b1b1dec);
@@ -109,7 +119,7 @@
     top: 8px;
     z-index: 40;
     width: min(1152px, calc(100% - 24px));
-    height: 48px;
+    height: auto;
     min-height: 48px;
     margin: 0 auto;
     padding: 12px 18px;
@@ -159,7 +169,7 @@
     gap: 10px;
 }
 .landing__brand strong {
-    font-size: 17px;
+    font-size: 1.0625rem;
     font-weight: 550;
     letter-spacing: -0.5px;
 }
@@ -179,7 +189,7 @@
 .landing__section-nav a,
 .landing__map-link {
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .landing__section-nav a:hover,
 .landing__map-link:hover {
@@ -232,7 +242,7 @@
     align-items: center;
     gap: 7px;
     color: var(--landing-location-text);
-    font-size: 11px;
+    font-size: 0.6875rem;
     border: 1px solid var(--landing-location-border);
     background: var(--landing-location-background);
     border-radius: 999px;
@@ -242,7 +252,7 @@
     color: var(--landing-location-icon);
 }
 .landing__hero h1 {
-    font-size: clamp(40px, 5.2vw, 64px);
+    font-size: clamp(2.5rem, 5.2vw + 0.5rem, 4rem);
     font-weight: 550;
     line-height: 1.08;
     letter-spacing: -2.7px;
@@ -255,7 +265,7 @@
     max-width: 530px;
     margin: 0 auto;
     color: var(--landing-description-text);
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.85;
 }
 .landing__actions {
@@ -271,10 +281,10 @@
 .landing__actions > a {
     min-height: 40px;
     padding-inline: 18px;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .landing__hero-copy .landing__access-note {
-    font-size: 10px;
+    font-size: 0.625rem;
     color: var(--landing-access-note-text);
     margin-top: 15px;
 }
@@ -311,7 +321,7 @@
     padding: 10px 15px;
     border-bottom: 1px solid var(--border-default);
     background: var(--map-preview-chrome-background);
-    font-size: 10px;
+    font-size: 0.625rem;
     color: var(--text-muted);
 }
 .map-preview__chrome > a {
@@ -349,7 +359,7 @@
     align-items: center;
     gap: 8px;
     margin: 0 8px 29px;
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 550;
 }
 .map-preview__brand .landing__logo {
@@ -357,7 +367,7 @@
     height: 21px;
 }
 .map-preview__sidebar-label {
-    font-size: 8px;
+    font-size: 0.5rem;
     color: var(--text-subtle);
     letter-spacing: 0.8px;
     margin: 0 10px 8px;
@@ -368,7 +378,7 @@
     gap: 8px;
     padding: 9px 10px;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 0.625rem;
     color: var(--text-muted);
 }
 .map-preview__link:hover {
@@ -389,13 +399,13 @@
 .map-preview__sidebar-footer {
     margin: auto 10px 0;
     padding-top: 25px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     color: var(--text-secondary);
 }
 .map-preview__sidebar-footer small {
     display: block;
     color: var(--text-subtle);
-    font-size: 9px;
+    font-size: 0.5625rem;
     margin-top: 4px;
 }
 .map-preview__map {
@@ -416,13 +426,13 @@
 .landing__eyebrow {
     display: block;
     color: var(--landing-eyebrow-text);
-    font-size: 9px;
+    font-size: 0.5625rem;
     font-weight: 500;
     letter-spacing: 1.5px;
     margin-bottom: 17px;
 }
 .landing h2 {
-    font-size: clamp(28px, 3vw, 36px);
+    font-size: clamp(1.75rem, 3vw + 0.5rem, 2.25rem);
     line-height: 1.2;
     letter-spacing: -1.1px;
     font-weight: 500;
@@ -431,7 +441,7 @@
 .landing__section-heading > p {
     max-width: 460px;
     margin: auto;
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.8;
     color: var(--text-muted);
 }
@@ -489,12 +499,12 @@
     color: var(--landing-category-icon-text);
 }
 .landing__category-list h3 {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     margin-bottom: 9px;
 }
 .landing__category-list p {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--text-muted);
     line-height: 1.8;
     margin: 0;
@@ -508,7 +518,7 @@
 }
 .landing__feature-copy > p {
     max-width: 440px;
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.9;
     color: var(--text-muted);
     margin-bottom: 26px;
@@ -529,18 +539,18 @@
 }
 .landing__steps li > span {
     padding-top: 2px;
-    font-size: 10px;
+    font-size: 0.625rem;
     color: var(--landing-step-number-text);
     font-variant-numeric: tabular-nums;
 }
 .landing__steps h3 {
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 500;
     margin-bottom: 6px;
 }
 .landing__steps p {
     margin: 0;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--text-muted);
     line-height: 1.8;
     max-width: 350px;
@@ -567,7 +577,7 @@
     align-items: center;
     gap: 9px;
     padding: 16px 20px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border-default);
 }
@@ -586,7 +596,7 @@
     padding-bottom: 20px;
     margin-bottom: 21px;
     border-bottom: 1px solid var(--border-default);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .landing__preview-stepper > span {
     display: flex;
@@ -604,7 +614,7 @@
 .landing__preview-label {
     display: block;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
     margin-bottom: 8px;
 }
 .landing__preview-field {
@@ -612,7 +622,7 @@
     border: 1px solid var(--border-default);
     border-radius: var(--radius-sm);
     background: var(--page-background);
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 1.8;
     color: var(--text-secondary);
 }
@@ -621,7 +631,7 @@
     flex-wrap: wrap;
     gap: 17px;
     margin: 15px 0 22px;
-    font-size: 10px;
+    font-size: 0.625rem;
     color: var(--text-muted);
 }
 .landing__preview-meta > span {
@@ -636,7 +646,7 @@
     padding-top: 19px;
     margin-top: 22px;
     border-top: 1px solid var(--border-default);
-    font-size: 10px;
+    font-size: 0.625rem;
     color: var(--text-muted);
 }
 .landing__preview-location > svg:last-child {
@@ -655,14 +665,14 @@
     margin-top: 2px;
 }
 .landing__ai-assistance h3 {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     color: var(--landing-ai-heading-text);
     margin: 0 0 7px;
 }
 .landing__ai-assistance p {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
     line-height: 1.8;
     margin: 0;
 }
@@ -718,7 +728,7 @@
 }
 .landing__status-timeline p {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
     line-height: 1.8;
     margin: 9px 0 0;
 }
@@ -734,13 +744,13 @@
     margin-top: 1px;
 }
 .landing__tracking-feature h3 {
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 500;
     margin-bottom: 7px;
 }
 .landing__tracking-feature p {
     color: var(--text-muted);
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 1.8;
     margin: 0;
 }
@@ -752,7 +762,7 @@
 }
 .landing__faq-intro > p {
     color: var(--text-muted);
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.8;
     max-width: 260px;
     margin: 22px 0 28px;
@@ -771,7 +781,7 @@
     list-style: none;
     padding: 23px 0;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: var(--text-secondary);
     line-height: 1.7;
 }
@@ -789,7 +799,7 @@
     transform: rotate(180deg);
 }
 .landing__faq-items p {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--text-muted);
     line-height: 1.9;
     margin: 0 28px 23px 0;
@@ -846,7 +856,7 @@
 .landing__closing p {
     margin: 0 auto 28px;
     max-width: 450px;
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.9;
     color: var(--landing-closing-description-text);
 }
@@ -862,7 +872,7 @@
 .landing__footer-brand > p {
     margin: 20px 0 0;
     max-width: 240px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     line-height: 1.9;
     color: var(--text-muted);
 }
@@ -873,7 +883,7 @@
     gap: 12px;
 }
 .landing__footer-main nav h2 {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0;
     line-height: 1.5;
@@ -881,7 +891,7 @@
 }
 .landing__footer-main nav > a {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
     line-height: 1.8;
 }
 .landing__footer-main nav > a:hover {
@@ -894,7 +904,7 @@
     padding: 24px 0 30px;
     border-top: 1px solid var(--border-default);
     color: var(--text-subtle);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .landing__footer-bottom > a {
     display: inline-flex;
@@ -906,7 +916,7 @@
         gap: 16px;
     }
     .landing__section-nav a {
-        font-size: 11px;
+        font-size: 0.6875rem;
     }
     .landing__workflow,
     .landing__tracking {
@@ -942,7 +952,7 @@
         padding-inline: 7px;
     }
     .map-preview__link {
-        font-size: 9px;
+        font-size: 0.5625rem;
         gap: 6px;
     }
     .map-preview__map {
@@ -1006,7 +1016,7 @@
         top: 6px;
         margin-top: 0;
         padding: 8px 10px;
-        height: 48px;
+        height: auto;
         min-height: 48px;
         gap: 8px;
         border-radius: 10px;
@@ -1041,7 +1051,7 @@
         gap: 7px;
     }
     .landing__brand strong {
-        font-size: 14px;
+        font-size: 0.875rem;
     }
     .landing__logo {
         width: 23px;
@@ -1051,13 +1061,13 @@
         gap: 6px;
     }
     .landing__map-link {
-        font-size: 11px;
+        font-size: 0.6875rem;
     }
     .landing__map-link svg {
         display: none;
     }
     .landing__navigation > a:last-child {
-        font-size: 10px;
+        font-size: 0.625rem;
         padding-inline: 10px;
         gap: 5px;
         min-height: 32px;
@@ -1069,14 +1079,14 @@
         padding: 56px 16px 0;
     }
     .landing__hero h1 {
-        font-size: clamp(39px, 10vw, 54px);
+        font-size: clamp(2.4375rem, 10vw + 0.5rem, 3.375rem);
         line-height: 1.12;
         letter-spacing: -1.9px;
         margin-top: 21px;
     }
     .landing__hero-copy > p {
         max-width: 370px;
-        font-size: 12px;
+        font-size: 0.75rem;
         line-height: 1.9;
     }
     .landing__hero .landing__actions {
@@ -1087,11 +1097,11 @@
     }
     .landing__actions > a {
         min-height: 38px;
-        font-size: 11px;
+        font-size: 0.6875rem;
         padding-inline: 14px;
     }
     .landing__hero-copy .landing__access-note {
-        font-size: 9px;
+        font-size: 0.5625rem;
     }
     .landing__hero-preview {
         margin-top: 36px;
@@ -1100,7 +1110,7 @@
     }
     .map-preview__chrome {
         padding: 10px;
-        font-size: 9px;
+        font-size: 0.5625rem;
         gap: 8px;
     }
     .map-preview__window-dots {
@@ -1127,16 +1137,16 @@
         margin-bottom: 30px;
     }
     .landing__eyebrow {
-        font-size: 8px;
+        font-size: 0.5rem;
         letter-spacing: 1.3px;
         margin-bottom: 14px;
     }
     .landing h2 {
-        font-size: 29px;
+        font-size: 1.8125rem;
         letter-spacing: -0.9px;
     }
     .landing__section-heading > p {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
     .landing__category-list {
         gap: 12px;
@@ -1153,10 +1163,10 @@
         width: 23px;
     }
     .landing__category-list h3 {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
     .landing__category-list p {
-        font-size: 11px;
+        font-size: 0.6875rem;
     }
     .landing__workflow {
         grid-template-columns: minmax(0, 1fr);
@@ -1165,7 +1175,7 @@
     }
     .landing__feature-copy > p {
         max-width: none;
-        font-size: 12px;
+        font-size: 0.75rem;
     }
     .landing__steps {
         margin-block: 25px;
@@ -1184,7 +1194,7 @@
         gap: 17px;
     }
     .landing__preview-field {
-        font-size: 11px;
+        font-size: 0.6875rem;
     }
     .landing__tracking-section {
         padding-block: 64px;
@@ -1213,17 +1223,17 @@
     .landing__faq-intro > p {
         max-width: none;
         margin: 17px 0;
-        font-size: 12px;
+        font-size: 0.75rem;
     }
     .landing__faq-items summary {
-        font-size: 12px;
+        font-size: 0.75rem;
         padding-block: 20px;
     }
     .landing__closing {
         padding: 60px 24px 64px;
     }
     .landing__closing p {
-        font-size: 12px;
+        font-size: 0.75rem;
     }
     .landing__footer {
         padding-top: 35px;
@@ -1237,10 +1247,10 @@
         grid-column: 1 / -1;
     }
     .landing__footer-brand > p {
-        font-size: 11px;
+        font-size: 0.6875rem;
     }
     .landing__footer-bottom {
-        font-size: 9px;
+        font-size: 0.5625rem;
         padding-block: 20px;
     }
 }

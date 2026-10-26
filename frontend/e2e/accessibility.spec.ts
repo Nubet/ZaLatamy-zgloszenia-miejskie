@@ -33,7 +33,8 @@ for (const { contrast, theme } of accessiblePalettes) {
                         .getByRole("button", { name: "Ustawienia dostępności", exact: true })
                         .first(),
                 ).toBeVisible();
-                await expect(page.locator("main")).toBeVisible();
+                await expect(page.locator("main:visible")).toBeVisible();
+                await expect(page.locator(".feedback .loading-indicator:visible")).toHaveCount(0);
                 await scanAccessibility(page, info, `${route}-${fontSize}`);
             }
         });

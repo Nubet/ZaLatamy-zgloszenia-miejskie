@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense, useState, type KeyboardEvent } from "react";
 import { useReports } from "@/application/reports/provider";
 import { AdminNavigation } from "@/features/administration/admin-navigation";
 import { ThemeToggle } from "@/shared/ui/theme-toggle";
@@ -36,6 +36,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
     const [helpOpen, setHelpOpen] = useState(false);
+    function closeNavigation() {
+        setMenuOpen(false);
+        requestAnimationFrame(() => document.getElementById("navigation-toggle")?.focus());
+    }
     const unread = query.data?.notifications.filter((item) => !item.read).length ?? 0;
     const isAdmin = pathname.startsWith("/admin");
     const currentPage = isAdmin
@@ -55,13 +59,47 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <button
                     className="app-shell__scrim"
                     aria-label="Zamknij nawigację"
-                    onClick={() => setMenuOpen(false)}
+                    tabIndex={-1}
+                    onClick={closeNavigation}
                 />
             )}
-            <aside
+            <div
                 className="sidebar"
                 id="city-navigation"
                 tabIndex={-1}
+                {...(menuOpen
+                    ? {
+                          role: "dialog",
+                          "aria-modal": true,
+                          "aria-label": "Nawigacja",
+                          onKeyDown: (event: KeyboardEvent<HTMLDivElement>) => {
+                              if (event.key === "Escape") {
+                                  event.preventDefault();
+                                  closeNavigation();
+                              }
+                              if (event.key === "Tab") {
+                                  const controls = Array.from(
+                                      event.currentTarget.querySelectorAll<HTMLElement>(
+                                          'a[href], button:not(:disabled), [tabindex="0"]',
+                                      ),
+                                  ).filter((node) => node.getClientRects().length > 0);
+                                  const first = controls[0];
+                                  const last = controls.at(-1);
+                                  if (
+                                      event.shiftKey &&
+                                      (document.activeElement === first ||
+                                          document.activeElement === event.currentTarget)
+                                  ) {
+                                      event.preventDefault();
+                                      last?.focus();
+                                  } else if (!event.shiftKey && document.activeElement === last) {
+                                      event.preventDefault();
+                                      first?.focus();
+                                  }
+                              }
+                          },
+                      }
+                    : { role: "complementary" })}
                 ref={(element) => {
                     if (menuOpen && element && !element.contains(document.activeElement))
                         element.focus();
@@ -71,17 +109,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     <button
                         className="icon-button sidebar__close"
                         aria-label="Zamknij menu"
-                        onClick={() => {
-                            setMenuOpen(false);
-                            document.getElementById("navigation-toggle")?.focus();
-                        }}
+                        onClick={closeNavigation}
                     >
                         <X size={17} />
                     </button>
                     <Link
                         href="/"
                         className="brand"
-                        aria-label="Załatamy — strona główna"
+                        aria-label={sidebarCollapsed ? "ZaŁatamy — strona główna" : undefined}
                         onClick={() => setMenuOpen(false)}
                     >
                         <span className="brand__symbol">
@@ -123,7 +158,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                                 onClick={() => setMenuOpen(false)}
                                 className={`sidebar__nav-link ${pathname === href ? "sidebar__nav-link--active" : ""}`}
                                 aria-current={pathname === href ? "page" : undefined}
-                                aria-label={label}
+                                aria-label={sidebarCollapsed ? label : undefined}
                                 title={sidebarCollapsed ? label : undefined}
                             >
                                 <Icon size={17} strokeWidth={1.6} />
@@ -169,7 +204,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     <div className="sidebar__footer">
                         <button
                             className="sidebar__nav-link sidebar__nav-link--help"
-                            aria-label="Jak korzystać z aplikacji"
+                            aria-label="Pomoc i wskazówki"
                             title={sidebarCollapsed ? "Jak korzystać z aplikacji" : undefined}
                             onClick={() => setHelpOpen(true)}
                         >
@@ -192,8 +227,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                         </div>
                     </div>
                 </div>
-            </aside>
-            <div className="app-shell__main">
+            </div>
+            <div className="app-shell__main" inert={menuOpen}>
                 <header className="topbar">
                     <div className="topbar__breadcrumbs">
                         <button
@@ -228,7 +263,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                         </Link>
                     </div>
                 </header>
-                <main id="main" className="app-shell__content">
+                <main id="main" className="app-shell__content" tabIndex={-1}>
                     {children}
                 </main>
             </div>

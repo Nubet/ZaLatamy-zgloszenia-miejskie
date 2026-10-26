@@ -38,3 +38,13 @@
         outline: 3px solid Highlight;
     }
 }
+:root[data-font-size="large"] {
+    font-size: 125%;
+}
+:root[data-font-size="extra-large"] {
+    font-size: 150%;
+}
+:root[data-font-size]:not([data-font-size="default"]) {
+    --control-height: 2.25rem;
+    --pill-height: 1.5rem;
+}

@@ -260,7 +260,7 @@ function NotificationItem({
                         className="notification-card__mark-read"
                         disabled={pending}
                         onClick={onRead}
-                        aria-label={`Oznacz powiadomienie o sprawie ${notification.reportId} jako przeczytane`}
+                        aria-label={`Oznacz jako przeczytane — sprawa ${notification.reportId}`}
                     >
                         <Check size={14} aria-hidden="true" /> Oznacz jako przeczytane
                     </button>

@@ -18,7 +18,7 @@
     border-radius: 5px;
     background: var(--surface-highlight);
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
     font-variant-numeric: tabular-nums;
 }
 .work-queue__toolbar {
@@ -52,7 +52,7 @@
     color: var(--text-secondary);
     cursor: pointer;
     list-style: none;
-    font-size: 12px;
+    font-size: 0.75rem;
     box-shadow: var(--control-shadow);
 }
 .work-queue__filters summary::-webkit-details-marker {
@@ -81,13 +81,13 @@
     justify-content: space-between;
     gap: 12px;
     margin-bottom: 18px;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .work-queue__filter-heading button {
     border: 0;
     padding: 0;
     background: transparent;
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .work-queue__filter-popover .filter-select {
     display: flex;
@@ -128,14 +128,14 @@
     color: var(--text-highlight);
 }
 .work-queue__heading h1 {
-    font-size: 17px;
+    font-size: 1.0625rem;
     letter-spacing: -0.4px;
     margin: 0 0 4px;
 }
 .work-queue__heading p {
     margin: 0;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .work-queue__heading p > span {
     margin: 0 5px;
@@ -143,7 +143,7 @@
 .work-queue__total {
     margin-left: auto;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
     white-space: nowrap;
 }
 .work-queue .work-queue__navigation {
@@ -170,7 +170,7 @@
     gap: 6px 20px;
     padding: 10px 16px;
     color: var(--text-subtle);
-    font-size: 10px;
+    font-size: 0.625rem;
     border-bottom: 1px solid var(--border-default);
 }
 .reports-board__instructions > span {
@@ -234,7 +234,7 @@
 }
 .kanban-column__header h2 {
     margin: 0;
-    font-size: 13px;
+    font-size: 0.8125rem;
     letter-spacing: -0.2px;
     font-weight: 500;
 }
@@ -248,13 +248,13 @@
 }
 .kanban-column__count {
     color: var(--text-subtle);
-    font-size: 12px;
+    font-size: 0.75rem;
     font-variant-numeric: tabular-nums;
 }
 .kanban-column__drop-label {
     margin-left: auto;
     color: var(--text-highlight);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .kanban-column__cards {
     display: flex;
@@ -321,7 +321,7 @@
     justify-content: space-between;
     width: 100%;
     color: var(--text-subtle);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .kanban-card__reference > span {
     font-family: ui-monospace, monospace;
@@ -333,7 +333,7 @@
     align-items: flex-start;
 }
 .kanban-card__title strong {
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 500;
     line-height: 1.5;
 }
@@ -366,7 +366,7 @@
     align-items: center;
     gap: 6px;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .kanban-card__address > svg {
     flex-shrink: 0;
@@ -381,7 +381,7 @@
     border-top: 1px solid var(--kanban-card-footer-border);
 }
 .kanban-card__footer .priority-label {
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .kanban-card__history {
     display: inline-flex;
@@ -389,7 +389,7 @@
     gap: 4px;
     margin-left: auto;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .kanban-card__watching {
     --kanban-card-watching-text: light-dark(var(--accent-text), #b5a5fb);
@@ -411,11 +411,11 @@
     text-align: center;
 }
 .kanban-column__empty strong {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 400;
 }
 .kanban-column__empty span {
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .admin-detail {
     position: fixed;
@@ -454,7 +454,7 @@
 }
 .admin-detail__heading h2 {
     margin: 0;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .admin-editor {
     padding: 22px;
@@ -470,11 +470,11 @@
     margin-bottom: 7px;
 }
 .admin-detail__summary h2 {
-    font-size: 21px;
+    font-size: 1.3125rem;
     margin-bottom: 7px;
 }
 .admin-detail__summary p {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--text-muted);
     margin-bottom: 14px;
 }
@@ -484,7 +484,7 @@
     justify-content: space-between;
     gap: 8px;
     margin-bottom: 12px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     color: var(--text-muted);
 }
 .admin-editor .field {
@@ -504,7 +504,7 @@
     height: 180px;
 }
 .admin-detail .report-content > h2 {
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 .admin-detail .report-journey li {
     flex-direction: column;
@@ -545,11 +545,11 @@
 .date-range-filter small {
     display: block;
     color: var(--text-muted);
-    font-size: 9px;
+    font-size: 0.5625rem;
 }
 .date-range-filter strong {
     display: block;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 500;
 }
 .date-range-filter__popover {
@@ -570,7 +570,7 @@
 .date-range-filter__label {
     margin: 4px 8px 10px;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .date-range-filter__popover > button {
     display: flex;
@@ -583,7 +583,7 @@
     border-radius: 6px;
     background: transparent;
     text-align: left;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .date-range-filter__popover > button:hover {
     background: var(--surface-highlight);
@@ -604,7 +604,7 @@
 .date-range-filter__popover .form-hint {
     padding: 8px;
     margin: 0;
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .work-queue__scope {
     display: flex;
@@ -625,19 +625,19 @@
     min-width: 0;
 }
 .work-queue__scope strong {
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 500;
 }
 .work-queue__scope > div > span {
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .work-queue__scope > .text-link,
 .work-queue__no-results > .text-link {
     border: 0;
     padding: 0;
     background: transparent;
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .work-queue__filter-chip {
     display: inline-flex;
@@ -662,7 +662,7 @@
     margin: 0;
     padding: 8px 16px;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
     border-bottom: 1px solid var(--border-default);
     flex-shrink: 0;
 }
@@ -675,7 +675,7 @@
     border-bottom: 1px solid var(--border-default);
     background: var(--surface-tinted);
     flex-shrink: 0;
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .work-queue__no-results > span {
     color: var(--text-muted);
@@ -686,7 +686,7 @@
     gap: 5px;
     --kanban-card-age-text: light-dark(var(--category-lighting-text), #c5b49a);
     color: var(--kanban-card-age-text);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .kanban-column__pagination {
     display: flex;
@@ -695,18 +695,18 @@
     gap: 10px;
     padding: 10px 0 0;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .kanban-column__pagination > .button {
     width: 100%;
     min-height: 34px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     border-radius: 8px;
 }
 .kanban-column__pagination > .text-link {
     border: 0;
     background: transparent;
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .work-queue__list {
     display: flex;
@@ -725,7 +725,7 @@
 }
 .work-queue__list-heading {
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
     border-bottom: 1px solid var(--border-default);
     flex-shrink: 0;
 }
@@ -762,17 +762,17 @@
 .work-queue__result-title small {
     color: var(--text-subtle);
     font:
-        10px ui-monospace,
+        0.625rem ui-monospace,
         monospace;
 }
 .work-queue__result-title strong {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     overflow-wrap: anywhere;
 }
 .work-queue__result-title > span {
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .work-queue__result-row > .status-badge,
 .work-queue__result-row > .category-tag {
@@ -780,10 +780,10 @@
 }
 .work-queue__result-row > time {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .work-queue__result-row > .priority-label {
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .work-queue__pagination {
     display: flex;
@@ -795,7 +795,7 @@
     background: var(--surface-background);
     flex-shrink: 0;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .work-queue__pagination > div {
     display: flex;
@@ -842,10 +842,10 @@
         min-height: 76px;
     }
     .work-queue__heading h1 {
-        font-size: 16px;
+        font-size: 1rem;
     }
     .work-queue__heading p {
-        font-size: 10px;
+        font-size: 0.625rem;
     }
     .work-queue__total {
         display: none;
@@ -855,7 +855,7 @@
         max-width: 340px;
     }
     .reports-board__instructions {
-        font-size: 9px;
+        font-size: 0.5625rem;
     }
     .work-queue .work-queue__navigation {
         padding: 12px;
@@ -888,7 +888,7 @@
     .work-queue__pagination {
         flex-wrap: wrap;
         gap: 8px;
-        font-size: 10px;
+        font-size: 0.625rem;
     }
     .work-queue__pagination > div {
         gap: 8px;

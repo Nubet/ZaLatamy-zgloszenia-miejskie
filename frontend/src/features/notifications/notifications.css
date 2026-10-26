@@ -7,7 +7,7 @@
     gap: 8px;
     flex-shrink: 0;
     color: var(--text-muted);
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 .notifications__summary.notifications__summary--unread {
     color: var(--text-secondary);
@@ -37,7 +37,7 @@
     border-bottom: 2px solid transparent;
     background: transparent;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .notifications__filters button[aria-pressed="true"] {
     border-bottom-color: var(--selection-indicator);
@@ -60,7 +60,7 @@
     border-radius: 3px;
     background: transparent;
     color: var(--text-secondary);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .notifications__mark-all:hover:not(:disabled),
 .notification-card__mark-read:hover:not(:disabled) {
@@ -78,7 +78,7 @@
     gap: 10px;
     margin: 0 0 6px;
     color: var(--text-secondary);
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 500;
 }
 .notifications__day::first-letter {
@@ -86,7 +86,7 @@
 }
 .notifications__day span {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .notifications__list {
     display: grid;
@@ -151,7 +151,7 @@
     justify-content: space-between;
     gap: 12px;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .notification-card__meta time {
     flex-shrink: 0;
@@ -161,7 +161,7 @@
     grid-column: 1;
     grid-row: 1;
     margin: 0;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 600;
     line-height: 1.45;
     overflow-wrap: anywhere;
@@ -183,7 +183,7 @@
     grid-column: 1 / -1;
     margin: 0;
     color: var(--text-secondary);
-    font-size: 11px;
+    font-size: 0.6875rem;
     overflow-wrap: anywhere;
 }
 .notification-card__context,
@@ -197,7 +197,7 @@
     flex-wrap: wrap;
     column-gap: 10px;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .notification-card__context svg {
     flex-shrink: 0;
@@ -221,7 +221,7 @@
     align-items: center;
     gap: 8px;
     color: var(--text-muted);
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 .notification-card__read-label,
 .notification-card__mark-read {
@@ -234,7 +234,7 @@
     margin: 0;
     text-align: center;
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.6875rem;
 }
 .notifications__empty {
     padding: 32px 20px;
@@ -251,7 +251,7 @@
 }
 .notifications__empty h2 {
     margin: 0 0 8px;
-    font-size: 16px;
+    font-size: 1rem;
 }
 .notifications__empty p {
     max-width: 390px;
