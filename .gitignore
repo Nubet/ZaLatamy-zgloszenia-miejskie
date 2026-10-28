@@ -1,5 +1,7 @@
 .idea/
 **/*.md
+!/README.md
+!/docs/mobile/*.md
 **/*.txt
 *.log
 *.iml
@@ -14,4 +16,3 @@
 frontend/public/maplibre-worker.mjs
 .env*
 !.env.example
-inspo-code
